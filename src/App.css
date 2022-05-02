@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  direction: rtl;
 }
 
 
@@ -34,4 +35,18 @@
 
 .Heading h1 {
   font-size: 40px;
+}
+
+.LogInButton {
+  width: 100px;
+  height: 100px;
+}
+
+.AccountBalance {
+  width: 70%;
+  height: 50px;
+  background-color: white;
+}
+.AccountBalance h1 {
+  color: black;
 }

@@ -5,8 +5,12 @@ import Button from '../features/Button';
 import Building from '../features/Building';
 import LeftSlide from '../features/LeftSlide';
 import RightSlide from '../features/RightSlide';
+import LogInButton from '../features/LogInButton';
+import SelectTag from '../features/SelectTag';
+import AccountBalance from '../features/AccountBalance';
 
 function Home() {
+	let arr=['a','b','c','d','e'];
 	return (
 		<div className='Home'>
 			<div className='div1'></div>
@@ -18,7 +22,10 @@ function Home() {
 				<Building BuildingNumber ='1' numOfAdults='25' numOfDisables='15' numOfKids='-12'/>
 				<LeftSlide/>
 				<RightSlide/>
-				
+				<LogInButton/>
+				<SelectTag nameArr={arr} />
+				<Input placeHolder='' text='' type='date' />
+				<AccountBalance balance='100'/>
 			</div>
 		</div>
 	);
