@@ -8,15 +8,17 @@ import RightSlide from '../features/RightSlide';
 import LogInButton from '../features/LogInButton';
 import SelectTag from '../features/SelectTag';
 import AccountBalance from '../features/AccountBalance';
-import { Outlet } from "react-router-dom";
 
-function Home() {
+function ManagerHomePage(props) {
+    let userName='שלום ' + props.user ;
 	return (
-		<div className='Home'>
-			<div className='div1'></div>
-			<div className='div2'><Outlet /></div>
+		<div className='ManagerHomePage'>
+				<Heading title= {userName}/>
+                <Button text='ניהול בניין' />
+                <Button text='פגישות' />
+                <Button text='חזור' />
 		</div>
 	);
 }
 
-export default Home;
+export default ManagerHomePage;

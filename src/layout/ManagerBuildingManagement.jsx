@@ -8,15 +8,17 @@ import RightSlide from '../features/RightSlide';
 import LogInButton from '../features/LogInButton';
 import SelectTag from '../features/SelectTag';
 import AccountBalance from '../features/AccountBalance';
-import { Outlet } from "react-router-dom";
 
-function Home() {
+function ManagerBuildingManagement() {
 	return (
-		<div className='Home'>
-			<div className='div1'></div>
-			<div className='div2'><Outlet /></div>
+		<div className='ManagerBuildingManagement'>
+				<Heading title="ביצוע פעולות עבור בניין"/>
+                <Button text='ניהול כלכלי' />
+                <Button text='מיפוי בניין' />
+                <Button text='שינוי יו"ר ועד בית' />
+                <Button text='חזור' />
 		</div>
 	);
 }
 
-export default Home;
+export default ManagerBuildingManagement;

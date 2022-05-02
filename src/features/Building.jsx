@@ -6,16 +6,16 @@ function Building(props) {
         <button>
             <table>
                 <tr>
-                  <th>{props.BuildingNumber} בניין</th>
+                  <th>בניין : {props.BuildingNumber}</th>
                 </tr>
                 <tr>
-                    <td>{props.numOfAdults} :מבוגרים</td>
+                    <td>מבוגרים : {props.numOfAdults}</td>
                 </tr>
                 <tr>
-                    <td>{props.numOfDisables} :נכים</td>
+                    <td>נכים : {props.numOfDisables}</td>
                 </tr>
                 <tr>
-                    <td>{props.numOfKids} :ילדים</td>
+                    <td>ילדים : {props.numOfKids}</td>
                 </tr>
             </table>
         </button>

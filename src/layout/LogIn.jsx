@@ -8,15 +8,16 @@ import RightSlide from '../features/RightSlide';
 import LogInButton from '../features/LogInButton';
 import SelectTag from '../features/SelectTag';
 import AccountBalance from '../features/AccountBalance';
-import { Outlet } from "react-router-dom";
 
-function Home() {
+function LogIn() {
 	return (
-		<div className='Home'>
-			<div className='div1'></div>
-			<div className='div2'><Outlet /></div>
+		<div className='LogIn'>
+				<Heading title='ברוכים הבאים' />
+				<Input placeHolder='שם משתמש' text='הכנס שם משתמש' type='text' />
+				<Input placeHolder='סיסמא' text='הכנס סיסמא' type='password' />
+                <Button text='התחבר' link='ManagerHomePage' />
 		</div>
 	);
 }
 
-export default Home;
+export default LogIn;
