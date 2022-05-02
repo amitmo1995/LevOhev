@@ -30,11 +30,20 @@
   height: 100%;
   background-color: rgb(65, 82, 179);
   color: white;
-  
+  display: flex;
+  font-size: 20px;
+  line-height: 35px;
+}
+
+.Home .div2 .container {
+  display: block;
+  margin: auto auto auto auto;
+
 }
 
 .Heading h1 {
-  font-size: 40px;
+  font-size: 50px;
+  margin-bottom: 20px;
 }
 
 .LogInButton {
@@ -47,6 +56,61 @@
   height: 50px;
   background-color: white;
 }
+
 .AccountBalance h1 {
   color: black;
+}
+
+.Input input {
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  font-size: 15px;
+}
+
+.LogInButton button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f4f4f4;
+}
+
+.LogInButton button:active {
+  transform: scale(0.94);
+}
+
+.LogInButton button:hover {
+  background-color: #b6a8a8;
+}
+
+.ManagerHomePage {
+  color: black;
+  border: 1px solid black;
+  background-color: white;
+  padding: 70px;
+  margin: auto;
+
+}
+
+.Button button {
+  width: 200px;
+  padding: 10px 0 10px 0;
+  margin: 5px;
+  cursor: pointer;
+
+}
+
+.Button button:active {
+  transform: scale(0.94);
+}
+
+.Button button:hover {
+  background-color: #b6a8a8;
+}
+
+.ChoseBuilding .container1 {
+  display: flex;
+  flex-direction: row;
 }

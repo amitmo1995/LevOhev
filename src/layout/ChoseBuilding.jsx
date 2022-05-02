@@ -12,8 +12,10 @@ import AccountBalance from '../features/AccountBalance';
 function ChoseBuilding() {
 	return (
 		<div className='ChoseBuilding'>
-            <Heading title="בחירת בניין" />
+             <Heading title="בחירת בניין" />
+            <div className="container1">
             <RightSlide />
+            <div className="table">
 				<table>
                     <tr>
                         <td>
@@ -32,8 +34,12 @@ function ChoseBuilding() {
                         </td>
                     </tr>
                 </table>
-                <LeftSlide />
+                </div>
+               
+                <LeftSlide/>
+                </div>
                 <Button text="חזור" />
+               
 		</div>
 	);
 }

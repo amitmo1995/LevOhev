@@ -18,9 +18,9 @@ function Home() {
 				<Heading title='ברוכים הבאים' />
 				<Input placeHolder='שם משתמש' text='הכנס שם משתמש' type='text' />
 				<Input placeHolder='סיסמא' text='הכנס סיסמא' type='password' />
-				<Button text='התחבר' />
+				<LogInButton/>
 				<Building BuildingNumber ='1' numOfAdults='25' numOfDisables='15' numOfKids='-12'/>
-				<LeftSlide/>
+				<LeftSlide />
 				<RightSlide/>
 				<LogInButton/>
 				<SelectTag nameArr={arr} />

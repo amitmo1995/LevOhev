@@ -1,8 +1,8 @@
 import React from 'react'
 
-function LeftSlide() {
+function LeftSlide(props) {
   return (
-    <button>🢂</button>
+    <div className="leftSlide"><button> 🢀 </button></div>
   )
 }
 

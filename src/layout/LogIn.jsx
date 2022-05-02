@@ -15,7 +15,7 @@ function LogIn() {
 				<Heading title='ברוכים הבאים' />
 				<Input placeHolder='שם משתמש' text='הכנס שם משתמש' type='text' />
 				<Input placeHolder='סיסמא' text='הכנס סיסמא' type='password' />
-                <Button text='התחבר' link='ManagerHomePage' />
+				<LogInButton/>
 		</div>
 	);
 }

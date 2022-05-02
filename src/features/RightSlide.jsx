@@ -2,7 +2,7 @@ import React from 'react'
 
 function RightSlide() {
   return (
-    <button>🢀</button>
+    <div className="rightSlide"><button> 🢂</button></div> 
   )
 }
 
