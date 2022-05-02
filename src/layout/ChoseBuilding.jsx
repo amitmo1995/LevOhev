@@ -35,7 +35,6 @@ function ChoseBuilding() {
                     </tr>
                 </table>
                 </div>
-               
                 <LeftSlide/>
                 </div>
                 <Button text="חזור" />
