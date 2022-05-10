@@ -3,7 +3,7 @@ import React from 'react';
 function Button(props) {
 	return (
 		<div className='Button'>
-			<button>{props.text} </button>
+			<button disabled={props.disabled} onClick={props.onClick}>{props.text} </button>
 		</div>
 	);
 }

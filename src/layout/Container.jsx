@@ -1,7 +1,6 @@
 import React from 'react';
 import Heading from '../features/Heading';
 import Input from '../features/Input';
-import Button from '../features/Button';
 import Building from '../features/Building';
 import LeftSlide from '../features/LeftSlide';
 import RightSlide from '../features/RightSlide';
