@@ -2,9 +2,9 @@ import React from 'react';
 
 function LogInButton() {
 	return (
-		<div className='LogInButton'>
-			<button >התחבר </button>
-		</div>
+		<>
+			<button className='login-btn'>התחבר</button>
+		</>
 	);
 }
 

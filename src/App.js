@@ -1,25 +1,35 @@
 import './App.css';
+import Header from './layout/Header';
+import Footer from './layout/Footer';
 import Home from './layout/Home';
-import { BrowserRouter, Route, Routes, Link, Outlet } from 'react-router-dom';
-import LogIn from './layout/LogIn';
 import ManagerHomePage from './layout/ManagerHomePage';
-import ChoseBuilding from './layout/ChoseBuilding';
-//import { Outlet } from "react-router-dom";
+import ChooseBuilding from './layout/ChooseBuilding';
+
+import {
+	BrowserRouter as Router,
+	Route,
+	Routes,
+	Link,
+	Outlet,
+} from 'react-router-dom';
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path='/' element={<Home />}>
-					<Route index element={<LogIn />}></Route>
-					<Route
-						path='/ManagerHomePage'
-						element={<ManagerHomePage user='ראם' />}
-					/>
-					<Route path='/ChoseBuilding' element={<ChoseBuilding />} />
-				</Route>
-			</Routes>
-		</BrowserRouter>
+		<>
+			{/* project header */}
+			<Header />
+			{/* project router */}
+			<Router>
+				<Routes>
+					<Route path='/' element={<Home />}></Route>
+					<Route path='/ManagerHomePage' element={<ManagerHomePage />}></Route>
+					<Route path='/ChooseBuilding' element={<ChooseBuilding />}></Route>
+					<Route></Route>
+				</Routes>
+			</Router>
+			{/* project footer */}
+			<Footer />
+		</>
 	);
 }
 

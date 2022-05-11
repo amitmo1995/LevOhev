@@ -1,22 +1,24 @@
 import React from 'react';
-import Heading from '../features/Heading';
-import Input from '../features/Input';
-import Button from '../features/Button';
-import Building from '../features/Building';
-import LeftSlide from '../features/LeftSlide';
-import RightSlide from '../features/RightSlide';
-import LogInButton from '../features/LogInButton';
-import SelectTag from '../features/SelectTag';
-import AccountBalance from '../features/AccountBalance';
+import BackButton from '../features/BackButton';
+import Option from '../features/Option';
+import { Link } from 'react-router-dom';
+import meetingImg from '../images/meetingImg.jpg';
+import buildingManageImg from '../images/buildingManageImg.jpg';
 
 function ManagerHomePage(props) {
-    let userName='שלום ' + props.user ;
+	const options = [
+		<Option optionName='ניהול בניין' imgAdd={buildingManageImg} />,
+		<Option optionName='פגישות' imgAdd={meetingImg} />,
+	];
+
 	return (
-		<div className='ManagerHomePage'>
-				<Heading title= {userName}/>
-                <Button text='ניהול בניין' />
-                <Button text='פגישות' />
-                <Button text='חזור' />
+		<div className='pageTemplate'>
+			<h1>שלום ראם</h1>
+			<div className='optionsContainer'>{options}</div>
+			<Link to='/' className='link'>
+				{' '}
+				<BackButton />{' '}
+			</Link>
 		</div>
 	);
 }
