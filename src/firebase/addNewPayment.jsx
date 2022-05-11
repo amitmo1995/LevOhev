@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { collection } from "firebase/firestore";
+import { firestore } from "./firebase";
 
-export function NewPayment() {
+
+export async function NewPayment() {
     const [paymentDate, setPaymentDate] = useState("");
     const [payment, setPayment] = useState("");
     const [aprtNum, setAprtNum] = useState("");
@@ -9,15 +12,16 @@ export function NewPayment() {
     async function addNewCity() {
 
 
+        //pointer to building collection
         const buildingRef = collection(firestore,"building");
         let bldRef= await aprtbuildingRef.where('userId', '==', aprtNum).get();
 
 
         // Create a reference to the apartment collection
-       let aprtRef = db.collection('apartment');
+       let aprtRef = firestore.collection('apartment');
 
        // Create a query against the collection
-       aprtRef = await aprtRef.where('aprtNum', '==', aprtNum).get();index.js
+       aprtRef = await aprtRef.where('aprtNum', '==', aprtNum).get();
 
         await setDoc(
         

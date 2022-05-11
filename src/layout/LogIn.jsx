@@ -3,8 +3,7 @@ import React, { useRef, useState } from 'react';
 import {auth,useAuth,signInWithEmailAndPassword} from '../firebase/firebase'
 import Heading from '../features/Heading';
 import Button from '../features/Button';
-import Logout from '../features/Logout';
-
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,15 +13,23 @@ function LogIn() {
     const passwordRef=useRef();
     const [loding , setLoding] = useState(false);
     const currentUser=useAuth();
-
+	
+	//creat a "useNvigate" to route to dashBoard page after logged in
+	const navigate = useNavigate();
+	let userConnected=false;
 	async function handleLogin() {
+		
         setLoding(true);
         try{
             await signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value);
+			userConnected=true;
         }catch{
             alert("error");
+			userConnected=false;
         }
         setLoding(false);
+		if(userConnected){ console.log("/ManagerHomePage"); navigate("../ManagerHomePage");} 
+		console.log("user- "+userConnected);
     }
 
 	return (
@@ -37,7 +44,6 @@ function LogIn() {
 			    <input ref={passwordRef} type='password' placeholder='סיסמא' />
 		    </div>
 			<Button disabled={loding|| currentUser} onClick={handleLogin} text={"התחבר"}/>
-			<Logout/>
 		</div>
 	);
 }

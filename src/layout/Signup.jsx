@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import {auth,useAuth, createUserWithEmailAndPassword} from '../firebase/firebase'
+
 import Heading from '../features/Heading';
 import Button from '../features/Button';
 
