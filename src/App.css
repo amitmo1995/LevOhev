@@ -140,7 +140,6 @@ body {
   padding: 1rem 5.5rem;
   background-color: #D3D0CBFF;
   font-size: 1.1rem;
-  border: none;
   outline: none;
   cursor: pointer;
   transition: .3s;
@@ -152,6 +151,7 @@ body {
   font-weight: bold;
   text-shadow: 1px 1px black;
   letter-spacing: 2px;
+  border: none;
 }
 
 .backButton button:hover {
@@ -163,13 +163,13 @@ body {
   width: 250px;
   text-align: center;
   cursor: pointer;
-  border-radius: 5px;
   overflow: hidden;
   position: relative;
   display: grid;
   grid-template-rows: 3fr 1fr;
   margin: 30px;
   border-radius: 15px;
+  border: none;
 }
 
 .option img {
@@ -178,16 +178,22 @@ body {
 }
 
 .option-name {
-  background-color: #f4f4f4;
+
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  text-shadow: 1px 1px black;
+  text-shadow: 0.5px 0.5px black;
   letter-spacing: 1.5px;
 }
 
-.option-name :hover {}
+.option-name h2 {
+  margin-top: 15px;
+}
+
+.option:hover {
+  
+}
 
 /* Page template Design */
 

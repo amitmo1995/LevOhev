@@ -16,8 +16,7 @@ function ChooseBuilding() {
 			<h1>בחר בניין</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to='/ManagerHomePage' className='link'>
-				{' '}
-				<BackButton />{' '}
+				<BackButton />
 			</Link>
 		</div>
 	);

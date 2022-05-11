@@ -7,8 +7,13 @@ import buildingManageImg from '../images/buildingManageImg.jpg';
 
 function ManagerHomePage(props) {
 	const options = [
-		<Option optionName='ניהול בניין' imgAdd={buildingManageImg} />,
-		<Option optionName='פגישות' imgAdd={meetingImg} />,
+		<Link to='/ChooseBuilding' className='link'>
+			<Option optionName='ניהול בניין' imgAdd={buildingManageImg} />
+		</Link>,
+		<Link to='/MeetingManagement' className='link'>
+			<Option optionName='פגישות' imgAdd={meetingImg} />
+		</Link>,
+		,
 	];
 
 	return (
@@ -16,8 +21,7 @@ function ManagerHomePage(props) {
 			<h1>שלום ראם</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to='/' className='link'>
-				{' '}
-				<BackButton />{' '}
+				<BackButton />
 			</Link>
 		</div>
 	);

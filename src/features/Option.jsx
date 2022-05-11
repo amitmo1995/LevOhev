@@ -1,14 +1,13 @@
 import React from 'react';
 
-
 function Option(props) {
 	return (
-		<div className='option'>
+		<button className='option'>
 			<img src={props.imgAdd} alt='option-img' />
 			<div className='option-name'>
-				<h3>{props.optionName}</h3>
+				<h2>{props.optionName}</h2>
 			</div>
-		</div>
+		</button>
 	);
 }
 
