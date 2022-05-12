@@ -10,12 +10,8 @@ import { LogoutButton } from '../features/LogoutButton';
 function ManagerHomePage(props) {
 	const currentUser=useAuth();
 	const options = [
-		<Link to='/ChooseBuilding' className='link'>
-			<Option optionName='ניהול בניין' imgAdd={buildingManageImg} />
-		</Link>,
-		<Link to='/MeetingManagement' className='link'>
-			<Option optionName='פגישות' imgAdd={meetingImg} />
-		</Link>
+		<Link to='/ChooseBuilding' className='link'> <Option optionName='ניהול בניין' imgAdd={buildingManageImg} /> </Link>,
+		<Link to='/MeetingManagement' className='link'> <Option optionName='פגישות' imgAdd={meetingImg} /> </Link>
 	];
 
 	return (
