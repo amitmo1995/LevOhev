@@ -1,32 +1,33 @@
-import React from "react";
+import React from 'react';
 
-function AppointmentNewHOA(){
-    return(<div class="container">
-  
-    <h2>Google Material Design in CSS3<small>Inputs</small></h2>
-    <form>
-      
-      <div class="group">      
-        <input type="text" required></input>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Name</label>
-      </div>
-        
-      <div class="group">      
-        <input type="text" required></input>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Email</label>
-      </div>
-      
-    </form>
-        
-    <p class="footer">
-      a <a href="https://scotch.io/tutorials/css/google-material-design-input-boxes-in-css3" target="_blank">tutorial</a> by <a href="https://scotch.io" target="_blank">scotch.io</a>
-    </p>
-    
-  </div>)
-};
+function AppointmentNewHOA() {
+	return (
+		<div className='wrapper'>
+			<div className='formContainer'>
+				<span className='formHeading'></span>
+				<form action=''>
+					{/* Input 1 */}
+					<div className='input-group'>
+						<i class='fa-brands fa-facebook'></i>
+						<input type='text' placeholder='Username...' required />
+						<span className='bar'></span>
+					</div>
+					{/* Input 2 */}
+					<div className='input-group'>
+						<i class='fa-brands fa-facebook'></i>
+						<input type='text' placeholder='Username...' required />
+						<span className='bar'></span>
+					</div>
+					{/* Input 3 */}
+					<div className='input-group'>
+						<i class='fa-brands fa-facebook'></i>
+						<input type='text' placeholder='Username...' required />
+						<span className='bar'></span>
+					</div>
+				</form>
+			</div>
+		</div>
+	);
+}
 
 export default AppointmentNewHOA;
