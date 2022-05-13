@@ -29,7 +29,7 @@ function Signup() {
 				<h1> ברוכים הבאים </h1>
 				<input ref={emailRef}   placeholder='אימייל' text='הכנס אימייל' type='text'/>
 				<input ref={passwordRef} placeholder='סיסמא' text='הכנס סיסמא' type='password'/>
-				<button disabled={loding|| currentUser} onClick={handleSignup} text="הרשם"/>
+				<button disabled={loding|| currentUser} onClick={handleSignup} >AddUser</button>
 		</div>
 	);
 }

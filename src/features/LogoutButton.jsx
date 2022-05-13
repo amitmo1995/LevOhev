@@ -26,7 +26,7 @@ export function LogoutButton(props) {
 	}
 
 	return (
-		<div>
+		<div className='logOutButton'>
 			<button disabled={loding || !currentUser } onClick={handleLogout}>התנתק</button>
 		</div>
 	);

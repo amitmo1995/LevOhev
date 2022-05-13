@@ -1,8 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-
 import {getAuth , createUserWithEmailAndPassword,signInWithEmailAndPassword, onAuthStateChanged, signOut} from "firebase/auth"
-import {Database,DatabaseReference,getDatabase,ref} from "firebase/database"
+import {Database,DatabaseReference,getDatabase,ref,doc,setDoc} from "firebase/database"
 import{getFirestore} from "firebase/firestore"
 import { useEffect, useState } from "react";
 

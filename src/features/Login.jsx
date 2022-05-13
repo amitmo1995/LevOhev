@@ -14,6 +14,7 @@ function Login() {
 	const navigate = useNavigate();
 	let userConnected=false;
 	async function handleLogin() {
+		console.log("connecting...");
 		setLoding(true);
         try{
             await signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value);
@@ -25,18 +26,11 @@ function Login() {
         setLoding(false);
 		if(userConnected){ 
 			navigate("../ManagerHomePage");
-			
-
-
 			onSnapshot(collection(firestore,'users'),(snapshot)=>{
 				console.log(snapshot.docs.map(doc=>{return {id : doc.id , data : doc.data()}}));
 			});
-
-	
-
 			// var user={'email' : emailRef , 'password' : passwordRef};
 			// localStorage.setItem('userDoc',JSON.stringify(user));
-
 		} 
 		console.log("user- "+userConnected);
     }

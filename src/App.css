@@ -158,6 +158,30 @@ body {
   background-color: #D3D0CBFF;
 }
 
+/* LogOut button Design*/
+.logOutButton button {
+  padding: 1rem 5.5rem;
+  background: linear-gradient(to left, #c2c0c0, #D3D0CBFF);
+  font-size: 1.1rem;
+  outline: none;
+  cursor: pointer;
+  transition: .3s;
+  display: flex;
+  display: block;
+  margin: 15px auto 30px auto;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  text-shadow: 1px 1px #142831;
+  letter-spacing: 2px;
+  border: none;
+  color: #142831;
+}
+
+.logOutButton button:hover {
+  background-color: #D3D0CBFF;
+}
+
 /* Option Design */
 .option {
   width: 250px;
