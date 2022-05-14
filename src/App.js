@@ -17,6 +17,9 @@ import {
 	Link,
 	Outlet,
 } from 'react-router-dom';
+import HoaHomePage from './layout/HoaHomePage';
+import AddNewPayment from './layout/AddNewPayment';
+import UpdateExpenses from './layout/UpdateExpenses';
 
 function App() {
 	return (
@@ -35,7 +38,10 @@ function App() {
 					<Route path='/AppointmentNewHOA' element={<AppointmentNewHOA />}></Route>
 					<Route path='/Signup' element={<Signup />}></Route>
 
-					<Route></Route>
+					{/* HOA side website */}
+					<Route path='/HoaHomePage' element={<HoaHomePage/>}></Route>
+					<Route path='/AddNewPayment' element={<AddNewPayment/>}></Route>
+					<Route path='/UpdateExpenses' element={<UpdateExpenses/>}></Route>
 				</Routes>
 			</Router>
 			{/* project footer */}
