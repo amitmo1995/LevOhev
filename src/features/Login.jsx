@@ -41,7 +41,7 @@ function Login() {
 					navigate("../ManagerHomePage");
 				}
 				else{
-					navigate("../AppointmentNewHOA");
+					navigate("../HoaHomePage");
 				}
 			});
 		} 
