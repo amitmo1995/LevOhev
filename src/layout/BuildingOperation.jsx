@@ -12,7 +12,6 @@ function BuildingOperation() {
 	const options = [
 		<Link to='/FinancialManagement' className='link'> <Option optionName='ניהול כלכלי' imgAdd={financeImg} /></Link>,
 		<Link to='/' className='link'>	<Option optionName='מיפוי הבניין' imgAdd={BuildingMappingImg} /></Link>,
-		<Link to='/' className='link'>	<Option optionName='שינוי יו"ר וועד בית' imgAdd={NewHOAImg} /></Link>
 	];
 
 	return (
