@@ -21,7 +21,10 @@ export function LogoutButton(props) {
 		}
 		setLoding(false);
 
-		if(userLoggedOut) navigate('/');
+		if(userLoggedOut){
+			localStorage.clear();
+			navigate('/');
+		}
 		
 	}
 

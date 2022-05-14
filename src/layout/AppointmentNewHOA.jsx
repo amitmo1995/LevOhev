@@ -31,7 +31,7 @@ function AppointmentNewHOA() {
 		<>
 			<div className='wrapper'>
 				<div className='formContainer'>
-					<span className='formHeading'>מינוי יו"ר ועד בית</span>
+					<span className='formHeading'>הוספת משתמש</span>
 						{/* Input 1 */}
 						<div className='input-group'>
 							<i class='fa-solid fa-user'></i>

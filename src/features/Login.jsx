@@ -13,11 +13,13 @@ function Login() {
 	//creat a "useNvigate" to route to dashBoard page after logged in
 	const navigate = useNavigate();
 	let userConnected=false;
+	let userEmail;
 	async function handleLogin() {
 		console.log("connecting...");
 		setLoding(true);
         try{
             await signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value);
+			userEmail=emailRef.current.value;
 			userConnected=true;
         }catch{
             alert("error");
@@ -25,14 +27,24 @@ function Login() {
         }
         setLoding(false);
 		if(userConnected){ 
-			navigate("../ManagerHomePage");
 			onSnapshot(collection(firestore,'users'),(snapshot)=>{
-				console.log(snapshot.docs.map(doc=>{return {id : doc.id , data : doc.data()}}));
+				var usersArr=snapshot.docs.map(doc=>{return {id : doc.id , data : doc.data()}});
+				let ind=-1;
+				for(let i=0;i<usersArr.length;i++){
+					if(usersArr[i].id==userEmail){
+						ind=i;
+						break;
+					}
+				}
+				localStorage.setItem("userConnected",JSON.stringify(usersArr[ind]));
+				if(usersArr[ind].data.permissions=="admin"){
+					navigate("../ManagerHomePage");
+				}
+				else{
+					navigate("../AppointmentNewHOA");
+				}
 			});
-			// var user={'email' : emailRef , 'password' : passwordRef};
-			// localStorage.setItem('userDoc',JSON.stringify(user));
 		} 
-		console.log("user- "+userConnected);
     }
 
 
