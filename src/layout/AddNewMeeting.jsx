@@ -60,7 +60,7 @@ function AddNewPayment() {
 							<table>
 							<tr>
 							<th><h3>מספר בניין</h3></th>
-							<th><h3>סימון נוחכות</h3></th>
+							<th><h3>סימון נוכחות</h3></th>
 							</tr>
 							<tr>
 								<th>בניין 1</th>

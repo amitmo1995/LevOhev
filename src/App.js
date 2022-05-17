@@ -25,6 +25,7 @@ import {
 import HoaHomePage from './layout/HoaHomePage';
 import AddNewPayment from './layout/AddNewPayment';
 import UpdateExpenses from './layout/UpdateExpenses';
+import TrackIncomeExpenses from './layout/TrackIncomeExpenses';
 
 function App() {
 	return (
@@ -49,6 +50,8 @@ function App() {
 					<Route path='/HoaHomePage' element={<HoaHomePage/>}></Route>
 					<Route path='/AddNewPayment' element={<AddNewPayment/>}></Route>
 					<Route path='/UpdateExpenses' element={<UpdateExpenses/>}></Route>
+					<Route path='/TrackIncomeExpenses' element={<TrackIncomeExpenses/>}></Route>
+					
 				</Routes>
 			</Router>
 			{/* project footer */}
