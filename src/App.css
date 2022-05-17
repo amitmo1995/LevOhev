@@ -350,12 +350,26 @@ form {
   background-color: #142831;
   width: 0;
   height: 2px;
-  transition: width 650ms;
+  transition: width 450ms;
 }
 
 .input-group input:focus+.bar::before {
   width: 100%;
 }
+
+.AddNewMeeting{
+  display: flex;
+  margin-right: 5%;
+}
+
+.input-building-group{
+  display:grid;
+  grid-auto-flow:row;
+  /* flex-flow:row-reverse wrap; */
+  direction: rtl;
+  margin-right: 2%;
+}
+
 
 .input-group button {
   margin: 1rem auto;

@@ -9,6 +9,7 @@ import MeetingManagement from  './layout/MeetingManagement';
 import BuildingOperation from  './layout/BuildingOperation';
 import FinancialManagement from './layout/FinancialManagement';
 import AppointmentNewHOA from './layout/AppointmentNewHOA';
+import AddNewMeeting from './layout/AddNewMeeting';
 
 
 import Query from './layout/Query';
@@ -41,6 +42,7 @@ function App() {
 					<Route path='/BuildingOperation' element={<BuildingOperation />}></Route>
 					<Route path='/FinancialManagement' element={<FinancialManagement />}></Route>
 					<Route path='/AppointmentNewHOA' element={<AppointmentNewHOA />}></Route>
+					<Route path='/AddNewMeeting' element={<AddNewMeeting />}></Route>
 					<Route path='/Signup' element={<Signup />}></Route>
 
 					{/* HOA side website */}
