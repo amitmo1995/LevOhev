@@ -43,7 +43,7 @@ function Query() {
 
         //add new apartment classification
 		//-----------------------------------------------------need to fix---------------------------------------------------------
-		//-----------------------------------------note that every aptdate ovarate the previos data-------------------------------  
+		//-----------------------------------------note that every aptdate create new document-------------------------------  
         //get the building id
 		let buildingId;
 		//get the building number from the local storage
