@@ -10,6 +10,10 @@ import BuildingOperation from  './layout/BuildingOperation';
 import FinancialManagement from './layout/FinancialManagement';
 import AppointmentNewHOA from './layout/AppointmentNewHOA';
 
+
+import Query from './layout/Query';
+
+
 import {
 	BrowserRouter as Router,
 	Route,
@@ -30,6 +34,7 @@ function App() {
 			<Router>
 				<Routes>
 					<Route path='/' element={<Home />}></Route>
+					<Route path='/query' element={<Query/>}/>
 					<Route path='/ManagerHomePage' element={<ManagerHomePage />}></Route>
 					<Route path='/ChooseBuilding' element={<ChooseBuilding />}></Route>
 					<Route path='/MeetingManagement' element={<MeetingManagement />}></Route>
