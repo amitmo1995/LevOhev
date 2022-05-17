@@ -32,6 +32,7 @@ function AppointmentNewHOA() {
 			<div className='wrapper'>
 				<div className='formContainer'>
 					<span className='formHeading'>הוספת משתמש</span>
+					{/* <form action=''> */}
 						{/* Input 1 */}
 						<div className='input-group'>
 							<i class='fa-solid fa-user'></i>
@@ -70,6 +71,7 @@ function AppointmentNewHOA() {
 						<Link to='/ManagerHomePage' className='link'>
 							<BackButton />
 						</Link>
+						{/* </form> */}
 				</div>
 			</div>
 		</>
