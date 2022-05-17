@@ -434,3 +434,23 @@ form {
     padding: 1rem 4rem;
   }
 }
+.tableData{
+  border-collapse: collapse;
+  display:ltr;
+  margin: 2%;
+}
+.tableData th,td{
+  text-align: left;
+  padding: 8px;
+  width: 4%;
+}
+.tableData tr:nth-child(odd){background-color: #d9d1d1}
+.tableData tr:nth-child(even){background-color: #ffffff}
+.tableData th{
+  background-color: #c2c0c0;
+  color: rgb(26, 26, 29);
+}
+.tableData h1 {
+  text-align: center;
+  margin: 4%;
+}
