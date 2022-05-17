@@ -47,7 +47,7 @@ function AddNewPayment() {
 						<div className='input-group'>
 						<button onClick={handleSubmit}>אישור</button>
 						</div>
-						<Link to='/HoaHomePage' className='link'>
+						<Link to='/MeetingManagement' className='link'>
 							<BackButton />
 						</Link>
 						{/* </form> */}

@@ -10,6 +10,7 @@ import BuildingOperation from  './layout/BuildingOperation';
 import FinancialManagement from './layout/FinancialManagement';
 import AppointmentNewHOA from './layout/AppointmentNewHOA';
 import AddNewMeeting from './layout/AddNewMeeting';
+import MeetingSummary from './layout/MeetingSummary';
 
 
 import Query from './layout/Query';
@@ -26,6 +27,7 @@ import HoaHomePage from './layout/HoaHomePage';
 import AddNewPayment from './layout/AddNewPayment';
 import UpdateExpenses from './layout/UpdateExpenses';
 import TrackIncomeExpenses from './layout/TrackIncomeExpenses';
+import TrackMeeting from './layout/TrackMeeting';
 
 function App() {
 	return (
@@ -45,13 +47,17 @@ function App() {
 					<Route path='/AppointmentNewHOA' element={<AppointmentNewHOA />}></Route>
 					<Route path='/AddNewMeeting' element={<AddNewMeeting />}></Route>
 					<Route path='/Signup' element={<Signup />}></Route>
+					<Route path='/TrackMeeting' element={<TrackMeeting/>}></Route>
+					<Route path='/MeetingSummary' element={<MeetingSummary/>}></Route>
+
 
 					{/* HOA side website */}
 					<Route path='/HoaHomePage' element={<HoaHomePage/>}></Route>
 					<Route path='/AddNewPayment' element={<AddNewPayment/>}></Route>
 					<Route path='/UpdateExpenses' element={<UpdateExpenses/>}></Route>
 					<Route path='/TrackIncomeExpenses' element={<TrackIncomeExpenses/>}></Route>
-					
+
+
 				</Routes>
 			</Router>
 			{/* project footer */}
