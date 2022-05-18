@@ -51,7 +51,39 @@ body {
   background-size: cover;
   filter: blur(220px);
   z-index: -1;
+}
 
+.Summary{
+  margin-right: 25%;
+  margin-left: 25%;
+  margin-bottom: 2%;
+}
+.summarytext{
+  margin-left: 25%;
+}
+
+.ok{
+  margin-right: 25%;
+  margin-left: 25%;
+  margin-top: 3%;
+  margin-bottom: 25%;
+}
+.ok1{
+    width: 85%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    direction: rtl;
+    float: right;
+    margin-right: 50%;
+    margin-left: 50%;
+}
+
+.Scholarship{
+  display: grid;
+  margin-left: 35%;
+  margin-right: 35%;
 }
 
 .login-box {
@@ -70,6 +102,7 @@ body {
 .login-box .right h1 {
   color: #1c343f;
 }
+
 
 
 .left {
@@ -184,7 +217,7 @@ body {
 
 /* Option Design */
 .option {
-  width: 250px;
+  width: 230px;
   text-align: center;
   cursor: pointer;
   overflow: hidden;
@@ -202,7 +235,6 @@ body {
 }
 
 .option-name {
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,7 +260,7 @@ body {
 
 .optionsContainer {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
   justify-content: center;
   align-items: center;
   direction: rtl;
@@ -358,7 +390,8 @@ form {
 }
 
 .AddNewMeeting{
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
   margin-right: 5%;
 }
 

@@ -11,11 +11,14 @@ import FinancialManagement from './layout/FinancialManagement';
 import AppointmentNewHOA from './layout/AppointmentNewHOA';
 import AddNewMeeting from './layout/AddNewMeeting';
 import MeetingSummary from './layout/MeetingSummary';
-
-
+import GivingScholarship from './layout/GivingScholarship';
 import Query from './layout/Query';
-
-
+import HoaHomePage from './layout/HoaHomePage';
+import AddNewPayment from './layout/AddNewPayment';
+import UpdateExpenses from './layout/UpdateExpenses';
+import TrackIncomeExpenses from './layout/TrackIncomeExpenses';
+import TrackMeeting from './layout/TrackMeeting';
+import BuildingExpenses from './layout/BuildingExpenses';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -23,11 +26,6 @@ import {
 	Link,
 	Outlet,
 } from 'react-router-dom';
-import HoaHomePage from './layout/HoaHomePage';
-import AddNewPayment from './layout/AddNewPayment';
-import UpdateExpenses from './layout/UpdateExpenses';
-import TrackIncomeExpenses from './layout/TrackIncomeExpenses';
-import TrackMeeting from './layout/TrackMeeting';
 
 function App() {
 	return (
@@ -49,6 +47,8 @@ function App() {
 					<Route path='/Signup' element={<Signup />}></Route>
 					<Route path='/TrackMeeting' element={<TrackMeeting/>}></Route>
 					<Route path='/MeetingSummary' element={<MeetingSummary/>}></Route>
+					<Route path='/GivingScholarship' element={<GivingScholarship/>}></Route>
+					<Route path='/BuildingExpenses' element={<BuildingExpenses/>}></Route>
 
 
 					{/* HOA side website */}

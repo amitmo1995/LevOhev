@@ -8,7 +8,6 @@ function AddNewPayment() {
 	const dateRef=useRef();
 	const apartmentRef=useRef();
 	const amountRef=useRef();
-
 	async function handleSubmit(){
 		try{
 			const building=JSON.parse(localStorage.getItem('userConnected')).data.building;
@@ -31,16 +30,13 @@ function AddNewPayment() {
 						</div>
 						{/* Input 2 */}
 							<div className='input-group'>
-							{/* <i class='fa-solid fa-building'></i> */}
-							{/* <i class="far fa-comment-dots"></i> */}
 							<i class="fa-solid fa-square-plus"></i>
 							<input ref={apartmentRef} type ="Topic" placeholder='נושא' />
 							<span className='bar'></span>
 						</div>
 						<div className='input-group'>
-                            {/* <i class="fa-regular fa-credit-card"></i> */}
 							<i class="far fa-comment-dots"></i>
-							<input ref={amountRef} type ='text'   placeholder='סיכום'/>
+							<input ref={amountRef} type ='text' placeholder='סיכום'/>
 							<span className='bar'></span>
 						</div>
 						{/* Input 1 */}
