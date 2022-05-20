@@ -19,6 +19,7 @@ import UpdateExpenses from './layout/UpdateExpenses';
 import TrackIncomeExpenses from './layout/TrackIncomeExpenses';
 import TrackMeeting from './layout/TrackMeeting';
 import BuildingExpenses from './layout/BuildingExpenses';
+import Mapping from './layout/Mapping';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -49,6 +50,7 @@ function App() {
 					<Route path='/MeetingSummary' element={<MeetingSummary/>}></Route>
 					<Route path='/GivingScholarship' element={<GivingScholarship/>}></Route>
 					<Route path='/BuildingExpenses' element={<BuildingExpenses/>}></Route>
+					<Route path='/Mapping' element={<Mapping/>}></Route>
 
 
 					{/* HOA side website */}

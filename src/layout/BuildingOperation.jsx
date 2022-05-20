@@ -11,7 +11,7 @@ import financeImg from '../images/financeImg.jpg'
 function BuildingOperation() {
 	const options = [
 		<Link to='/FinancialManagement' className='link'> <Option optionName='ניהול כלכלי' imgAdd={financeImg} /></Link>,
-		<Link to='/' className='link'>	<Option optionName='מיפוי הבניין' imgAdd={BuildingMappingImg} /></Link>,
+		<Link to='/Mapping' className='link'>	<Option optionName='מיפוי הבניין' imgAdd={BuildingMappingImg} /></Link>,
 	];
 
 	return (
