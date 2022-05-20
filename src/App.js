@@ -20,12 +20,11 @@ import TrackIncomeExpenses from './layout/TrackIncomeExpenses';
 import TrackMeeting from './layout/TrackMeeting';
 import BuildingExpenses from './layout/BuildingExpenses';
 import Mapping from './layout/Mapping';
+import TrackingPayment from './layout/TrackingPayment'
 import {
 	BrowserRouter as Router,
 	Route,
 	Routes,
-	Link,
-	Outlet,
 } from 'react-router-dom';
 
 function App() {
@@ -51,8 +50,7 @@ function App() {
 					<Route path='/GivingScholarship' element={<GivingScholarship/>}></Route>
 					<Route path='/BuildingExpenses' element={<BuildingExpenses/>}></Route>
 					<Route path='/Mapping' element={<Mapping/>}></Route>
-
-
+					<Route path='/TrackingPayment' element = {<TrackingPayment/>}></Route>
 					{/* HOA side website */}
 					<Route path='/HoaHomePage' element={<HoaHomePage/>}></Route>
 					<Route path='/AddNewPayment' element={<AddNewPayment/>}></Route>

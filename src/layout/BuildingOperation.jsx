@@ -3,7 +3,6 @@ import BackButton from '../features/BackButton';
 import Option from '../features/Option';
 import { Link } from 'react-router-dom';
 import BuildingMappingImg from '../images/BuildingMappingImg.jpeg'
-import NewHOAImg from '../images/NewHOAImg.jpeg'
 import financeImg from '../images/financeImg.jpg'
 
 
