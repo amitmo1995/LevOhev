@@ -1,6 +1,8 @@
 import React from 'react';
 
 function Option(props) {
+
+
 	return (
 		<button className = 'option'>
 			<img src={props.imgAdd} alt='option-img' />

@@ -4,6 +4,7 @@ import buildingImg from '../images/buildingImg.jpg';
 import Option from '../features/Option';
 import BackButton from '../features/BackButton';
 
+
 function ChooseBuilding() {
 	let [options, optionName] = [[], ''];
 	for (let i = 1; i <= 18; i++) {
