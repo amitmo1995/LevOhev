@@ -35,7 +35,7 @@ function AppointmentNewHOA() {
 					{/* <form action=''> */}
 						{/* Input 1 */}
 						<div className='input-group'>
-							<i class='fa-solid fa-user'></i>
+							<i class="fa-light fa-at"></i>
 							<input ref={emailRef}   placeholder='אימייל' text='הכנס אימייל' type='text'/>
 							<span className='bar'></span>
 						</div>
@@ -59,9 +59,10 @@ function AppointmentNewHOA() {
 							<span className='bar'></span>
 						</div>
 						<div className='input-group'>
-							<select ref={permissionsRef} className="permissions" id="permissions">
-    							<option value="admin">admin</option>
-    							<option value="HOA">HOA</option>
+						<i class='fa-solid fa-user'></i>
+							<select ref={permissionsRef} className="permissions" id="permissions" >
+    							<option value="admin">מנהל</option>
+    							<option value="HOA">יו״ר וועד בית</option>
   							</select>
 						</div>
 						{/* Input 1 */}

@@ -11,9 +11,9 @@ import financeImg from '../images/financeImg.jpg'
 function FinancialManagement
 () {
 	const options = [
-		<Link to='/' className='link'> <Option optionName='מעקב תשלומי וועד' imgAdd={financeImg} /></Link>,
-		<Link to='/' className='link'>	<Option optionName='מעקב הוצאות' imgAdd={DepositTrackGraphImg} /></Link>,
-		<Link to='/' className='link'>	<Option optionName='מתן מלגה' imgAdd={ScholarshipPayment} /></Link>
+		<Link to='/TrackingPayment' className='link'> <Option optionName='מעקב תשלומי וועד' imgAdd={financeImg} /></Link>,
+		<Link to='/BuildingExpenses' className='link'>	<Option optionName='מעקב הוצאות' imgAdd={DepositTrackGraphImg} /></Link>,
+		<Link to='/GivingScholarship' className='link'>	<Option optionName='מתן מלגה' imgAdd={ScholarshipPayment} /></Link>
 	];
 
 	return (

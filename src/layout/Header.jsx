@@ -3,7 +3,7 @@ import React from 'react';
 function Header() {
 	return (
 		<div className='header'>
-			<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 60 1300 208'>
+			<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 110 1300 208'>
 				<path
 					fill='#D3D0CBFF'
 					fill-opacity='1'
