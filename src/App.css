@@ -302,7 +302,7 @@ body {
   font-weight: bold;
 }
 
-form {
+.form {
   transform: translateX(15rem);
   padding: 0.5rem 0;
   background-color: #fff;
@@ -409,7 +409,7 @@ form {
     text-align: center;
   }
 
-  form {
+  .form {
     border-radius: initial;
     transform: initial;
     box-shadow: none;

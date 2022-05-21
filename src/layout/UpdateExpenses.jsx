@@ -27,6 +27,7 @@ function UpdateExpenses() {
 				<div className='formContainer'>
 					<span className='formHeading'> הוצאה חדשה</span>
 					{/* <form action=''> */}
+					<div className='form'>
 						{/* Input 1 */}
 						<div className='input-group'>
 							<i class='fa-regular fa-calendar-days'></i>
@@ -51,6 +52,7 @@ function UpdateExpenses() {
 						<Link to='/HoaHomePage' className='link'>
 							<BackButton />
 						</Link>
+						</div>
 						{/* </form> */}
 				</div>
 			</div>
