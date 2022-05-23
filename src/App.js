@@ -20,7 +20,8 @@ import TrackIncomeExpenses from './layout/TrackIncomeExpenses';
 import TrackMeeting from './layout/TrackMeeting';
 import BuildingExpenses from './layout/BuildingExpenses';
 import Mapping from './layout/Mapping';
-import TrackingPayment from './layout/TrackingPayment'
+import TrackingPayment from './layout/TrackingPayment';
+import AddNeighbors from './layout/AddNeighbors';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -51,6 +52,7 @@ function App() {
 					<Route path='/BuildingExpenses' element={<BuildingExpenses/>}></Route>
 					<Route path='/Mapping' element={<Mapping/>}></Route>
 					<Route path='/TrackingPayment' element = {<TrackingPayment/>}></Route>
+					<Route path='/AddNeighbors' element = {<AddNeighbors/>}></Route>
 					{/* HOA side website */}
 					<Route path='/HoaHomePage' element={<HoaHomePage/>}></Route>
 					<Route path='/AddNewPayment' element={<AddNewPayment/>}></Route>

@@ -10,7 +10,7 @@ function BuildingOperation() {
 	const options = [
 		<Link to='/FinancialManagement' className='link'> <Option optionName='ניהול כלכלי' imgAdd={financeImg} /></Link>,
 		<Link to='/Mapping' className='link'>	<Option optionName='מיפוי הבניין' imgAdd={BuildingMappingImg} /></Link>,
-		<Link to='/' className='link'> <Option optionName='הוספת דייר לבניין'  imgAdd={addNew} /> </Link>,
+		<Link to='/AddNeighbors' className='link'> <Option optionName='הוספת דייר לבניין'  imgAdd={addNew} /> </Link>,
 	];
 
 	return (

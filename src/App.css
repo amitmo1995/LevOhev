@@ -188,7 +188,7 @@ body {
   text-shadow: 1px 1px #142831;
   letter-spacing: 2px;
   border: none;
-  padding: 15px 85px;
+  padding: 15px 80px;
 }
 
 .backButton button:hover {
@@ -366,6 +366,7 @@ body {
   padding: 1rem 0.5rem;
   margin-top: .5rem;
   border: none;
+  margin-right: 2.4%;
   outline: none;
   font-size: 1rem;
   color: #142831;
@@ -480,7 +481,7 @@ body {
   }
 
   .input-group button {
-    margin: 2rem auto 0 auto;
+    margin: 2rem auto 1 auto;
     padding: 1rem 4rem;
   }
 }
