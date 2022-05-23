@@ -53,34 +53,36 @@ body {
   z-index: -1;
 }
 
-.Summary{
+.Summary {
   margin-right: 25%;
   margin-left: 25%;
   margin-bottom: 2%;
 }
-.summarytext{
+
+.summarytext {
   margin-left: 25%;
 }
 
-.ok{
+.ok {
   margin-right: 25%;
   margin-left: 25%;
   margin-top: 3%;
   margin-bottom: 25%;
 }
-.ok1{
-    width: 85%;
-    margin: 0 auto;
-    position: relative;
-    display: flex;
-    align-items: baseline;
-    direction: rtl;
-    float: right;
-    margin-right: 50%;
-    margin-left: 50%;
+
+.ok1 {
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  direction: rtl;
+  float: right;
+  margin-right: 50%;
+  margin-left: 50%;
 }
 
-.Scholarship{
+.Scholarship {
   display: grid;
   margin-left: 35%;
   margin-right: 35%;
@@ -168,47 +170,51 @@ body {
 }
 
 /* Back button Design*/
+.backButton .logOutButton {
+  all: initial;
+}
+
 .backButton button {
-  padding: 1rem 5.5rem;
+  display: block;
+  margin: auto;
   background: linear-gradient(to left, #c2c0c0, #D3D0CBFF);
   font-size: 1.1rem;
+  color: #142831;
   outline: none;
   cursor: pointer;
   transition: .3s;
-  display: flex;
-  display: block;
-  margin: 15px auto 30px auto;
   border-radius: 5px;
-  font-size: 15px;
   font-weight: bold;
   text-shadow: 1px 1px #142831;
   letter-spacing: 2px;
   border: none;
-  color: #142831;
+  padding: 15px 85px;
 }
 
 .backButton button:hover {
   background-color: #D3D0CBFF;
 }
 
+.logOutButton {
+  all: initial;
+}
+
 /* LogOut button Design*/
 .logOutButton button {
-  padding: 1rem 5.5rem;
+  display: block;
+  margin: auto;
   background: linear-gradient(to left, #c2c0c0, #D3D0CBFF);
   font-size: 1.1rem;
+  color: #142831;
   outline: none;
   cursor: pointer;
   transition: .3s;
-  display: flex;
-  display: block;
-  margin: 15px auto 30px auto;
   border-radius: 5px;
-  font-size: 15px;
   font-weight: bold;
   text-shadow: 1px 1px #142831;
   letter-spacing: 2px;
   border: none;
-  color: #142831;
+  padding: 15px 85px;
 }
 
 .logOutButton button:hover {
@@ -260,11 +266,14 @@ body {
 
 .optionsContainer {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(3, auto);
   justify-content: center;
   align-items: center;
   direction: rtl;
+  gap: 30px;
 }
+
+
 
 /* Router link design */
 .link {
@@ -389,21 +398,21 @@ body {
   width: 100%;
 }
 
-.AddNewMeeting{
+.AddNewMeeting {
   display: grid;
   grid-template-columns: repeat(2, auto);
   margin-right: 5%;
 }
 
-.input-building-group{
-  display:grid;
-  grid-auto-flow:row;
+.input-building-group {
+  display: grid;
+  grid-auto-flow: row;
   /* flex-flow:row-reverse wrap; */
   direction: rtl;
   margin-right: 2%;
 }
 
-.input-group select{
+.input-group select {
   width: 85%;
   margin: 4%;
   position: relative;
@@ -411,6 +420,7 @@ body {
   align-items: baseline;
   direction: rtl;
 }
+
 .input-group button {
   margin: 1rem auto;
   padding: 1rem 4rem;
@@ -474,22 +484,32 @@ body {
     padding: 1rem 4rem;
   }
 }
-.tableData{
+
+.tableData {
   border-collapse: collapse;
-  display:ltr;
+  display: ltr;
   margin: 2%;
 }
-.tableData th,td{
+
+.tableData th, td {
   text-align: left;
   padding: 8px;
   width: 4%;
 }
-.tableData tr:nth-child(odd){background-color: #d9d1d1}
-.tableData tr:nth-child(even){background-color: #ffffff}
-.tableData th{
+
+.tableData tr:nth-child(odd) {
+  background-color: #d9d1d1
+}
+
+.tableData tr:nth-child(even) {
+  background-color: #ffffff
+}
+
+.tableData th {
   background-color: #c2c0c0;
   color: rgb(26, 26, 29);
 }
+
 .tableData h1 {
   text-align: center;
   margin: 4%;
