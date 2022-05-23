@@ -9,29 +9,29 @@ function BuildingExpenses() {
                 <h1>מעקב הוצאות/הכנסות</h1>
             <table>
                 <tr>
-                    <th>תיאור</th>
-                    <th>תאריך</th>
                     <th>סכום</th>
+                    <th>תאריך</th>
+                    <th>תיאור</th>
                     </tr>
                     <tr>
-                        <td>גנן</td>
-                        <td>09.11.22</td>
                         <td>100</td>
+                        <td>09.11.22</td>
+                        <td>גנן</td>
                         </tr>
                         <tr>
-                            <td>ניקיון</td>
-                            <td>01.02.22</td>
                             <td>150</td>
+                            <td>01.02.22</td>
+                            <td>ניקיון</td>
                              </tr>
                              <tr>
-                                 <td>צבע בניין</td>
+                                 <td>500</td>
                                   <td>04.02.21</td>
-                                  <td>300</td>
+                                  <td>צבע בניין</td>
                                   </tr>
                                   <tr>
-                                      <td>פעילות לילדים</td>
-                                      <td>20.08.22</td>
                                       <td>250</td>
+                                      <td>20.08.22</td>
+                                      <td>פעילות לילדים</td>
                                       </tr>
                                       </table>
                                       <Link to='/FinancialManagement' className='link'>

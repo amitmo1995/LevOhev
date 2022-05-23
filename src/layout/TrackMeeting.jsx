@@ -10,29 +10,29 @@ function TrackMeeting() {
                 <h1>מעקב נוכחים</h1>
             <table>
                 <tr>
-                    <th>דייר</th>
-                    <th>תאריך</th>
                     <th>מספר בניין</th>
+                    <th>תאריך</th>
+                    <th>דייר</th>
                     </tr>
                     <tr>
-                        <td>עמית</td>
-                        <td>09.11.22</td>
                         <td>1</td>
+                        <td>09.11.22</td>
+                        <td>עמית</td>
                         </tr>
                         <tr>
-                            <td>אור</td>
-                            <td>01.02.22</td>
                             <td>5</td>
+                            <td>01.02.22</td>
+                            <td>אור</td>
                              </tr>
                              <tr>
-                                 <td> דוד</td>
+                                 <td> 3</td>
                                   <td>04.02.21</td>
-                                  <td>3</td>
+                                  <td>דוד</td>
                                   </tr>
                                   <tr>
-                                      <td>בגין </td>
+                                      <td>8 </td>
                                       <td>20.08.22</td>
-                                      <td>8</td>
+                                      <td>בגין</td>
                                       </tr>
                                       </table>
                                       <Link to='/MeetingManagement' className='link'>

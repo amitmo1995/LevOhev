@@ -495,6 +495,7 @@ body {
   text-align: left;
   padding: 8px;
   width: 4%;
+  text-align: center;
 }
 
 .tableData tr:nth-child(odd) {
@@ -508,6 +509,7 @@ body {
 .tableData th {
   background-color: #c2c0c0;
   color: rgb(26, 26, 29);
+  text-align: center;
 }
 
 .tableData h1 {
