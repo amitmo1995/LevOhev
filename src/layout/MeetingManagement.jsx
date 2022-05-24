@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import MeetingSummaryImg from '../images/MeetingSummaryImg.jpg'
 import AddNewMeetingImg from '../images/AddNewMeetingImg.jpg'
 import PresenceCheckImg from '../images/PresenceCheckImg.jpg'
+import HomePageButton from '../features/HomePageButton'
 
 
 function MeetingManagement() {
@@ -15,6 +16,7 @@ function MeetingManagement() {
 	];
 
 	return (
+		
 		<div className='pageTemplate'>
 			<h1> ניהול מפגשים</h1>
 			<div className='optionsContainer'>{options}</div>

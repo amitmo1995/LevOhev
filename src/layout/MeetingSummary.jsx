@@ -6,7 +6,7 @@ import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDo
 
 
 function MeetingSummary() {
-	//צריך למצוא פורמט מתאים
+	
 	const dateRef=useRef();
 	const summaryRef=useRef();
 

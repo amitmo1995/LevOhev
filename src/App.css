@@ -518,3 +518,15 @@ body {
   margin: 4%;
   color: #fff;
 }
+.HomePageButton button{
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+
+}
