@@ -27,23 +27,52 @@ function Login() {
         }
         setLoding(false);
 		if(userConnected){ 
-			onSnapshot(collection(firestore,'users'),(snapshot)=>{
-				var usersArr=snapshot.docs.map(doc=>{return {id : doc.id , data : doc.data()}});
-				let ind=-1;
-				for(let i=0;i<usersArr.length;i++){
-					if(usersArr[i].id==userEmail){
-						ind=i;
-						break;
-					}
-				}
-				localStorage.setItem("userConnected",JSON.stringify(usersArr[ind]));
-				if(usersArr[ind].data.permissions=="admin"){
+			try{
+				console.log(emailRef.current.value);
+				const docId=emailRef.current.value;
+				const docRef = doc(firestore,'users',docId);
+				const docSnap =await getDoc(docRef);
+				if(docSnap.exists()){
+					let data={"id" : docSnap.id , "data" : docSnap.data()};
+					console.log(data);
+					localStorage.setItem("userConnected",JSON.stringify(data));
+				
+				
+				
+				if(data.data.permissions=="admin"){
 					navigate("../ManagerHomePage");
 				}
 				else{
 					navigate("../HoaHomePage");
 				}
-			});
+				}else{
+					console.log("no such document!");
+				}
+			}catch{
+				console.log("errordfadsgsdg");
+			}
+
+
+
+
+
+			// onSnapshot(collection(firestore,'users'),(snapshot)=>{
+			// 	var usersArr=snapshot.docs.map(doc=>{return {id : doc.id , data : doc.data()}});
+			// 	let ind=-1;
+			// 	for(let i=0;i<usersArr.length;i++){
+			// 		if(usersArr[i].id==userEmail){
+			// 			ind=i;
+			// 			break;
+			// 		}
+			// 	}
+			// 	localStorage.setItem("userConnected",JSON.stringify(usersArr[ind]));
+			// 	if(usersArr[ind].data.permissions=="admin"){
+			// 		navigate("../ManagerHomePage");
+			// 	}
+			// 	else{
+			// 		navigate("../HoaHomePage");
+			// 	}
+			// });
 		} 
     }
 

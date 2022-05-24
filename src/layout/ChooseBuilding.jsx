@@ -5,12 +5,14 @@ import Option from '../features/Option';
 import BackButton from '../features/BackButton';
 
 function ChooseBuilding() {
+
 	let [options, optionName] = [[], ''];
 	for (let i = 1; i <= 18; i++) {
 		let option_Name = 'בניין ' + i;
 		// options[i] = <Option optionName={option_Name} imgAdd={buildingImg} />;
 		options[i] = (
-			<Link to='/BuildingOperation' className='link'>
+			<Link to='/BuildingOperation' className='link' key={i} onClick={() => 
+			localStorage.setItem('chosen',i)}>
 				{' '}
 				<Option optionName={option_Name} imgAdd={buildingImg} />
 			</Link>

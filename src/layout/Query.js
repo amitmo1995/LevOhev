@@ -22,22 +22,22 @@ function Query() {
 
 	 async function handleSubmit(){
 
-		/*
+		
 		//query to get document by id 
 		//get connected_user doc
-		try{
-			const docId="amit@gmail.com";
-			const docRef = doc(firestore,'users',docId);
-			const docSnap =await getDoc(docRef);
-			if(docSnap.exists()){
-				console.log(docSnap.data());
-			}else{
-				console.log("no such document!");
-			}
-		}catch{
-			console.log("error");
-		}
-*/
+		// try{
+		// 	const docId="amit@gmail.com";
+		// 	const docRef = doc(firestore,'users',docId);
+		// 	const docSnap =await getDoc(docRef);
+		// 	if(docSnap.exists()){
+		// 		console.log(docSnap.data());
+		// 	}else{
+		// 		console.log("no such document!");
+		// 	}
+		// }catch{
+		// 	console.log("error");
+		// }
+
 
 
 

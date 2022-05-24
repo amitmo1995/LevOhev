@@ -18,7 +18,7 @@ function ManagerHomePage(props) {
 
 	return (
 		<div className='pageTemplate'>
-			<h1> {currentUser?.email} שלום</h1>
+			<h1> {JSON.parse(localStorage.getItem("userConnected")).data.name} שלום</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to='/' className='link'>
 				<LogoutButton />
