@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {auth,useAuth, createUserWithEmailAndPassword,firestore} from '../firebase/firebase'
 import BackButton from '../features/BackButton';
-import {doc,setDoc,getDoc} from 'firebase/firestore';
+import { doc , setDoc , getDocs , collection , where ,getDoc , query } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
 import HomePageButton from '../features/HomePageButton';
@@ -14,6 +14,7 @@ function AppointmentNewHOA() {
 	const nameRef=useRef();
     const passwordRef=useRef();
 	const permissionsRef=useRef();
+	const entranceRef=useRef("");
     const [loding , setLoding] = useState(false);
     const currentUser=getAuth();
 
@@ -21,11 +22,32 @@ function AppointmentNewHOA() {
 
 		const auth = getAuth();
 		const adminUser = auth.currentUser
+
+
 		// Register code ...
 		try{
 			await createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
 			const userRef=doc(firestore,'users',emailRef.current.value);
-		 	await setDoc(userRef,{building : buildingRef.current.value  , permissions : permissionsRef.current.value , name : nameRef.current.value});
+			//set the entrance
+			let entrance="";
+		    if(entranceRef.current.value=="א")
+		        entrance="A";
+		    else if(entranceRef.current.value=="ב")
+		        entrance="B";
+            //get the building id by entrance and building number
+			let buildingId="";
+			console.log("in bulding");
+			const buildingPointer= collection(firestore,'building');
+			const q= query(buildingPointer,where("building_num","==",buildingRef.current.value),where("entrance","==",entrance));
+			const qurySnapshot= await getDocs(q);
+			qurySnapshot.forEach(doc=>{
+				console.log("in bulding");
+				console.log(doc.id,"===>",doc.data());
+				buildingId=doc.id
+			});
+			
+
+		 	await setDoc(userRef,{building_id:buildingId , permissions : permissionsRef.current.value , name : nameRef.current.value});
 		}catch{
 			alert("error");
 		}
@@ -123,6 +145,22 @@ function AppointmentNewHOA() {
 							/>
 							<span className='bar'></span>
 						</div>
+
+						{/* Input 4 */}
+						<div className='input-group'>
+							<i class='fa-solid fa-building'></i>
+							<input
+								ref={entranceRef}
+								type='text'
+								placeholder=' כניסה, אם יש אז- א \ ב'
+							/>
+							<span className='bar'></span>
+						</div>
+
+
+
+
+
 						<div className='input-group'>
 						<i class='fa-solid fa-user'></i>
 							<select ref={permissionsRef} className="permissions" id="permissions" >
