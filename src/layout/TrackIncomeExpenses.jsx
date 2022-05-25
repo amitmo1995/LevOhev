@@ -49,7 +49,7 @@ function BuildingExpenses() {
 
     ///let children=<div>ijdfoijoirfjo</div>;
     async function getData(){   
-    ///get buildingId from the url param 
+    ///get buildingId from the localStorage 
     let buildingId=localStorage.getItem('chosen');
     if(buildingId==undefined){
         buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
