@@ -20,6 +20,7 @@ function HoaHomePage(props) {
 	];
 
 	return (
+		<div className='hoaHome'>
 		<div className='pageTemplate'>
 			<h1> {currentUser?.email} שלום</h1>
             <h1>יתרה : 1789 ש"ח</h1>
@@ -27,6 +28,7 @@ function HoaHomePage(props) {
 			<Link to='/' className='link'>
 				<LogoutButton />
 			</Link>
+		</div>
 		</div>
 	);
 }

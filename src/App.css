@@ -272,7 +272,9 @@ body {
   direction: rtl;
   gap: 30px;
 }
-
+.hoaHome .optionsContainer{
+  grid-template-columns: repeat(2, auto);
+}
 
 
 /* Router link design */
