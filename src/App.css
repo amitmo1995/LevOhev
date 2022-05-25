@@ -353,7 +353,7 @@ body {
   box-shadow: 0 1px 1.5rem rgba(0, 0, 0, .1);
 }
 
-.input-group {
+.input-group  {
   width: 85%;
   margin: 0 auto;
   position: relative;
@@ -373,6 +373,7 @@ body {
   font-size: 1rem;
   color: #142831;
 }
+
 
 .input-group>i {
   font-size: 1.5rem;
@@ -531,6 +532,7 @@ body {
   right: 10px;
   top: 5px;
 }
-.mapping .optionsContainer{
-  cursor:n-resize
+
+.AddNewMeeting h1{
+  text-align: center;
 }
