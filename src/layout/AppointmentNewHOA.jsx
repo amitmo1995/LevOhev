@@ -5,6 +5,7 @@ import { doc , setDoc , getDocs , collection , where ,getDoc , query } from 'fir
 import { Link } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
 import HomePageButton from '../features/HomePageButton';
+import { useNavigate } from 'react-router-dom';
 
 
 function AppointmentNewHOA() {
@@ -17,28 +18,25 @@ function AppointmentNewHOA() {
 	const entranceRef=useRef("");
     const [loding , setLoding] = useState(false);
     const currentUser=getAuth();
+	const navigate=useNavigate();
 
 	async function handleAppointment() {
 
 		const auth = getAuth();
-		const adminUser = auth.currentUser
+		const adminUser = auth.currentUser;
+		let bool=false;
 
 
 		// Register code ...
 		try{
 			await createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
 			const userRef=doc(firestore,'users',emailRef.current.value);
-			//set the entrance
-			let entrance="";
-		    if(entranceRef.current.value=="א")
-		        entrance="A";
-		    else if(entranceRef.current.value=="ב")
-		        entrance="B";
-            //get the building id by entrance and building number
+            //get the building id by chosen building
 			let buildingId="";
 			console.log("in bulding");
 			const buildingPointer= collection(firestore,'building');
-			const q= query(buildingPointer,where("building_num","==",buildingRef.current.value),where("entrance","==",entrance));
+			const q= query(buildingPointer,where("building_num","==",buildingRef.current.value.replace(/[^0-9]/g,'')),where("entrance","==",buildingRef.current.value.replace(/[^A-Za-z]/g, '')));
+			alert(buildingRef.current.value.replace(/[^0-9]/g,'')+" "+buildingRef.current.value.replace(/[^A-Za-z]/g, ''));
 			const qurySnapshot= await getDocs(q);
 			qurySnapshot.forEach(doc=>{
 				console.log("in bulding");
@@ -48,11 +46,16 @@ function AppointmentNewHOA() {
 			
 
 		 	await setDoc(userRef,{building_id:buildingId , permissions : permissionsRef.current.value , name : nameRef.current.value});
+			bool=true;
 		}catch{
 			alert("error");
 		}
 		
 		auth.updateCurrentUser(adminUser)
+		if(bool){
+			navigate(-1);
+		}
+		
 
 	}
 
@@ -134,27 +137,36 @@ function AppointmentNewHOA() {
 						</div>
 						{/* Input 3 */}
 						<div className='input-group'>
-							<i class='fa-solid fa-building'></i>
-							<input
-								ref={buildingRef}
-								type='number'
-								placeholder=' מספר בניין'
-								required
-								max={18}
-								min={1}
-							/>
-							<span className='bar'></span>
-						</div>
-
-						{/* Input 4 */}
-						<div className='input-group'>
-							<i class='fa-solid fa-building'></i>
-							<input
-								ref={entranceRef}
-								type='text'
-								placeholder=' כניסה, אם יש אז- א \ ב'
-							/>
-							<span className='bar'></span>
+						<i class='fa-solid fa-building'></i>
+						<label for="building"> <b>בניין</b> </label>
+							<select ref={buildingRef} className="building" id="building" >
+    							<option value="3A">3א</option>
+    							<option value="3B">3ב</option>
+								<option value="4A">4א</option>
+    							<option value="4B">4ב</option>
+								<option value="5">5</option>
+    							<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8A">8א</option>
+								<option value="8B">8ב</option>
+								<option value="9A">9א</option>
+								<option value="9B">9ב</option>
+								<option value="10A">10א</option>
+								<option value="10B">10ב</option>
+								<option value="11A">11א</option>
+								<option value="11B">11ב</option>
+								<option value="13A">13א</option>
+								<option value="13B">13ב</option>
+								<option value="15A">15א</option>
+								<option value="15B">15ב</option>
+								<option value="17">17</option>
+								<option value="18A">18א</option>
+								<option value="18B">18ב</option>
+								<option value="22A">22א</option>
+								<option value="22B">22ב</option>
+								<option value="24A">24א</option>
+								<option value="24B">24ב</option>
+  							</select>
 						</div>
 
 

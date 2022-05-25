@@ -14,7 +14,7 @@ function AddNewPayment() {
 
 		//query to get the apartment id
 		let apartmentId="";
-		const buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
+		const buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building_id;
 		try{
 			const collectionRef=collection(firestore,'apartment');
 			const apartQuery= query(collectionRef,where("building","==",buildingId),where("aprt_num","==",apartmentRef.current.value));

@@ -9,10 +9,10 @@ import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDo
 
 
  function ChooseBuilding() {
-	let buildingParse=["1 A","1 B","2","3 A","3 B","4 A","4 B","5","6 A","6 B","7","8 A","8 B","9 A","9 B","10","11 A","11 B"];
+	let buildingParse=["3 A","3 B","4 A","4 B","5","6","7","8 A","8 B","9 A","9 B","10 A","10 B","11 A","11 B","13 A","13 B","15 A","15 B","17","18 A","18 B","22 A","22 B","24 A","24 B"];
 	let [options, optionName] = [[], ''];
-	for (let i = 1; i <= 18; i++) {
-		let option_Name = 'בניין ' + i;
+	for (let i = 1; i <= 26; i++) {
+		let option_Name = 'בניין ' + buildingParse[i-1];
 		// options[i] = <Option optionName={option_Name} imgAdd={buildingImg} />;
 		options[i] = (
 			<Link to='/BuildingOperation' className='link' key={i} onClick={async () => {

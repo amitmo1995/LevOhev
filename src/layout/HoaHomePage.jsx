@@ -22,7 +22,7 @@ function HoaHomePage(props) {
 	return (
 		<div className='hoaHome'>
 		<div className='pageTemplate'>
-			<h1> {currentUser?.email} שלום</h1>
+			<h1> {JSON.parse(localStorage.getItem("userConnected")).data.name} שלום</h1>
             <h1>יתרה : 1789 ש"ח</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to='/' className='link'>

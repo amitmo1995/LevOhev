@@ -11,7 +11,7 @@ function UpdateExpenses() {
 
 	async function handleSubmit(){
 		try{
-			const building=JSON.parse(localStorage.getItem('userConnected')).data.building;
+			const building=JSON.parse(localStorage.getItem('userConnected')).data.building_id;
 			await addDoc(collection(firestore,'HOA_expense'),{date :  dateRef.current.value , building : building , reason : reasonRef.current.value , amount : amountRef.current.value});			
 		}catch{
 			alert("error");

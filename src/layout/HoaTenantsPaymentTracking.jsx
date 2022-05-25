@@ -53,7 +53,7 @@ async function getData(){
 ///get buildingId from the url param 
 let buildingId=localStorage.getItem('chosen');
 if(buildingId==undefined){
-    buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
+    buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building_id;
 }
 //get the building expense
 try{
@@ -63,7 +63,7 @@ try{
     let apartQurySnapshot= await getDocs(apartQuery);
     apartQurySnapshot.forEach(doc=>{
         buildingExpens[doc.id]=doc.data();
-        buildingExpens[doc.id]["reason"]="תשלום וועד דירה "+ buildingExpens[doc.id]["apartment"];
+        buildingExpens[doc.id]["reason"]="תשלום וועד דירה "+ buildingExpens[doc.id]["apartment_num"];
     });
     keys=Object.keys(buildingExpens);
     //sort the result by date

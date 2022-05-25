@@ -52,7 +52,7 @@ function BuildingExpenses() {
     ///get buildingId from the localStorage 
     let buildingId=localStorage.getItem('chosen');
     if(buildingId==undefined){
-        buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
+        buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building_id;
     }
     //get the building expense
     try{
@@ -62,7 +62,7 @@ function BuildingExpenses() {
         let apartQurySnapshot= await getDocs(apartQuery);
         apartQurySnapshot.forEach(doc=>{
             buildingExpens[doc.id]=doc.data();
-            buildingExpens[doc.id]["reason"]="תשלום דירה "+ buildingExpens[doc.id]["apartment"];
+            buildingExpens[doc.id]["reason"]="תשלום דירה "+ buildingExpens[doc.id]["apartment_num"];
             //add color to the table row
             buildingExpens[doc.id]["color"]="green";
         });
