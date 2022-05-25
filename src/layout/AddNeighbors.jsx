@@ -17,8 +17,30 @@ function AddNeighbors() {
 
 	async function handleSubmit(){
 		try{
-			const building=localStorage.getItem('chosen');
-			await addDoc(collection(firestore,'tenants'),{building : building , department : disabledRef.current.value , family_name : familyRef.current.value
+			//const buildingId=localStorage.getItem('chosen');
+
+
+//test mode
+const buildingId = "3OObhsydhrbsH73QL66h";
+
+
+			let buildingNum="-";
+			//get the building info
+			const docRef = doc(firestore,'building',buildingId);
+			const docSnap =await getDoc(docRef);
+			if(docSnap.exists()){
+				let temp=docSnap.data();
+				buildingNum=temp["building_num"];
+				if(temp["entrance"]!="")
+				    if(temp["entrance"]=="A")
+					    buildingNum+=" א";
+					else
+					    buildingNum+=" ב";
+			}else{
+				console.log("no such document!");
+			}
+			
+			await addDoc(collection(firestore,'tenants'),{building : buildingId, building_num : buildingNum , department : disabledRef.current.value , family_name : familyRef.current.value
 			, young : youngRef.current.value , old : oldRef.current.value , disabled : disabledRef.current.value});			
 		}catch{
 			alert("error");
