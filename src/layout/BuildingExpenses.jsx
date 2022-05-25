@@ -41,11 +41,11 @@ let sortByDate=function(date_1,date_2){
 
 function BuildingExpenses() {
     const [loding,setLoding]=useState(true);
-    const [children,setChildren]=useState(<div>ijdfoijoirfjo</div>);
+    const [children,setChildren]=useState(<div></div>);
     
     
     let buildingExpens={};
-    let keys="hhhhhhhhhhhhhhhhhhhhhhhhh";
+    let keys="";
 
     ///let children=<div>ijdfoijoirfjo</div>;
     async function getData(){   
@@ -100,7 +100,7 @@ function BuildingExpenses() {
             return (
                 <tr>
                      <td>{buildingExpens[key]["amount"]}</td>
-                     <td>{buildingExpens[key]["date"]}</td>
+                     <td>{buildingExpens[key]["date"].split("-").reverse().join("-")}</td>
                      <td>{buildingExpens[key]["reason"]}</td>
                 </tr>
             );
