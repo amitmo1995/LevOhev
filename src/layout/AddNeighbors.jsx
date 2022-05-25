@@ -53,7 +53,6 @@ const buildingId = "3OObhsydhrbsH73QL66h";
 		<>
 			<div className='wrapper'>
 			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
-
 				<div className='formContainer'>
 					<span className='formHeading'>הוספת דייר</span>
 						<div className='input-group'>
