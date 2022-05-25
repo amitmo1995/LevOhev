@@ -53,7 +53,7 @@ async function getData(){
 ///get buildingId from the url param 
 let buildingId=localStorage.getItem('chosen');
 if(buildingId==undefined){
-    buildingId=localStorage.getItem('userConnected').data.building;
+    buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
 }
 //get the building expense
 try{
@@ -112,7 +112,7 @@ if(loding){
                     {children}
                     </tbody>
                 </table>
-                <Link to='/FinancialManagement' className='link'>
+                <Link to='/HoaHomePage' className='link'>
                     <BackButton />
                 </Link>
              </div>
