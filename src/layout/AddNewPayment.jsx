@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import BackButton from '../features/BackButton';
 import { Link } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
+import HomePageButton from '../features/HomePageButton'
 import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
 
 function AddNewPayment() {
@@ -92,6 +93,7 @@ function AddNewPayment() {
 	return (
 		<>
 			<div className='wrapper'>
+			<Link to='/HoaHomePage' className='link'><HomePageButton /></Link>
 				<div className='formContainer'>
 					<span className='formHeading'>הוספת תשלום </span>
 					{/* <form action=''> */}
@@ -116,9 +118,7 @@ function AddNewPayment() {
 						<div className='input-group'>
 						<button onClick={handleSubmit}>אישור</button>
 						</div>
-						<Link to='/HoaHomePage' className='link'>
-							<BackButton />
-						</Link>
+					
 						{/* </form> */}
 				</div>
 			</div>

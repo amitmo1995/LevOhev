@@ -3,6 +3,8 @@ import BackButton from '../features/BackButton';
 import { Link } from 'react-router-dom';
 import {doc,setDoc,getDoc, addDoc,add, collection,onSnapshot} from 'firebase/firestore';
 import {firestore} from '../firebase/firebase'
+import HomePageButton from '../features/HomePageButton'
+
 
 function UpdateExpenses() {
 	const dateRef=useRef();
@@ -24,6 +26,7 @@ function UpdateExpenses() {
 	return (
 		<>
 			<div className='wrapper'>
+			<Link to='/HoaHomePage' className='link'><HomePageButton /></Link>
 				<div className='formContainer'>
 					<span className='formHeading'> הוצאה חדשה</span>
 					{/* <form action=''> */}
@@ -49,9 +52,6 @@ function UpdateExpenses() {
 						<div className='input-group'>
 						<button onClick={handleSubmit}>אישור</button>
 						</div>
-						<Link to='/HoaHomePage' className='link'>
-							<BackButton />
-						</Link>
 						</div>
 						{/* </form> */}
 				</div>
