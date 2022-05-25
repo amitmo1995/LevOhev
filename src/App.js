@@ -22,6 +22,7 @@ import BuildingExpenses from './layout/BuildingExpenses';
 import Mapping from './layout/Mapping';
 import TrackingPayment from './layout/TrackingPayment';
 import AddNeighbors from './layout/AddNeighbors';
+import HoaTenantsPaymentTracking from './layout/HoaTenantsPaymentTracking';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -58,7 +59,7 @@ function App() {
 					<Route path='/AddNewPayment' element={<AddNewPayment/>}></Route>
 					<Route path='/UpdateExpenses' element={<UpdateExpenses/>}></Route>
 					<Route path='/TrackIncomeExpenses' element={<TrackIncomeExpenses/>}></Route>
-
+					<Route path='/HoaTenantsPaymentTracking' element={<HoaTenantsPaymentTracking/>}></Route>
 
 				</Routes>
 			</Router>

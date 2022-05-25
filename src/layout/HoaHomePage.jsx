@@ -15,7 +15,7 @@ function HoaHomePage(props) {
 		<Link to='/AddNewPayment' className='link'> <Option optionName='הוספת תשלום מדייר' imgAdd={addPayment} /> </Link>,
 		<Link to='/UpdateExpenses' className='link'> <Option optionName='עדכון הוצאה עבור הבניין' imgAdd={UpdateExpenses} /> </Link>,
 		<Link to='/TrackIncomeExpenses' className='link'> <Option optionName='מעקב הוצאות/הכנסות' imgAdd={TrackExpensesAndIncome}  /> </Link>,
-		<Link to='/' className='link'> <Option optionName='מעקב תשלום וועד בית' imgAdd={PaymentTracking}  /> </Link>
+		<Link to='/HoaTenantsPaymentTracking' className='link'> <Option optionName='מעקב תשלום וועד בית' imgAdd={PaymentTracking}  /> </Link>
 
 	];
 

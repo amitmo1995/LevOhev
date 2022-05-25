@@ -50,7 +50,10 @@ function BuildingExpenses() {
     ///let children=<div>ijdfoijoirfjo</div>;
     async function getData(){   
     ///get buildingId from the url param 
-    const buildingId="1";
+    let buildingId=localStorage.getItem('chosen');
+    if(buildingId==undefined){
+        buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
+    }
     //get the building expense
     try{
         //get the apartment monthly payment
