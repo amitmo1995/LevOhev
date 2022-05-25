@@ -10,9 +10,24 @@ function AddNewPayment() {
 	const amountRef=useRef();
 
 	async function handleSubmit(){
+
+
+		//query to get the apartment id
+		let apartmentId="";
+		const buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
 		try{
-			const building=JSON.parse(localStorage.getItem('userConnected')).data.building;
-			await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : building , apartment : apartmentRef.current.value , amount : amountRef.current.value});			
+			const collectionRef=collection(firestore,'apartment');
+			const apartQuery= query(collectionRef,where("building","==",buildingId),where("aprt_num","==",apartmentRef.current.value));
+			const apartQurySnapshot= await getDocs(apartQuery);
+			apartQurySnapshot.forEach(doc=>{
+				apartmentId=doc.id;
+			});
+		}catch{
+			console.log("error on apartment id Query");
+		}
+
+		try{
+			await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : buildingId , apartment : apartmentId ,apartment_num : apartmentRef.current.value, amount : amountRef.current.value});			
 		}catch{
 			alert("error");
 		}
@@ -112,3 +127,46 @@ function AddNewPayment() {
  }
 
 export default AddNewPayment;
+
+
+
+
+
+
+
+
+/*
+// const apartQurySnapshot= await getDocs(apartQuery);
+// const apartQuery= query(collectionRef,where("building_id","==",buildingId),where("aprt_num","==",apartmentRef));
+let apartmentId="";
+// const buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
+const amountRef=useRef();
+
+
+
+async function handleSubmit(){
+
+
+	//query to get the apartment id
+	try{
+		console.log("on apartment id Query 0");
+		// const collectionRef=collection(firestore,'apartment');
+		console.log("on apartment id Query 0");
+		console.log("on apartment id Query 1");
+		console.log("on apartment id Query 2");
+		apartQurySnapshot.forEach(doc=>{
+			apartmentId=doc.id
+		});
+	}catch{
+		console.log("error on apartment id Query");
+	}
+	
+
+	try{
+		
+		await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : buildingId , apartment : apartmentId , amount : amountRef.current.value});			
+	}catch{
+		alert("error");
+	}
+}
+*/
