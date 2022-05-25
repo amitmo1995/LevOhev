@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import DepositTrackGraphImg from '../images/DepositTrackGraphImg.jpg'
 import ScholarshipPayment from '../images/ScholarshipPayment.jpg'
 import financeImg from '../images/financeImg.jpg'
+import HomePageButton from '../features/HomePageButton'
 
 
 
@@ -18,6 +19,7 @@ function FinancialManagement
 
 	return (
 		<div className='pageTemplate'>
+			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
             <h1>ניהול כלכלי של ועד הבית</h1>
 			<h1>יתרה : 2332 שח</h1>
 			<div className='optionsContainer'>{options}</div>

@@ -6,6 +6,8 @@ import BackButton from '../features/BackButton';
 import {doc,setDoc,getDoc, addDoc,add, collection,onSnapshot} from 'firebase/firestore';
 import {firestore} from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
+import HomePageButton from '../features/HomePageButton'
+
 function GivingScholarship() {
 
 	const amountRef=useRef();
@@ -31,6 +33,7 @@ function GivingScholarship() {
 
 	return (
 		<div className='pageTemplate'>
+			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
 			<h1>הזן את סכום המלגה</h1>
             <div className='Scholarship'>
                         <div className='input-group'>

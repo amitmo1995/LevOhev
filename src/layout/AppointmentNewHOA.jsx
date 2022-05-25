@@ -4,6 +4,7 @@ import BackButton from '../features/BackButton';
 import {doc,setDoc,getDoc} from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
+import HomePageButton from '../features/HomePageButton';
 
 
 function AppointmentNewHOA() {
@@ -88,6 +89,7 @@ function AppointmentNewHOA() {
 	return (
 		<>
 			<div className='wrapper'>
+				<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
 				<div className='formContainer'>
 					<span className='formHeading'>הוספת משתמש</span>
 					{/* <form action=''> */}
@@ -132,10 +134,6 @@ function AppointmentNewHOA() {
 						<div className='input-group'>
 						<button disabled={loding} onClick={handleAppointment} >אישור</button>
 						</div>
-						<Link to='/ManagerHomePage' className='link'>
-							<BackButton />
-						</Link>
-						{/* </form> */}
 				</div>
 			</div>
 		</>

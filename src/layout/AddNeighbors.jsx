@@ -3,6 +3,7 @@ import BackButton from '../features/BackButton';
 import { Link } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
 import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
+import HomePageButton from '../features/HomePageButton'
 
 
 function AddNeighbors() {
@@ -51,6 +52,8 @@ const buildingId = "3OObhsydhrbsH73QL66h";
 	return (
 		<>
 			<div className='wrapper'>
+			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
+
 				<div className='formContainer'>
 					<span className='formHeading'>הוספת דייר</span>
 						<div className='input-group'>

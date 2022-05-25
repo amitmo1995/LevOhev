@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import buildingImg from '../images/buildingImg.jpg';
 import Option from '../features/Option';
 import BackButton from '../features/BackButton';
+import HomePageButton from '../features/HomePageButton'
+
 
 function ChooseBuilding() {
 
@@ -20,6 +22,7 @@ function ChooseBuilding() {
 	}
 	return (
 		<div className='pageTemplate'>
+			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
 			<h1>בחר בניין</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to='/ManagerHomePage' className='link link-button'>

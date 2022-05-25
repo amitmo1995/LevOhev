@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
 import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
 import { async } from '@firebase/util';
+import HomePageButton from '../features/HomePageButton'
+
 
 let sortByDate=function(date_1,date_2){
 
@@ -143,6 +145,7 @@ function BuildingExpenses() {
 	return (
 		<>
 			<div className='tableData'>
+            <Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
                 <h1>מעקב הוצאות/הכנסות</h1>
                 <table>
                     <thead>

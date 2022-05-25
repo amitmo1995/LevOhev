@@ -3,6 +3,7 @@ import BackButton from '../features/BackButton';
 import { Link } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
 import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
+import HomePageButton from '../features/HomePageButton';
 
 
 function MeetingSummary() {
@@ -23,6 +24,8 @@ function MeetingSummary() {
 	return (
 		<>
 	<div className='pageTemplate'>
+	<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
+
 		<div className='Summary'>
 			<h1>בחר תאריך פגישה</h1>
 			<div className='input-group'>

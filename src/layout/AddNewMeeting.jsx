@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import BackButton from '../features/BackButton';
 import { Link } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
+import HomePageButton from '../features/HomePageButton'
 import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
 
 function AddNewPayment() {
@@ -20,6 +21,8 @@ function AddNewPayment() {
 	return (
 		<><div class = "AddNewMeeting">
 			<div className='wrapper'>
+			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
+
 				<div className='formContainer'>
 					<span className='formHeading'>הוספת פגישה </span>
 					{/* <form action=''> */}

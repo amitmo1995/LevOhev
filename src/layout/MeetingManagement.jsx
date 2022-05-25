@@ -18,11 +18,9 @@ function MeetingManagement() {
 	return (
 		
 		<div className='pageTemplate'>
+		<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
 			<h1> ניהול מפגשים</h1>
 			<div className='optionsContainer'>{options}</div>
-			<Link to='/ManagerHomePage' className='link'>
-				<BackButton />
-			</Link>
 		</div>
 	);
 }

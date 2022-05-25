@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import BuildingMappingImg from '../images/BuildingMappingImg.jpeg'
 import financeImg from '../images/financeImg.jpg'
 import addNew from '../images/new.jpg'
+import HomePageButton from '../features/HomePageButton'
+
+
+
 
 function BuildingOperation() {
 
@@ -16,6 +20,7 @@ function BuildingOperation() {
 
 	return (
 		<div className='pageTemplate'>
+			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
 			<h1>ביצוע פעולות עבור הבניין</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to='/ChooseBuilding' className='link'>
