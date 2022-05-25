@@ -75,7 +75,6 @@ try{
      apartQuery= query(collectionRef,where("building","!=","-1"));
      apartQurySnapshot= await getDocs(apartQuery);
     apartQurySnapshot.forEach(doc=>{
-        console.log(doc.data());
         tenants[doc.id]=doc.data();
     });
     //sort the result by date
@@ -83,14 +82,12 @@ try{
     //set the result in descending order
     meetingArr.reverse();
 
-    console.log(meetingArr);
     let temp=meetingArr.map(tan=>{
-        console.log(tenants[tan["tenant"]]["first_name"]);
         return (
             <tr>
-                 <td>{tenants[tan["tenant"]]["first_name"]}</td>
-                 <td>{tan["date"]}</td>
                  <td>{tenants[tan["tenant"]]["building_num"]}</td>
+                 <td>{tan["date"].split("-").reverse().join("-")}</td>
+                 <td>{tenants[tan["tenant"]]["first_name"]}</td>
             </tr>
         );
       });

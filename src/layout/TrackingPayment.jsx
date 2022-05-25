@@ -72,7 +72,7 @@ try{
         return (
             <tr>
                  <td>{buildingExpens[key]["amount"]}</td>
-                 <td>{buildingExpens[key]["date"]}</td>
+                 <td>{buildingExpens[key]["date"].split("-").reverse().join("-")}</td>
                  <td>{buildingExpens[key]["reason"]}</td>
             </tr>
         );
