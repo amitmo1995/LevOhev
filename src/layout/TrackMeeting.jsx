@@ -83,11 +83,13 @@ try{
     meetingArr.reverse();
 
     let temp=meetingArr.map(tan=>{
+        if(!tenants[tan["tenant"]])
+            return (<></>);
         return (
             <tr>
                  <td>{tenants[tan["tenant"]]["building_num"]}</td>
                  <td>{tan["date"].split("-").reverse().join("-")}</td>
-                 <td>{tenants[tan["tenant"]]["first_name"]}</td>
+                 <td>{tenants[tan["tenant"]]["family_name"]}</td>
             </tr>
         );
       });
