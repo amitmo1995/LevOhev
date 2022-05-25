@@ -10,59 +10,78 @@ function AppointmentNewHOA() {
 
 	const emailRef=useRef();
 	const buildingRef=useRef();
+	const nameRef=useRef();
     const passwordRef=useRef();
 	const permissionsRef=useRef();
     const [loding , setLoding] = useState(false);
     const currentUser=getAuth();
-	
 
 	async function handleAppointment() {
-		alert("ya malshin");
-		getAuth()
-  .createUser({
-    email: 'user@example.com',
-    emailVerified: false,
-    phoneNumber: '+11234567890',
-    password: 'secretPassword',
-    displayName: 'John Doe',
-    photoURL: 'http://www.example.com/12345678/photo.png',
-    disabled: false,
-  })
-  .then((userRecord) => {
-    // See the UserRecord reference doc for the contents of userRecord.
-    console.log('Successfully created new user:', userRecord.uid);
-  })
-  .catch((error) => {
-    console.log('Error creating new user:', error);
-  });
+
+		const auth = getAuth();
+		const adminUser = auth.currentUser
+		// Register code ...
+		try{
+			await createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
+			const userRef=doc(firestore,'users',emailRef.current.value);
+		 	await setDoc(userRef,{building : buildingRef.current.value  , permissions : permissionsRef.current.value , name : nameRef.current.value});
+		}catch{
+			alert("error");
+		}
+		
+		auth.updateCurrentUser(adminUser)
+
+	}
+
+	
+
+// 	async function handleAppointment() {
+// 		alert("ya malshin");
+// 		getAuth()
+//   .createUser({
+//     email: 'user@example.com',
+//     emailVerified: false,
+//     phoneNumber: '+11234567890',
+//     password: 'secretPassword',
+//     displayName: 'John Doe',
+//     photoURL: 'http://www.example.com/12345678/photo.png',
+//     disabled: false,
+//   })
+//   .then((userRecord) => {
+//     // See the UserRecord reference doc for the contents of userRecord.
+//     console.log('Successfully created new user:', userRecord.uid);
+//   })
+//   .catch((error) => {
+//     console.log('Error creating new user:', error);
+//   });
 
 
 	  
 
 
 
-		// const auth = getAuth();
-		// signOut(auth).then(() => {
-		//   // Sign-out successful.
-		//   console.log("loged out");
-		// }).catch((error) => {
-		//   // An error happened.
-		// });
+// 		// const auth = getAuth();
+// 		// signOut(auth).then(() => {
+// 		//   // Sign-out successful.
+// 		//   console.log("loged out");
+// 		// }).catch((error) => {
+// 		//   // An error happened.
+// 		// });
 
 
 
 
 
-        // setLoding(true);
-        // try{
-        //     await createUserWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value);
-		// 	const userRef=doc(firestore,'users',emailRef.current.value);
-		// 	setDoc(userRef,{building : buildingRef.current.value , password : passwordRef.current.value , permissions : permissionsRef.current.value});
-        // }catch{
-        //     alert("error");
-        // }
-        // setLoding(false);
-    }
+//         // setLoding(true);
+//         // try{
+//         //     await createUserWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value);
+// 		// 	const userRef=doc(firestore,'users',emailRef.current.value);
+// 		// 	setDoc(userRef,{building : buildingRef.current.value , password : passwordRef.current.value , permissions : permissionsRef.current.value});
+//         // }catch{
+//         //     alert("error");
+//         // }
+//         // setLoding(false);
+//     }
 
 
 
@@ -76,6 +95,11 @@ function AppointmentNewHOA() {
 						<div className='input-group'>
 							<i class="fa-light fa-at"></i>
 							<input ref={emailRef}   placeholder='אימייל' text='הכנס אימייל' type='text'/>
+							<span className='bar'></span>
+						</div>
+						<div className='input-group'>
+						<i class='fa-solid fa-user'></i>
+							<input ref={nameRef}   placeholder='שם' text='שם' type='text'/>
 							<span className='bar'></span>
 						</div>
 						{/* Input 2 */}

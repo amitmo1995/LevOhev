@@ -12,7 +12,7 @@ function FinancialManagement
 () {
 	const options = [
 		<Link to='/TrackingPayment' className='link'> <Option optionName='מעקב תשלומי וועד' imgAdd={financeImg} /></Link>,
-		<Link to='/BuildingExpenses' className='link'>	<Option optionName='מעקב הוצאות' imgAdd={DepositTrackGraphImg} /></Link>,
+		<Link to='/BuildingExpenses' className='link'>	<Option optionName='מעקב הוצאות/הכנסות' imgAdd={DepositTrackGraphImg} /></Link>,
 		<Link to='/GivingScholarship' className='link'>	<Option optionName='מתן מלגה' imgAdd={ScholarshipPayment} /></Link>
 	];
 
