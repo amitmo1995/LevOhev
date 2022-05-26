@@ -11,7 +11,6 @@ import HomePageButton from '../features/HomePageButton'
 function MeetingManagement() {
 	const options = [
 		<Link to='/TrackMeeting' className='link'> <Option optionName='מעקב נוכחים' imgAdd={PresenceCheckImg} /></Link>,
-		<Link to='/MeetingSummary' className='link'>	<Option optionName='סיכומי מפגשים' imgAdd={MeetingSummaryImg} /></Link>,
 		<Link to='/AddNewMeeting' className='link'>	<Option optionName='הוספת פגישה' imgAdd={AddNewMeetingImg} /></Link>
 	];
 

@@ -9,10 +9,8 @@ import HomePageButton from '../features/HomePageButton';
 
 
 let sortByDate=function(date_1,date_2){
-
     date_1=date_1.split('-');
     date_2=date_2.split('-');
-
     //compare year
     date_1[0]=parseInt(date_1[0]);
     date_2[0]=parseInt(date_2[0]);
@@ -21,7 +19,6 @@ let sortByDate=function(date_1,date_2){
     }else if(date_2[0]> date_1[0]){
         return -1;
     }
-
     //compare mounth
     date_1[1]=parseInt(date_1[1]);
     date_2[1]=parseInt(date_2[1]);
@@ -30,7 +27,6 @@ let sortByDate=function(date_1,date_2){
     }else if(date_2[1]> date_1[1]){
         return -1;
     }
-
     //compare day
     date_1[2]=parseInt(date_1[2]);
     date_2[2]=parseInt(date_2[2]);
@@ -47,61 +43,38 @@ let sortByDate=function(date_1,date_2){
 function TrackMeeting() {
     const [loding,setLoding]=useState(true);
     const [children,setChildren]=useState(<div></div>);
+    let meetingSummary={};
+    let keys="";
 
-
-let meeting={};
-let tenants={};
-let keys="";
-
-///let children=<div>ijdfoijoirfjo</div>;
-async function getData(){   
-///get buildingId from the url param 
-const buildingId="1";
-//get the building expense
-try{
-    //get the meeting
-    let collectionRef=collection(firestore,'meeting');
-    let apartQuery= query(collectionRef,where("date","!=","-1"));
-    let apartQurySnapshot= await getDocs(apartQuery);
-    let meetingArr=[];
-    apartQurySnapshot.forEach(doc=>{
-        //meeting[doc.id]=doc.data();
-        //add all the participants of the meeting to the meeting array
-        Object.keys(doc.data().participants).forEach(part=>{
-            meetingArr=meetingArr.concat([{"date":doc.data().date,"tenant":doc.data().participants[part]}])
-        })
-    });
-    //get the tenants
-     collectionRef=collection(firestore,'tenants');
-     apartQuery= query(collectionRef,where("building","!=","-1"));
-     apartQurySnapshot= await getDocs(apartQuery);
-    apartQurySnapshot.forEach(doc=>{
-        tenants[doc.id]=doc.data();
-    });
-    //sort the result by date
-    meetingArr.sort((key1,key2)=>{return sortByDate(key1["date"],key2["date"]);});
-    //set the result in descending order
-    meetingArr.reverse();
-
-    let temp=meetingArr.map(tan=>{
-        if(!tenants[tan["tenant"]])
-            return (<></>);
-        return (
-            <tr>
-                 <td>{tenants[tan["tenant"]]["building_num"]}</td>
-                 <td>{tan["date"].split("-").reverse().join("-")}</td>
-                 <td>{tenants[tan["tenant"]]["family_name"]}</td>
-            </tr>
-        );
-      });
-      setChildren(temp);
-      setLoding(false);
-}catch{
-    console.log("error on apartment Query");
-}
-}
-
-useEffect(()=>{getData();},[]);
+    async function getData(){
+        try{
+            let collectionRef=collection(firestore,"meeting_summary");
+            let Query=query(collectionRef);
+            let snapshot=await getDocs(Query);
+            snapshot.forEach(doc=>{
+                meetingSummary[doc.id]=doc.data();
+            });
+            keys=Object.keys(meetingSummary);
+            keys.sort((key1,key2)=>{return sortByDate(meetingSummary[key1]["date"],meetingSummary[key2]["date"]);});
+            keys.reverse();
+            let temp=keys.map(key=>{
+                return (
+                    <tr>
+                         <td>{meetingSummary[key]["attendance"]}</td>
+                         <td>{meetingSummary[key]["summary"]}</td>
+                         <td>{meetingSummary[key]["topic"]}</td>
+                         <td>{meetingSummary[key]["date"].split("-").reverse().join("-")}</td>
+                         
+                    </tr>
+                );
+              });
+              setChildren(temp);
+              setLoding(false);
+        }catch{
+            console.log("queryError");
+        }
+    }
+    useEffect(()=>{getData();},[]);
 //useEffect(()=>{},[children])
 
 if(loding){
@@ -121,9 +94,10 @@ if(loding){
             <table>
                 <thead>
                    <tr>
-                        <th>מספר בניין</th>
-                        <th>תאריך פגישה</th>
-                        <th>דייר</th>
+                        <th>נוכחים</th>
+                        <th>סיכום</th>
+                        <th>נושא</th>
+                        <th>תאריך</th>
                     </tr>
                 </thead>
                 <tbody>
