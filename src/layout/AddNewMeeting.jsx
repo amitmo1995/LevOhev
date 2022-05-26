@@ -97,6 +97,12 @@ function AddNewMeeting() {
 								<th><h5>בניין 22ב</h5></th>
 								<th><input ref={amountRef} type="checkbox" id="building1" name="building1" value="building1"></input> <label for="building1"></label></th>
 							</tr>
+							<tr>
+							<th><h5> בניין 24א</h5></th>
+							<th><input ref={amountRef} type="checkbox" id="building1" name="building1" value="building1"></input> <label for="building1"></label></th>
+								<th><h5>בניין 24ב</h5></th>
+								<th><input ref={amountRef} type="checkbox" id="building1" name="building1" value="building1"></input> <label for="building1"></label></th>
+								</tr>
 						</table>
 						</div>
 						<div className='summary'>
