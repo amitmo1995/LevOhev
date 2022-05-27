@@ -178,13 +178,12 @@ body {
 }
 
 /* Back button Design*/
-.backButton .logOutButton {
+.backButton {
   all: initial;
+  margin-left: 5%;
 }
 
 .backButton button {
-  display: block;
-  margin: auto;
   background: linear-gradient(to left, #c2c0c0, #D3D0CBFF);
   font-size: 1.1rem;
   color: #142831;
@@ -196,7 +195,11 @@ body {
   text-shadow: 1px 1px #142831;
   letter-spacing: 2px;
   border: none;
-  padding: 15px 80px;
+  padding: 10px 20px;
+}
+
+.backButton button i {
+  color: black;
 }
 
 .backButton button:hover {
@@ -264,6 +267,10 @@ body {
 .option:hover {}
 
 /* Page template Design */
+
+.pageTemplate {
+  padding: 100px;
+}
 
 .pageTemplate h1 {
   margin: 10px 0;
@@ -541,6 +548,7 @@ body {
   position: absolute;
   right: 10px;
   top: 5px;
+  color: #fff;
 }
 
 .input-building {
