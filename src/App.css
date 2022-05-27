@@ -180,7 +180,8 @@ body {
 /* Back button Design*/
 .backButton {
   all: initial;
-  margin-left: 5%;
+  float: left;
+  margin-left: 10px;
 }
 
 .backButton button {
@@ -212,20 +213,16 @@ body {
 
 /* LogOut button Design*/
 .logOutButton button {
-  display: block;
-  margin: auto;
-  background: linear-gradient(to left, #c2c0c0, #D3D0CBFF);
-  font-size: 1.1rem;
-  color: #142831;
-  outline: none;
-  cursor: pointer;
-  transition: .3s;
-  border-radius: 5px;
-  font-weight: bold;
-  text-shadow: 1px 1px #142831;
-  letter-spacing: 2px;
+  background-color: transparent;
+  background-repeat: no-repeat;
   border: none;
-  padding: 15px 85px;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  color: #fff;
 }
 
 .logOutButton button:hover {

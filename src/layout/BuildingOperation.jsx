@@ -6,6 +6,7 @@ import BuildingMappingImg from '../images/BuildingMappingImg.jpeg';
 import financeImg from '../images/financeImg.jpg';
 import addNew from '../images/new.jpg';
 import HomePageButton from '../features/HomePageButton';
+import { LogoutButton } from '../features/LogoutButton';
 
 function BuildingOperation() {
 	const options = [
@@ -27,6 +28,9 @@ function BuildingOperation() {
 		<div className='pageTemplate'>
 			<Link to='/ManagerHomePage' className='link'>
 				<HomePageButton />
+			</Link>
+			<Link to='/' className='link'>
+				<LogoutButton />
 			</Link>
 			<h1>ביצוע פעולות עבור הבניין</h1>
 			<div className='optionsContainer'>{options}</div>
