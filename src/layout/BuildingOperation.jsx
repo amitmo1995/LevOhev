@@ -1,24 +1,31 @@
 import React from 'react';
 import BackButton from '../features/BackButton';
 import Option from '../features/Option';
-import { Link } from 'react-router-dom';
+import { LogoutButton } from '../features/LogoutButton';
+import { Link, useParams } from 'react-router-dom';
 import BuildingMappingImg from '../images/BuildingMappingImg.jpeg';
 import financeImg from '../images/financeImg.jpg';
 import addNew from '../images/new.jpg';
 import HomePageButton from '../features/HomePageButton';
-import { LogoutButton } from '../features/LogoutButton';
 
 function BuildingOperation() {
+	const params = useParams();
+	console.log('params = ', params);
+
+	let routToFinancialManagement = '/FinancialManagement/' + params.building_id;
+	let routToMapping = '/Mapping/' + params.building_id;
+	let routToAddNeighbors = '/AddNeighbors/' + params.building_id;
+
 	const options = [
-		<Link to='/FinancialManagement' className='link'>
+		<Link to={routToFinancialManagement} className='link'>
 			{' '}
 			<Option optionName='ניהול כלכלי' imgAdd={financeImg} />
 		</Link>,
-		<Link to='/Mapping' className='link'>
+		<Link to={routToMapping} className='link'>
 			{' '}
 			<Option optionName='מיפוי הבניין' imgAdd={BuildingMappingImg} />
 		</Link>,
-		<Link to='/AddNeighbors' className='link'>
+		<Link to={routToAddNeighbors} className='link'>
 			{' '}
 			<Option optionName='הוספת דייר לבניין' imgAdd={addNew} />{' '}
 		</Link>,

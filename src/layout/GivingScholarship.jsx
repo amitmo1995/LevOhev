@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import buildingImg from '../images/buildingImg.jpg';
+import Option from '../features/Option';
 import { Link , useParams } from 'react-router-dom';
 import BackButton from '../features/BackButton';
 import { addDoc, collection} from 'firebase/firestore';
