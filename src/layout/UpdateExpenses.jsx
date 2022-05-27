@@ -1,44 +1,29 @@
 import React, { useRef, useState } from 'react';
-import BackButton from '../features/BackButton';
-import { Link } from 'react-router-dom';
-import {
-	doc,
-	setDoc,
-	getDoc,
-	addDoc,
-	add,
-	collection,
-	onSnapshot,
-} from 'firebase/firestore';
-import { firestore } from '../firebase/firebase';
-import HomePageButton from '../features/HomePageButton';
+import { Link , useParams } from 'react-router-dom';
+import { addDoc , collection } from 'firebase/firestore';
+import {firestore} from '../firebase/firebase'
+import HomePageButton from '../features/HomePageButton'
+
 
 function UpdateExpenses() {
-	const dateRef = useRef();
-	const reasonRef = useRef();
-	const amountRef = useRef();
+	const params= useParams();
+	let routToHomeGage="/HoaHomePage/"+params.building_id;
+	const dateRef=useRef();
+	const reasonRef=useRef();
+	const amountRef=useRef();
 
-	async function handleSubmit() {
-		try {
-			const building = JSON.parse(localStorage.getItem('userConnected')).data
-				.building_id;
-			await addDoc(collection(firestore, 'HOA_expense'), {
-				date: dateRef.current.value,
-				building: building,
-				reason: reasonRef.current.value,
-				amount: amountRef.current.value,
-			});
-		} catch {
-			alert('error');
+	async function handleSubmit(){
+		try{
+			await addDoc(collection(firestore,'HOA_expense'),{date :  dateRef.current.value , building : params.building_id , reason : reasonRef.current.value , amount : amountRef.current.value});			
+		}catch{
+			alert("error");
 		}
 	}
 
 	return (
 		<>
 			<div className='wrapper'>
-				<Link to='/HoaHomePage' className='link'>
-					<HomePageButton />
-				</Link>
+			<Link to={routToHomeGage} className='link'><HomePageButton /></Link>
 				<div className='formContainer'>
 					<span className='formHeading'> הוצאה חדשה</span>
 					{/* <form action=''> */}

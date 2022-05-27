@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BackButton from '../features/BackButton';
 import { Link } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
-import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
-import { async } from '@firebase/util';
+import { collection , query, getDocs} from 'firebase/firestore';
 import HomePageButton from '../features/HomePageButton';
 
 

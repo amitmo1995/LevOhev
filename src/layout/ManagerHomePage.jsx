@@ -1,5 +1,4 @@
 import React from 'react';
-import BackButton from '../features/BackButton';
 import Option from '../features/Option';
 import { Link } from 'react-router-dom';
 import meetingImg from '../images/meetingImg.jpg';
@@ -9,7 +8,6 @@ import { useAuth } from '../firebase/firebase';
 import { LogoutButton } from '../features/LogoutButton';
 
 function ManagerHomePage(props) {
-	const currentUser=useAuth();
 	const options = [
 		<Link to='/ChooseBuilding' className='link'> <Option optionName='ניהול בניין' imgAdd={buildingManageImg} /> </Link>,
 		<Link to='/MeetingManagement' className='link'> <Option optionName='פגישות' imgAdd={meetingImg} /> </Link>,

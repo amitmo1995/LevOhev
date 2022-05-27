@@ -1,14 +1,17 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import buildingImg from '../images/buildingImg.jpg';
 import Option from '../features/Option';
+import { Link , useParams } from 'react-router-dom';
 import BackButton from '../features/BackButton';
-import {doc,setDoc,getDoc, addDoc,add, collection,onSnapshot} from 'firebase/firestore';
+import { addDoc, collection} from 'firebase/firestore';
 import {firestore} from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
 import HomePageButton from '../features/HomePageButton'
 
 function GivingScholarship() {
+
+	const params= useParams();
+	let routBack="/FinancialManagement/"+params.building_id;
 
 	const amountRef=useRef();
 	const navigate=useNavigate();
@@ -18,7 +21,7 @@ function GivingScholarship() {
 			let today=new Date();
 			let date=today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
 			const building=JSON.parse(localStorage.getItem('userConnected')).data.building;
-			addDoc(collection(firestore,'grant_payment'),{amount : amountRef.current.value , building : localStorage.getItem('chosen') , date : date});	
+			addDoc(collection(firestore,'grant_payment'),{amount : amountRef.current.value , building : params.building_id , date : date});	
 			bool=true;	
 		}catch{
 			alert("error");
@@ -42,7 +45,7 @@ function GivingScholarship() {
 						</div>
                 <button className='ok' onClick={handleSubmit}><h2>אישור</h2></button>
             </div>
-			<Link to='/FinancialManagement' className='link'>
+			<Link to={routBack} className='link'>
 				<BackButton />
 			</Link>
 		</div>

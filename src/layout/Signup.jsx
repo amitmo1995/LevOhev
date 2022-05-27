@@ -1,4 +1,6 @@
+/*
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {auth,useAuth, createUserWithEmailAndPassword} from '../firebase/firebase'
 
@@ -11,8 +13,11 @@ function Signup() {
     const [loding , setLoding] = useState(false);
     const currentUser=useAuth();
 
-    
+    const navigate = useNavigate();
     async function handleSignup() {
+        
+        
+        
         setLoding(true);
         try{
             await createUserWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value);
@@ -20,6 +25,7 @@ function Signup() {
             alert("error");
         }
         setLoding(false);
+    
     }
     
 
@@ -29,9 +35,10 @@ function Signup() {
 				<h1> ברוכים הבאים </h1>
 				<input ref={emailRef}   placeholder='אימייל' text='הכנס אימייל' type='text'/>
 				<input ref={passwordRef} placeholder='סיסמא' text='הכנס סיסמא' type='password'/>
-				<button disabled={loding|| currentUser} onClick={handleSignup} >AddUser</button>
+				<button  onClick={handleSignup} >AddUser</button>
 		</div>
 	);
 }
 
 export default Signup;
+*/

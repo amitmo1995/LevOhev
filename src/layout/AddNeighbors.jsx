@@ -1,13 +1,16 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import BackButton from '../features/BackButton';
-import { Link } from 'react-router-dom';
+import { Link , useParams } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
-import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
+import {doc,getDoc, addDoc, collection} from 'firebase/firestore';
 import HomePageButton from '../features/HomePageButton'
 
 
 function AddNeighbors() {
 
+	const params= useParams();
+	let routBack="/BuildingOperation/"+params.building_id;
+	
 	const departmentRef=useRef();
 	const familyRef=useRef();
 	const youngRef=useRef();
@@ -18,11 +21,7 @@ function AddNeighbors() {
 
 	async function handleSubmit(){
 		try{
-			//const buildingId=localStorage.getItem('chosen');
-
-
-//test mode
-const buildingId = "3OObhsydhrbsH73QL66h";
+			const buildingId=params.building_id;
 
 
 			let buildingNum="-";
@@ -107,7 +106,7 @@ const buildingId = "3OObhsydhrbsH73QL66h";
 						<div className='input-group'>
 						<button onClick={handleSubmit}>אישור</button>
 						</div>
-                        <Link to='/BuildingOperation' className='link'>
+                        <Link to={routBack} className='link'>
 							<BackButton />
 						</Link>
 				</div>
