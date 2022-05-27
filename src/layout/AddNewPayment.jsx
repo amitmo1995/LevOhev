@@ -1,21 +1,22 @@
 import React, { useRef, useState } from 'react';
-import BackButton from '../features/BackButton';
-import { Link } from 'react-router-dom';
+//import BackButton from '../features/BackButton';
+import { Link , useParams} from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
 import HomePageButton from '../features/HomePageButton'
-import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
+import {where, addDoc, collection, query, getDocs} from 'firebase/firestore';
 
 function AddNewPayment() {
+	const params= useParams();
+	let routToHomeGage="/HoaHomePage/"+params.building_id;
 	const dateRef=useRef();
 	const apartmentRef=useRef();
 	const amountRef=useRef();
 
 	async function handleSubmit(){
 
-
 		//query to get the apartment id
 		let apartmentId="";
-		const buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building_id;
+		const buildingId=params.building_id;
 		try{
 			const collectionRef=collection(firestore,'apartment');
 			const apartQuery= query(collectionRef,where("building","==",buildingId),where("aprt_num","==",apartmentRef.current.value));
@@ -34,66 +35,10 @@ function AddNewPayment() {
 		}
 	}
 
-	// async function handleSubmit(){
-	// try{
-	// 	const Ref=await collection(firestore,'monthly_payment');
-	// 	const q=await query(Ref,where("building","==","1"));
-	// 	await (await getDocs(q)).forEach(onSnap=>{
-	// 		console.log(onSnap.get('amount'));
-	// 	});
-	// }catch{
-	// 	console.log("error");
-	// }	
-
-	// try{
-	// 	const Ref=await collection(firestore,'building');
-	// 	const q=await query(Ref,where("building_num","==","1","&&","entrance","==","A"));
-	// 	await (await getDocs(q)).forEach(onSnap=>{
-	// 		const b=onSnap.get('balance')+int(amountRef.current.value);
-	// 		console.log(b);
-	// 		onSnap.set();
-	// 	});
-	// }catch{
-	// 	console.log("error");
-	// }	
-
-
-
-	// onSnapshot(collection(firestore,'monthly_payment'),(snapshot)=>{
-	// 	var usersArr=snapshot.docs.map(doc=>{return {id : doc.id , data : doc.data()}});
-	// 	let ind=-1;
-	// 	for(let i=0;i<usersArr.length;i++){
-	// 		if(usersArr[i].id==userEmail){
-	// 			ind=i;
-	// 			break;
-	// 		}
-	// 	}
-	// 	localStorage.setItem("userConnected",JSON.stringify(usersArr[ind]));
-	// 	if(usersArr[ind].data.permissions=="admin"){
-	// 		navigate("../ManagerHomePage");
-	// 	}
-	// 	else{
-	// 		navigate("../HoaHomePage");
-	// 	}
-	// });
-
-
-
-
-
-
-
-
-	//}
-
-
-
-
-
 	return (
 		<>
 			<div className='wrapper'>
-			<Link to='/HoaHomePage' className='link'><HomePageButton /></Link>
+			<Link to={routToHomeGage} className='link'><HomePageButton /></Link>
 				<div className='formContainer'>
 					<span className='formHeading'>הוספת תשלום </span>
 					{/* <form action=''> */}
@@ -127,46 +72,3 @@ function AddNewPayment() {
  }
 
 export default AddNewPayment;
-
-
-
-
-
-
-
-
-/*
-// const apartQurySnapshot= await getDocs(apartQuery);
-// const apartQuery= query(collectionRef,where("building_id","==",buildingId),where("aprt_num","==",apartmentRef));
-let apartmentId="";
-// const buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
-const amountRef=useRef();
-
-
-
-async function handleSubmit(){
-
-
-	//query to get the apartment id
-	try{
-		console.log("on apartment id Query 0");
-		// const collectionRef=collection(firestore,'apartment');
-		console.log("on apartment id Query 0");
-		console.log("on apartment id Query 1");
-		console.log("on apartment id Query 2");
-		apartQurySnapshot.forEach(doc=>{
-			apartmentId=doc.id
-		});
-	}catch{
-		console.log("error on apartment id Query");
-	}
-	
-
-	try{
-		
-		await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : buildingId , apartment : apartmentId , amount : amountRef.current.value});			
-	}catch{
-		alert("error");
-	}
-}
-*/

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import BackButton from '../features/BackButton';
-import { Link } from 'react-router-dom';
+import { Link , useParams } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
-import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
-import { async } from '@firebase/util';
+import {where, collection, query, getDocs} from 'firebase/firestore';
 import HomePageButton from '../features/HomePageButton'
 
 
@@ -42,6 +41,9 @@ let sortByDate=function(date_1,date_2){
 }
 
 function BuildingExpenses() {
+
+    const params= useParams();
+    let routBack="/FinancialManagement/"+params.building_id;
     const [loding,setLoding]=useState(true);
     const [children,setChildren]=useState(<div></div>);
     
@@ -52,7 +54,7 @@ function BuildingExpenses() {
     ///let children=<div>ijdfoijoirfjo</div>;
     async function getData(){   
     ///get buildingId from the url param 
-    let buildingId=localStorage.getItem('chosen');
+    let buildingId=params.building_id;
     if(buildingId==undefined){
         buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
     }
@@ -121,20 +123,6 @@ function BuildingExpenses() {
     }
 
     useEffect(()=>{getData();},[]);
-    //useEffect(()=>{},[children])
-
-
-
-
-    
-
-
-
-
-
-
-
-
 
 
     if(loding){
@@ -159,7 +147,7 @@ function BuildingExpenses() {
                         {children}
                     </tbody>
                 </table>
-                <Link to='/FinancialManagement' className='link'>
+                <Link to={routBack} className='link'>
                     <BackButton />
                 </Link>
              </div>

@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
-import {auth,useAuth, createUserWithEmailAndPassword,firestore} from '../firebase/firebase'
-import BackButton from '../features/BackButton';
+import { createUserWithEmailAndPassword,firestore} from '../firebase/firebase'
+//import BackButton from '../features/BackButton';
 import { doc , setDoc , getDocs , collection , where ,getDoc , query } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import HomePageButton from '../features/HomePageButton';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,9 +15,7 @@ function AppointmentNewHOA() {
 	const nameRef=useRef();
     const passwordRef=useRef();
 	const permissionsRef=useRef();
-	const entranceRef=useRef("");
     const [loding , setLoding] = useState(false);
-    const currentUser=getAuth();
 	const navigate=useNavigate();
 
 	async function handleAppointment() {
@@ -58,58 +56,6 @@ function AppointmentNewHOA() {
 		
 
 	}
-
-	
-
-// 	async function handleAppointment() {
-// 		alert("ya malshin");
-// 		getAuth()
-//   .createUser({
-//     email: 'user@example.com',
-//     emailVerified: false,
-//     phoneNumber: '+11234567890',
-//     password: 'secretPassword',
-//     displayName: 'John Doe',
-//     photoURL: 'http://www.example.com/12345678/photo.png',
-//     disabled: false,
-//   })
-//   .then((userRecord) => {
-//     // See the UserRecord reference doc for the contents of userRecord.
-//     console.log('Successfully created new user:', userRecord.uid);
-//   })
-//   .catch((error) => {
-//     console.log('Error creating new user:', error);
-//   });
-
-
-	  
-
-
-
-// 		// const auth = getAuth();
-// 		// signOut(auth).then(() => {
-// 		//   // Sign-out successful.
-// 		//   console.log("loged out");
-// 		// }).catch((error) => {
-// 		//   // An error happened.
-// 		// });
-
-
-
-
-
-//         // setLoding(true);
-//         // try{
-//         //     await createUserWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value);
-// 		// 	const userRef=doc(firestore,'users',emailRef.current.value);
-// 		// 	setDoc(userRef,{building : buildingRef.current.value , password : passwordRef.current.value , permissions : permissionsRef.current.value});
-//         // }catch{
-//         //     alert("error");
-//         // }
-//         // setLoding(false);
-//     }
-
-
 
 	return (
 		<>

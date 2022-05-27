@@ -1,8 +1,6 @@
 import React from 'react';
-import BackButton from '../features/BackButton';
 import Option from '../features/Option';
 import { Link } from 'react-router-dom';
-import MeetingSummaryImg from '../images/MeetingSummaryImg.jpg'
 import AddNewMeetingImg from '../images/AddNewMeetingImg.jpg'
 import PresenceCheckImg from '../images/PresenceCheckImg.jpg'
 import HomePageButton from '../features/HomePageButton'

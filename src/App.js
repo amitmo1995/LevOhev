@@ -38,28 +38,28 @@ function App() {
 			<Router>
 				<Routes>
 					<Route path='/' element={<Home />}></Route>
-					<Route path='/query' element={<Query/>}/>
+					<Route path='/query/:query_name' element={<Query/>}/>
 					<Route path='/ManagerHomePage' element={<ManagerHomePage />}></Route>
 					<Route path='/ChooseBuilding' element={<ChooseBuilding />}></Route>
 					<Route path='/MeetingManagement' element={<MeetingManagement />}></Route>
-					<Route path='/BuildingOperation' element={<BuildingOperation />}></Route>
-					<Route path='/FinancialManagement' element={<FinancialManagement />}></Route>
+					<Route path='/BuildingOperation/:building_id' element={<BuildingOperation />}></Route>
+					<Route path='/FinancialManagement/:building_id' element={<FinancialManagement />}></Route>
 					<Route path='/AppointmentNewHOA' element={<AppointmentNewHOA />}></Route>
 					<Route path='/AddNewMeeting' element={<AddNewMeeting />}></Route>
 					<Route path='/Signup' element={<Signup />}></Route>
 					<Route path='/TrackMeeting' element={<TrackMeeting/>}></Route>
 					<Route path='/MeetingSummary' element={<MeetingSummary/>}></Route>
-					<Route path='/GivingScholarship' element={<GivingScholarship/>}></Route>
-					<Route path='/BuildingExpenses' element={<BuildingExpenses/>}></Route>
-					<Route path='/Mapping' element={<Mapping/>}></Route>
-					<Route path='/TrackingPayment' element = {<TrackingPayment/>}></Route>
-					<Route path='/AddNeighbors' element = {<AddNeighbors/>}></Route>
+					<Route path='/GivingScholarship/:building_id' element={<GivingScholarship/>}></Route>
+					<Route path='/BuildingExpenses/:building_id' element={<BuildingExpenses/>}></Route>
+					<Route path='/Mapping/:building_id' element={<Mapping/>}></Route>
+					<Route path='/TrackingPayment/:building_id' element = {<TrackingPayment/>}></Route>
+					<Route path='/AddNeighbors/:building_id' element = {<AddNeighbors/>}></Route>
 					{/* HOA side website */}
-					<Route path='/HoaHomePage' element={<HoaHomePage/>}></Route>
-					<Route path='/AddNewPayment' element={<AddNewPayment/>}></Route>
-					<Route path='/UpdateExpenses' element={<UpdateExpenses/>}></Route>
-					<Route path='/TrackIncomeExpenses' element={<TrackIncomeExpenses/>}></Route>
-					<Route path='/HoaTenantsPaymentTracking' element={<HoaTenantsPaymentTracking/>}></Route>
+					<Route path='/HoaHomePage/:building_id' element={<HoaHomePage/>}></Route>
+					<Route path='/AddNewPayment/:building_id' element={<AddNewPayment/>}></Route>
+					<Route path='/UpdateExpenses/:building_id' element={<UpdateExpenses/>}></Route>
+					<Route path='/TrackIncomeExpenses/:building_id' element={<TrackIncomeExpenses/>}></Route>
+					<Route path='/HoaTenantsPaymentTracking/:building_id' element={<HoaTenantsPaymentTracking/>}></Route>
 
 				</Routes>
 			</Router>
