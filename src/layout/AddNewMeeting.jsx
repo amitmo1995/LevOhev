@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import BackButton from '../features/BackButton';
 import { Link } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
 import HomePageButton from '../features/HomePageButton'
-import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
+import { addDoc, collection} from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 

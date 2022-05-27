@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {auth,useAuth,signInWithEmailAndPassword, firestore} from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
-import { collection,setDoc,doc,getDoc,getDocs, onSnapshot } from "firebase/firestore";
+import { doc,getDoc} from "firebase/firestore";
 
 
 function Login() {
@@ -43,7 +43,8 @@ function Login() {
 					navigate("../ManagerHomePage");
 				}
 				else{
-					navigate("../HoaHomePage");
+					let navTO="../HoaHomePage/"+data.data.building;
+					navigate(navTO);
 				}
 				}else{
 					console.log("no such document!");
@@ -51,28 +52,6 @@ function Login() {
 			}catch{
 				console.log("errordfadsgsdg");
 			}
-
-
-
-
-
-			// onSnapshot(collection(firestore,'users'),(snapshot)=>{
-			// 	var usersArr=snapshot.docs.map(doc=>{return {id : doc.id , data : doc.data()}});
-			// 	let ind=-1;
-			// 	for(let i=0;i<usersArr.length;i++){
-			// 		if(usersArr[i].id==userEmail){
-			// 			ind=i;
-			// 			break;
-			// 		}
-			// 	}
-			// 	localStorage.setItem("userConnected",JSON.stringify(usersArr[ind]));
-			// 	if(usersArr[ind].data.permissions=="admin"){
-			// 		navigate("../ManagerHomePage");
-			// 	}
-			// 	else{
-			// 		navigate("../HoaHomePage");
-			// 	}
-			// });
 		} 
     }
 

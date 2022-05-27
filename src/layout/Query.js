@@ -1,6 +1,7 @@
+/*
 import React, { useRef, useState } from 'react';
 import BackButton from '../features/BackButton';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
 import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
 
@@ -8,6 +9,9 @@ function Query() {
 	const dateRef=useRef();
 	const apartmentRef=useRef();
 	const amountRef=useRef();
+
+	const params= useParams();
+	console.log(params);
 /*
 	async function handleSubmit(){
 		try{
@@ -20,7 +24,7 @@ function Query() {
 */
 
 
-	 async function handleSubmit(){
+	 //async function handleSubmit(){
 
 		
 		//query to get document by id 
@@ -41,6 +45,7 @@ function Query() {
 
 
 
+		/*
         //add new apartment classification
 		//-----------------------------------------------------need to fix---------------------------------------------------------
 		//-----------------------------------------note that every aptdate create new document-------------------------------  
@@ -143,7 +148,7 @@ function Query() {
 
 
 
-
+/*
 
 
 	}
@@ -157,12 +162,13 @@ function Query() {
 			<div className='wrapper'>
 				<div className='formContainer'>
 					<span className='formHeading'>query bank </span>
-					{/* <form action=''> */}
-						{/* Input 1 */}
+					{/* <form action=''> *//*}
+						{/* Input 1 *//*}
+						/*
 						<div className='input-group'>
 						<button onClick={handleSubmit}>send query</button>
 						</div>
-						{/* </form> */}
+						{/* </form> *//*}
 				</div>
 			</div>
 		</>
@@ -170,3 +176,4 @@ function Query() {
  }
 
 export default Query;
+*/

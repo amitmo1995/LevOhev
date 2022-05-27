@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import BackButton from '../features/BackButton';
-import { Link } from 'react-router-dom';
+import { Link , useParams } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
-import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
-import { async } from '@firebase/util';
+import {where, collection, query, getDocs} from 'firebase/firestore';
 import HomePageButton from '../features/HomePageButton'
 
 
@@ -42,6 +40,8 @@ let sortByDate=function(date_1,date_2){
 }
 
 function BuildingExpenses() {
+    const params= useParams();
+	let routToHomeGage="/HoaHomePage/"+params.building_id;
     const [loding,setLoding]=useState(true);
     const [children,setChildren]=useState(<div></div>);
     
@@ -51,11 +51,8 @@ function BuildingExpenses() {
 
     ///let children=<div>ijdfoijoirfjo</div>;
     async function getData(){   
-    ///get buildingId from the localStorage 
-    let buildingId=localStorage.getItem('chosen');
-    if(buildingId==undefined){
-        buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building_id;
-    }
+    ///get buildingId from the url params 
+    let buildingId=params.building_id;
     //get the building expense
     try{
         //get the apartment monthly payment
@@ -145,7 +142,7 @@ function BuildingExpenses() {
 	return (
 		<>
 			<div className='tableData'>
-            <Link to='/HoaHomePage' className='link'><HomePageButton /></Link>
+            <Link to={routToHomeGage} className='link'><HomePageButton /></Link>
                 <h1>מעקב הוצאות/הכנסות</h1>
                 <table>
                     <thead>

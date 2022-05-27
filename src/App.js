@@ -28,8 +28,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
 	return (
 		<>
-			{/* project header */}
-			{/* <Header /> */}
 			{/* project router */}
 			<Router>
 				<Routes>
