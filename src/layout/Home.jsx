@@ -3,7 +3,7 @@ import Login from '../features/Login';
 
 function Home() {
 	return (
-		<div>
+		<div className='home'>
 			<Login />
 		</div>
 	);

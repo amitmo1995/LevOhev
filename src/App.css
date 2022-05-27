@@ -9,6 +9,10 @@ html {
   height: 100%;
 }
 
+#root {
+  height: 500px;
+}
+
 body {
   background: #142831;
   /* fallback for old browsers */
@@ -36,8 +40,12 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 0 100px;
+  padding: 0 120px;
+}
+
+/* Home Wrapper Desgin */
+.home {
+  padding: 200px 0;
 }
 
 
@@ -272,7 +280,8 @@ body {
   direction: rtl;
   gap: 30px;
 }
-.hoaHome .optionsContainer{
+
+.hoaHome .optionsContainer {
   grid-template-columns: repeat(2, auto);
 }
 
@@ -353,7 +362,7 @@ body {
   box-shadow: 0 1px 1.5rem rgba(0, 0, 0, .1);
 }
 
-.input-group  {
+.input-group {
   width: 85%;
   margin: 0 auto;
   position: relative;
@@ -521,7 +530,8 @@ body {
   margin: 4%;
   color: #fff;
 }
-.HomePageButton button{
+
+.HomePageButton button {
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
@@ -532,29 +542,34 @@ body {
   right: 10px;
   top: 5px;
 }
-.input-building{
+
+.input-building {
   padding: 6%;
 }
-.input-building table{
+
+.input-building table {
   margin: 0 auto;
   position: relative;
   direction: rtl;
 }
-.input-building th{
+
+.input-building th {
   padding: 4px;
   position: relative;
   top: 5px;
 }
+
 .input-building h4 {
   text-align: center;
 }
-.summary h4{
+
+.summary h4 {
   text-align: center;
 }
-.summary textarea{
+
+.summary textarea {
   text-align: right;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-
