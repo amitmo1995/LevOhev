@@ -1,20 +1,74 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BackButton from '../features/BackButton';
 import Option from '../features/Option';
 import { Link , useParams } from 'react-router-dom';
+import {firestore} from '../firebase/firebase';
+import {where, collection, query, getDocs} from 'firebase/firestore';
 import DepositTrackGraphImg from '../images/DepositTrackGraphImg.jpg'
 import ScholarshipPayment from '../images/ScholarshipPayment.jpg'
 import financeImg from '../images/financeImg.jpg'
 import HomePageButton from '../features/HomePageButton'
 
 
+	//the function return get the buildung balance
+	//param:
+	//setBalance-function to set the balance
+	//buildingId-id of the building
+	
+	let getBuildingBalance=async function(setBalance,buildingId){
+
+		let buildingExpens={};
+    let keys="";
+
+    //get the building expense
+    try{
+        //get the apartment monthly payment
+        let collectionRef=collection(firestore,'monthly_payment');
+        let apartQuery= query(collectionRef,where("building","==",buildingId));
+        let apartQurySnapshot= await getDocs(apartQuery);
+        apartQurySnapshot.forEach(doc=>{
+            buildingExpens[doc.id]=parseFloat(doc.data().amount);
+        });
+
+        //get the apartment HOA expanse
+        collectionRef=collection(firestore,'HOA_expense');
+        apartQuery= query(collectionRef,where("building","==",buildingId));
+        apartQurySnapshot= await getDocs(apartQuery);
+        apartQurySnapshot.forEach(doc=>{
+            //add negative sign to the expense
+            buildingExpens[doc.id]=(-parseFloat(doc.data().amount));
+        });
+        //get the grant payment
+        collectionRef=collection(firestore,'grant_payment');
+        apartQuery= query(collectionRef,where("building","==",buildingId));
+        apartQurySnapshot= await getDocs(apartQuery);
+        apartQurySnapshot.forEach(doc=>{
+            buildingExpens[doc.id]=parseFloat(doc.data().amount);
+        });
+		console.log(buildingExpens)
+
+
+       keys=Object.keys(buildingExpens);
+	   let temp=keys.reduce((sum,currentKey)=>sum+buildingExpens[currentKey],0);
+       console.log(temp);
+	   setBalance(temp); 
+	   //sort the result by date
+        //keys.sort((key1,key2)=>{return sortByDate(buildingExpens[key1]["date"],buildingExpens[key2]["date"]);});
+
+	}catch{
+        console.log("error on apartment id Query");
+    }
+
+	}
+	
+
 
 function FinancialManagement
 () {
-
 	const params= useParams();
-
-
+	const [balance,setBalance]=useState("");
+	useEffect(()=>{getBuildingBalance(setBalance,params.building_id);},[]);
+    //the page routing
 	let routToTrackingPayment="/TrackingPayment/"+params.building_id;
 	let routToBuildingExpenses="/BuildingExpenses/"+params.building_id;
 	let routToGivingScholarship="/GivingScholarship/"+params.building_id;
@@ -32,7 +86,7 @@ function FinancialManagement
 		<div className='pageTemplate'>
 			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
             <h1>ניהול כלכלי של ועד הבית</h1>
-			<h1>יתרה : 2332 שח</h1>
+			<h1>יתרה : {balance} שח</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to={routBack} className='link'>
 				<BackButton />

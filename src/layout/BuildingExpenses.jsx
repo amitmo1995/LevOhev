@@ -51,13 +51,9 @@ function BuildingExpenses() {
     let buildingExpens={};
     let keys="";
 
-    ///let children=<div>ijdfoijoirfjo</div>;
     async function getData(){   
     ///get buildingId from the url param 
     let buildingId=params.building_id;
-    if(buildingId==undefined){
-        buildingId=JSON.parse(localStorage.getItem('userConnected')).data.building;
-    }
     //get the building expense
     try{
         //get the apartment monthly payment
