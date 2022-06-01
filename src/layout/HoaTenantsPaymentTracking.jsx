@@ -39,12 +39,59 @@ let sortByDate=function(date_1,date_2){
     return 0;
 }
 
-function TrackingPayment() {
+let getBuildingBalance=async function(setBalance,buildingId){
+
+	let buildingExpens={};
+let keys="";
+
+//get the building expense
+try{
+	//get the apartment monthly payment
+	let collectionRef=collection(firestore,'monthly_payment');
+	let apartQuery= query(collectionRef,where("building","==",buildingId));
+	let apartQurySnapshot= await getDocs(apartQuery);
+	apartQurySnapshot.forEach(doc=>{
+		buildingExpens[doc.id]=parseFloat(doc.data().amount);
+	});
+
+	//get the apartment HOA expanse
+	collectionRef=collection(firestore,'HOA_expense');
+	apartQuery= query(collectionRef,where("building","==",buildingId));
+	apartQurySnapshot= await getDocs(apartQuery);
+	apartQurySnapshot.forEach(doc=>{
+		//add negative sign to the expense
+		buildingExpens[doc.id]=(-parseFloat(doc.data().amount));
+	});
+	//get the grant payment
+	collectionRef=collection(firestore,'grant_payment');
+	apartQuery= query(collectionRef,where("building","==",buildingId));
+	apartQurySnapshot= await getDocs(apartQuery);
+	apartQurySnapshot.forEach(doc=>{
+		buildingExpens[doc.id]=parseFloat(doc.data().amount);
+	});
+	console.log(buildingExpens)
+
+
+   keys=Object.keys(buildingExpens);
+   let temp=keys.reduce((sum,currentKey)=>sum+buildingExpens[currentKey],0);
+   console.log(temp);
+   setBalance(temp); 
+
+}catch{
+	console.log("error on apartment id Query");
+}
+
+}
+
+function TrackingPayment(props) {
     const params= useParams();
 	let routToHomeGage="/HoaHomePage/"+params.building_id;
 
     const [loding,setLoding]=useState(true);
     const [children,setChildren]=useState(<div></div>);
+    const [balance,setBalance]=useState("");
+	useEffect(()=>{getBuildingBalance(setBalance,params.building_id);},[]);
+
 
 
 let buildingExpens={};
@@ -110,6 +157,16 @@ if(loding){
                     <tbody>
                     {children}
                     </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>יתרה בחשבון</th>
+                        </tr>
+                        <tr>
+                        <th>{balance}</th>
+                        </tr>
+                </thead>
                 </table>
              </div>
 		</>
