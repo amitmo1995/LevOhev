@@ -14,25 +14,49 @@ function AddNewPayment() {
 
 	async function handleSubmit(){
 
-		//query to get the apartment id
-		let apartmentId="";
-		const buildingId=params.building_id;
-		try{
-			const collectionRef=collection(firestore,'apartment');
-			const apartQuery= query(collectionRef,where("building","==",buildingId),where("aprt_num","==",apartmentRef.current.value));
-			const apartQurySnapshot= await getDocs(apartQuery);
-			apartQurySnapshot.forEach(doc=>{
-				apartmentId=doc.id;
-			});
-		}catch{
-			console.log("error on apartment id Query");
+		let tanentExistId=false;
+		if(dateRef.current.value==""||apartmentRef.current.value==""||amountRef.current.value==""){
+			alert("אנא מלא/י את כל השדות");
+		}else{
+			//check if the tenant exist
+			try{
+				const tenantsRef= collection(firestore,'tenants');
+				const q= query(tenantsRef,where("building","==",params.buildingId),where("apartment","==",apartmentRef.current.value));
+				const qurySnapshot= await getDocs(q);
+				qurySnapshot.forEach(doc=>{
+					tanentExistId=doc.id;
+				});
+			}catch(e){
+				console.log("error on neighborExistId- ",e);
+			}
+			//if the tenant exist- add the payment to the DB
+			if(tanentExistId){
+				//query to get the apartment id
+		        let apartmentId="";
+		        const buildingId=params.building_id;
+		        try{
+			        const collectionRef=collection(firestore,'apartment');
+			        const apartQuery= query(collectionRef,where("building","==",buildingId),where("aprt_num","==",apartmentRef.current.value));
+			        const apartQurySnapshot= await getDocs(apartQuery);
+			        apartQurySnapshot.forEach(doc=>{
+				        apartmentId=doc.id;
+			        });
+		        }catch{
+			        console.log("error on apartment id Query");
+		        }
+
+		        try{
+			        await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : buildingId , apartment : apartmentId ,apartment_num : apartmentRef.current.value, amount : amountRef.current.value});			
+		        }catch{
+			        alert("error");
+		        }
+			}else{
+				alert("לא קיים דייר בדירה שהזנת, אנא פנה/י לאחראי/ת להוספת הדייר או שנה/י את מספר הדירה");
+			}
+
 		}
 
-		try{
-			await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : buildingId , apartment : apartmentId ,apartment_num : apartmentRef.current.value, amount : amountRef.current.value});			
-		}catch{
-			alert("error");
-		}
+		
 	}
 
 	return (

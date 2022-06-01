@@ -5,8 +5,6 @@ import Option from '../features/Option';
 import BackButton from '../features/BackButton';
 import HomePageButton from '../features/HomePageButton';
 import { LogoutButton } from '../features/LogoutButton';
-//import {firestore} from '../firebase/firebase';
-//import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
 
 function ChooseBuilding() {
 	let buildingNumParse = [
@@ -76,25 +74,6 @@ function ChooseBuilding() {
 				className='link'
 				key={i}
 				onClick={async () => {
-					/*
-				let buildingId=i;
-				try{
-					const apartmentRef= collection(firestore,'building');
-					const q= query(apartmentRef,where("building_num","==",buildingParse[i-1].split(" ")[0]),where("entrance","==",buildingParse[i-1].split(" ")[1]));
-
-					const qurySnapshot= await getDocs(q);
-					console.log(buildingNumParse[i-1].split(" ")[1]);
-					qurySnapshot.forEach(doc=>{
-						console.log("in building");
-						console.log(doc.id,"===>",doc.data());
-						buildingId=doc.id;
-						//goTo='/BuildingOperation/'+buildingId;
-						
-					});
-				}catch{
-					console.log("error");
-				}
-				*/
 					localStorage.setItem('chosen', buildingIdParse[i - 1]);
 				}}>
 				{' '}
