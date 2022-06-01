@@ -4,6 +4,49 @@ import {firestore} from '../firebase/firebase';
 import {where, collection, query, getDocs} from 'firebase/firestore';
 import HomePageButton from '../features/HomePageButton'
 
+let getBuildingBalance=async function(setBalance,buildingId){
+
+	let buildingExpens={};
+let keys="";
+
+//get the building expense
+try{
+	//get the apartment monthly payment
+	let collectionRef=collection(firestore,'monthly_payment');
+	let apartQuery= query(collectionRef,where("building","==",buildingId));
+	let apartQurySnapshot= await getDocs(apartQuery);
+	apartQurySnapshot.forEach(doc=>{
+		buildingExpens[doc.id]=parseFloat(doc.data().amount);
+	});
+
+	//get the apartment HOA expanse
+	collectionRef=collection(firestore,'HOA_expense');
+	apartQuery= query(collectionRef,where("building","==",buildingId));
+	apartQurySnapshot= await getDocs(apartQuery);
+	apartQurySnapshot.forEach(doc=>{
+		//add negative sign to the expense
+		buildingExpens[doc.id]=(-parseFloat(doc.data().amount));
+	});
+	//get the grant payment
+	collectionRef=collection(firestore,'grant_payment');
+	apartQuery= query(collectionRef,where("building","==",buildingId));
+	apartQurySnapshot= await getDocs(apartQuery);
+	apartQurySnapshot.forEach(doc=>{
+		buildingExpens[doc.id]=parseFloat(doc.data().amount);
+	});
+	console.log(buildingExpens)
+
+
+   keys=Object.keys(buildingExpens);
+   let temp=keys.reduce((sum,currentKey)=>sum+buildingExpens[currentKey],0);
+   console.log(temp);
+   setBalance(temp); 
+
+}catch{
+	console.log("error on apartment id Query");
+}
+
+}
 
 let sortByDate=function(date_1,date_2){
 
@@ -39,7 +82,7 @@ let sortByDate=function(date_1,date_2){
     return 0;
 }
 
-function BuildingExpenses() {
+function BuildingExpenses(props) {
     const params= useParams();
 	let routToHomeGage="/HoaHomePage/"+params.building_id;
     const [loding,setLoding]=useState(true);
@@ -123,21 +166,16 @@ function BuildingExpenses() {
 
 
 
-    
-
-
-
-
-
-
-
+	//get the building balance
+	const [balance,setBalance]=useState("");
+	useEffect(()=>{getBuildingBalance(setBalance,params.building_id);},[]);
 
 
 
     if(loding){
         return <h1>loding ... </h1>;
     }
-
+   
 
 	return (
 		<>
@@ -155,6 +193,16 @@ function BuildingExpenses() {
                     <tbody>
                         {children}
                     </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>יתרה בחשבון</th>
+                        </tr>
+                        <tr>
+                        <th>{balance}</th>
+                        </tr>
+                </thead>
                 </table>
              </div>
 		</>
