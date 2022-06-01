@@ -9,11 +9,11 @@ function Login() {
     const passwordRef=useRef();
     const [loding , setLoding] = useState(false);
     const currentUser=useAuth();
+	//outomatic logout when render the page
 	useEffect(()=>{
 		if(!loding&&!currentUser){
 		    signOut(auth);
 		}
-
 	},[])
 
 	//creat a "useNvigate" to route to dashBoard page after logged in
