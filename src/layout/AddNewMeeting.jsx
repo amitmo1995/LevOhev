@@ -3,7 +3,7 @@ import BackButton from '../features/BackButton';
 import { Link } from 'react-router-dom';
 import { firestore } from '../firebase/firebase';
 import HomePageButton from '../features/HomePageButton';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection ,query,where,getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { LogoutButton } from '../features/LogoutButton';
 
@@ -14,23 +14,45 @@ function AddNewMeeting() {
 	const navigate = useNavigate();
 
 	async function handleSubmit() {
-		let checkboxes = document.getElementsByName('buildingChecker');
-		let attendance = '';
-		for (var i = 0, n = checkboxes.length; i < n; i++) {
-			if (checkboxes[i].checked) attendance += checkboxes[i].value + ' , ';
+		let meetingExistId=false;
+		//check if the meeting already exist
+		try{
+			const meetingRef= collection(firestore,'meeting_summary');
+			const q= query(meetingRef,where("date","==",dateRef.current.value));
+			const qurySnapshot= await getDocs(q);
+			qurySnapshot.forEach(doc=>{
+				console.log("in meetingExistId");
+				meetingExistId=true;
+			});
+		}catch(e){
+			console.log(e,"  error on meetingExistId");
 		}
 
-		try {
-			await addDoc(collection(firestore, 'meeting_summary'), {
-				date: dateRef.current.value,
-				topic: topicRef.current.value,
-				summary: summaryRef.current.value,
-				attendance: attendance,
-			});
-		} catch {
-			alert('error');
-		} finally {
-			navigate(-1);
+		if(dateRef.current.value==""){
+			alert("אנא בחר/י תאריך, זהו שדה חובה")
+		}
+		else if(meetingExistId){
+			alert("קיימת פגישה בתאריך זה, אנא בחר/י תאריך אחר");
+		}
+		else{
+			let checkboxes = document.getElementsByName('buildingChecker');
+			let attendance = '';
+			for (var i = 0, n = checkboxes.length; i < n; i++) {
+				if (checkboxes[i].checked) attendance += checkboxes[i].value + ' , ';
+			}
+	
+			try {
+				await addDoc(collection(firestore, 'meeting_summary'), {
+					date: dateRef.current.value,
+					topic: topicRef.current.value,
+					summary: summaryRef.current.value,
+					attendance: attendance,
+				});
+			} catch {
+				alert('error');
+			} finally {
+				navigate(-1);
+			}
 		}
 	}
 
