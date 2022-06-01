@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import {auth,useAuth,signInWithEmailAndPassword, firestore} from '../firebase/firebase'
+import React, { useEffect, useRef, useState } from 'react';
+import {auth,useAuth,signInWithEmailAndPassword,signOut, firestore} from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
 import { doc,getDoc} from "firebase/firestore";
 
@@ -9,6 +9,12 @@ function Login() {
     const passwordRef=useRef();
     const [loding , setLoding] = useState(false);
     const currentUser=useAuth();
+	useEffect(()=>{
+		if(!loding&&!currentUser){
+		    signOut(auth);
+		}
+
+	},[])
 
 	//creat a "useNvigate" to route to dashBoard page after logged in
 	const navigate = useNavigate();
@@ -25,7 +31,6 @@ function Login() {
             alert("error");
 			userConnected=false;
         }
-        setLoding(false);
 		if(userConnected){ 
 			try{
 				console.log(emailRef.current.value);
@@ -49,10 +54,11 @@ function Login() {
 				}else{
 					console.log("no such document!");
 				}
-			}catch{
-				console.log("errordfadsgsdg");
+			}catch(e){
+				console.log("error- ",e);
 			}
 		} 
+		setLoding(false);
     }
 
 
