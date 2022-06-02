@@ -16,6 +16,12 @@ function BuildingOperation() {
 	let routToMapping = '/Mapping/' + params.building_id;
 	let routToAddNeighbors = '/AddNeighbors/' + params.building_id;
 
+
+	function GetBuilding(){
+		const param=useParams();
+		return param.building_name;
+	}
+
 	const options = [
 		<Link to={routToFinancialManagement} className='link'>
 			{' '}
@@ -39,7 +45,7 @@ function BuildingOperation() {
 			<Link to='/' className='link'>
 				<LogoutButton />
 			</Link>
-			<h1>ביצוע פעולות עבור הבניין</h1>
+			<h1>({GetBuilding()}) ביצוע פעולות עבור הבניין</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to='/ChooseBuilding' className='link'>
 				<BackButton />

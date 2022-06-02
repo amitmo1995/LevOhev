@@ -38,7 +38,7 @@ function App() {
 						path='/MeetingManagement'
 						element={<MeetingManagement />}></Route>
 					<Route
-						path='/BuildingOperation/:building_id'
+						path='/BuildingOperation/:building_id/:building_name'
 						element={<BuildingOperation />}></Route>
 					<Route
 						path='/FinancialManagement/:building_id'
