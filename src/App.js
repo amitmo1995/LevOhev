@@ -49,6 +49,7 @@ function App() {
 					<Route path='/AddNewMeeting' element={<AddNewMeeting />}></Route>
 					<Route path='/Signup' element={<Signup />}></Route>
 					<Route path='/TrackMeeting' element={<TrackMeeting />}></Route>
+
 					<Route path='/MeetingSummary' element={<MeetingSummary />}></Route>
 					<Route
 						path='/GivingScholarship/:building_id'
