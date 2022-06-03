@@ -48,7 +48,7 @@ function Login() {
 					navigate("../ManagerHomePage");
 				}
 				else{
-					let navTO="../HoaHomePage/"+data.data.building;
+					let navTO="../HoaHomePage/"+data.data.building_id;
 					navigate(navTO);
 				}
 				}else{

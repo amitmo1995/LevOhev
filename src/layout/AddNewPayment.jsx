@@ -20,8 +20,9 @@ function AddNewPayment() {
 		}else{
 			//check if the tenant exist
 			try{
+				console.log(params.building_id);
 				const tenantsRef= collection(firestore,'tenants');
-				const q= query(tenantsRef,where("building","==",params.buildingId),where("apartment","==",apartmentRef.current.value));
+				const q= query(tenantsRef,where("building","==",params.building_id),where("apartment","==",apartmentRef.current.value));
 				const qurySnapshot= await getDocs(q);
 				qurySnapshot.forEach(doc=>{
 					tanentExistId=doc.id;
@@ -46,7 +47,8 @@ function AddNewPayment() {
 		        }
 
 		        try{
-			        await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : buildingId , apartment : apartmentId ,apartment_num : apartmentRef.current.value, amount : amountRef.current.value});			
+			        await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : buildingId , apartment : apartmentId ,apartment_num : apartmentRef.current.value, amount : amountRef.current.value});	
+					alert("תשלום בוצע בהצלחה");		
 		        }catch{
 			        alert("error");
 		        }
@@ -54,8 +56,11 @@ function AddNewPayment() {
 				alert("לא קיים דייר בדירה שהזנת, אנא פנה/י לאחראי/ת להוספת הדייר או שנה/י את מספר הדירה");
 			}
 
-		}
 
+		}
+		apartmentRef.current.value="";
+		amountRef.current.value="";
+		dateRef.current.value="";
 		
 	}
 

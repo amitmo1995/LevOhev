@@ -41,7 +41,7 @@ function App() {
 						path='/BuildingOperation/:building_id/:building_name'
 						element={<BuildingOperation />}></Route>
 					<Route
-						path='/FinancialManagement/:building_id'
+						path='/FinancialManagement/:building_id/:building_name'
 						element={<FinancialManagement />}></Route>
 					<Route
 						path='/AppointmentNewHOA'
@@ -51,17 +51,17 @@ function App() {
 					<Route path='/TrackMeeting' element={<TrackMeeting />}></Route>
 					<Route path='/MeetingSummary' element={<MeetingSummary />}></Route>
 					<Route
-						path='/GivingScholarship/:building_id'
+						path='/GivingScholarship/:building_id/:building_name'
 						element={<GivingScholarship />}></Route>
 					<Route
-						path='/BuildingExpenses/:building_id'
+						path='/BuildingExpenses/:building_id/:building_name'
 						element={<BuildingExpenses />}></Route>
-					<Route path='/Mapping/:building_id' element={<Mapping />}></Route>
+					<Route path='/Mapping/:building_id/:building_name' element={<Mapping />}></Route>
 					<Route
-						path='/TrackingPayment/:building_id'
+						path='/TrackingPayment/:building_id/:building_name'
 						element={<TrackingPayment />}></Route>
 					<Route
-						path='/AddNeighbors/:building_id'
+						path='/AddNeighbors/:building_id/:building_name'
 						element={<AddNeighbors />}></Route>
 					{/* HOA side website */}
 					<Route

@@ -86,7 +86,7 @@ let sortByDate=function(date_1,date_2){
 function BuildingExpenses(props) {
 
     const params= useParams();
-    let routBack="/FinancialManagement/"+params.building_id;
+    let routBack="/FinancialManagement/"+params.building_id+"/"+params.building_name;
     const [loding,setLoding]=useState(true);
     const [children,setChildren]=useState(<div></div>);
     

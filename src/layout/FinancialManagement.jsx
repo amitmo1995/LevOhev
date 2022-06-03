@@ -69,10 +69,10 @@ function FinancialManagement
 	const [balance,setBalance]=useState("");
 	useEffect(()=>{getBuildingBalance(setBalance,params.building_id);},[]);
     //the page routing
-	let routToTrackingPayment="/TrackingPayment/"+params.building_id;
-	let routToBuildingExpenses="/BuildingExpenses/"+params.building_id;
-	let routToGivingScholarship="/GivingScholarship/"+params.building_id;
-	let routBack="/BuildingOperation/"+params.building_id;
+	let routToTrackingPayment="/TrackingPayment/"+params.building_id+"/"+params.building_name;
+	let routToBuildingExpenses="/BuildingExpenses/"+params.building_id+"/"+params.building_name;
+	let routToGivingScholarship="/GivingScholarship/"+params.building_id+"/"+params.building_name;
+	let routBack="/BuildingOperation/"+params.building_id+"/"+params.building_name;
 
 
 

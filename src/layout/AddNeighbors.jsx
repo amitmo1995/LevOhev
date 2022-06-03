@@ -9,7 +9,7 @@ import HomePageButton from '../features/HomePageButton'
 function AddNeighbors() {
 
 	const params= useParams();
-	let routBack="/BuildingOperation/"+params.building_id;
+	let routBack="/BuildingOperation/"+params.building_id+"/"+params.building_name;
 	
 	const apartmentRef=useRef();
 	const familyRef=useRef();

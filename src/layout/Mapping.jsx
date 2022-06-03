@@ -10,7 +10,7 @@ import { LogoutButton } from '../features/LogoutButton';
 
 function Mapping() {
 	const params = useParams();
-	let routBack = '/BuildingOperation/' + params.building_id;
+	let routBack = '/BuildingOperation/' + params.building_id+"/"+params.building_name;
 	const options = [
 		<Option optionName='מבוגרים - 20' imgAdd={AdultsImg} />,
 		<Option optionName='נכים - 1' imgAdd={DisabledImg} />,

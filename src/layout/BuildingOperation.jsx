@@ -12,9 +12,9 @@ function BuildingOperation() {
 	const params = useParams();
 	console.log('params = ', params);
 
-	let routToFinancialManagement = '/FinancialManagement/' + params.building_id;
-	let routToMapping = '/Mapping/' + params.building_id;
-	let routToAddNeighbors = '/AddNeighbors/' + params.building_id;
+	let routToFinancialManagement = '/FinancialManagement/' + params.building_id+"/"+params.building_name;
+	let routToMapping = '/Mapping/' + params.building_id+"/"+params.building_name;
+	let routToAddNeighbors = '/AddNeighbors/' + params.building_id+"/"+params.building_name;
 
 
 	function GetBuilding(){
