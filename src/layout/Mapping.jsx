@@ -8,6 +8,9 @@ import ChildrenImg from '../images/Children.jpg';
 import HomePageButton from '../features/HomePageButton';
 import { LogoutButton } from '../features/LogoutButton';
 
+
+
+
 function Mapping() {
 	const params = useParams();
 	let routBack = '/BuildingOperation/' + params.building_id+"/"+params.building_name;
