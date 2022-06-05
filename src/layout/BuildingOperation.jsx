@@ -19,7 +19,13 @@ function BuildingOperation() {
 
 	function GetBuilding(){
 		const param=useParams();
-		return param.building_name;
+		let temp=param.building_name.split(" ");
+		if(temp[1]=="A")
+		    temp[1]="א";
+		else if(temp[1]=="B")
+		    temp[1]="ב";
+		temp=temp.join(" ");
+		return temp;
 	}
 
 	const options = [
@@ -45,7 +51,7 @@ function BuildingOperation() {
 			<Link to='/' className='link'>
 				<LogoutButton />
 			</Link>
-			<h1>({GetBuilding()}) ביצוע פעולות עבור הבניין</h1>
+			<h1>({GetBuilding()}) - ביצוע פעולות עבור בניין</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to='/ChooseBuilding' className='link'>
 				<BackButton />

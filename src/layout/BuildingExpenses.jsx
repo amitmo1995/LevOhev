@@ -5,6 +5,18 @@ import {firestore} from '../firebase/firebase';
 import {where, collection, query, getDocs} from 'firebase/firestore';
 import HomePageButton from '../features/HomePageButton'
 
+function GetBuilding(){
+	const param=useParams();
+	let temp=param.building_name.split(" ");
+	if(temp[1]=="A")
+		temp[1]="א";
+	else if(temp[1]=="B")
+		temp[1]="ב";
+	temp=temp.join(" ");
+	return temp;
+} 
+
+
 let getBuildingBalance=async function(setBalance,buildingId){
 
 	let buildingExpens={};
@@ -175,7 +187,7 @@ function BuildingExpenses(props) {
 		<>
 			<div className='tableData'>
             <Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
-                <h1>מעקב הוצאות/הכנסות</h1>
+                <h1>מעקב הוצאות/הכנסות עבור בניין - ({GetBuilding()})</h1>
                 <table>
                     <thead>
                         <tr>

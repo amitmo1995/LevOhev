@@ -8,6 +8,18 @@ import {firestore} from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
 import HomePageButton from '../features/HomePageButton'
 
+function GetBuilding(){
+	const param=useParams();
+	let temp=param.building_name.split(" ");
+	if(temp[1]=="A")
+		temp[1]="א";
+	else if(temp[1]=="B")
+		temp[1]="ב";
+	temp=temp.join(" ");
+	return temp;
+} 
+
+
 function GivingScholarship() {
 
 	const params= useParams();
@@ -37,6 +49,7 @@ function GivingScholarship() {
 	return (
 		<div className='pageTemplate'>
 			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
+			<h1>מתן מלגה לבניין - ({GetBuilding()})</h1>
 			<h1>הזן את סכום המלגה</h1>
             <div className='Scholarship'>
                         <div className='input-group'>

@@ -10,12 +10,28 @@ import financeImg from '../images/financeImg.jpg'
 import HomePageButton from '../features/HomePageButton'
 
 
+
+function GetBuilding(){
+	const param=useParams();
+	let temp=param.building_name.split(" ");
+	if(temp[1]=="A")
+		temp[1]="א";
+	else if(temp[1]=="B")
+		temp[1]="ב";
+	temp=temp.join(" ");
+	return temp;
+} 
+
+
 	//the function return get the buildung balance
 	//param:
 	//setBalance-function to set the balance
 	//buildingId-id of the building
 	
 	let getBuildingBalance=async function(setBalance,buildingId){
+
+		
+
 
 		let buildingExpens={};
     let keys="";
@@ -85,7 +101,7 @@ function FinancialManagement
 	return (
 		<div className='pageTemplate'>
 			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
-            <h1>ניהול כלכלי של ועד הבית</h1>
+            <h1>ניהול כלכלי של ועד הבית בניין - ({GetBuilding()})</h1>
 			<h1>יתרה : {balance} שח</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to={routBack} className='link'>

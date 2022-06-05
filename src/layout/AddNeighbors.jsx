@@ -5,6 +5,16 @@ import {firestore} from '../firebase/firebase';
 import {doc,getDoc, addDoc,updateDoc,query,where,getDocs, collection} from 'firebase/firestore';
 import HomePageButton from '../features/HomePageButton'
 
+function GetBuilding(){
+	const param=useParams();
+	let temp=param.building_name.split(" ");
+	if(temp[1]=="A")
+		temp[1]="א";
+	else if(temp[1]=="B")
+		temp[1]="ב";
+	temp=temp.join(" ");
+	return temp;
+} 
 
 function AddNeighbors() {
 
@@ -94,7 +104,7 @@ function AddNeighbors() {
 			<div className='wrapper'>
 			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
 				<div className='formContainer'>
-					<span className='formHeading'>הוספת דייר</span>
+					<span className='formHeading'>הוספת דייר לבניין - ({GetBuilding()})</span>
 						<div className='input-group'>
                         <i class="fa-solid fa-people-roof"></i>
 							<input  placeholder='שם משפחה' type='text' ref={familyRef} required/>

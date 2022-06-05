@@ -40,6 +40,17 @@ let sortByDate=function(date_1,date_2){
     return 0;
 }
 
+function GetBuilding(){
+	const param=useParams();
+	let temp=param.building_name.split(" ");
+	if(temp[1]=="A")
+		temp[1]="א";
+	else if(temp[1]=="B")
+		temp[1]="ב";
+	temp=temp.join(" ");
+	return temp;
+} 
+
 function TrackingPayment() {
     const params= useParams();
     let routBack="/FinancialManagement/"+params.building_id+"/"+params.building_name;
@@ -103,7 +114,7 @@ if(loding){
 		<>
 			<div className='tableData'>
             <Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
-                <h1>מעקב תשלומי וועד</h1>
+                <h1>מעקב תשלומי וועד בניין - ({GetBuilding()})</h1>
                 <table>
                     <thead>
                         <tr>

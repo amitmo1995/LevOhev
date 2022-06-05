@@ -8,7 +8,16 @@ import ChildrenImg from '../images/Children.jpg';
 import HomePageButton from '../features/HomePageButton';
 import { LogoutButton } from '../features/LogoutButton';
 
-
+function GetBuilding(){
+	const param=useParams();
+	let temp=param.building_name.split(" ");
+	if(temp[1]=="A")
+		temp[1]="א";
+	else if(temp[1]=="B")
+		temp[1]="ב";
+	temp=temp.join(" ");
+	return temp;
+} 
 
 
 function Mapping() {
@@ -28,7 +37,7 @@ function Mapping() {
 			<Link to='/' className='link'>
 				<LogoutButton />
 			</Link>
-			<h1> מיפוי הבניין </h1>
+			<h1> מיפוי בניין - ({GetBuilding()}) </h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to={routBack} className='link'>
 				<BackButton />
