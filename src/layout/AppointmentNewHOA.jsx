@@ -77,7 +77,7 @@ function AppointmentNewHOA() {
 			});
 			bool = true;
 		} catch {
-			alert('error');
+			alert('הפעולה נכשלה אנא נסה שנית');
 		}
 
 		auth.updateCurrentUser(adminUser);

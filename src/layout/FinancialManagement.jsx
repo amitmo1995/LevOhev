@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import BackButton from '../features/BackButton';
 import Option from '../features/Option';
-import { Link , useParams } from 'react-router-dom';
+import { Link , useNavigate, useParams } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
 import {where, collection, query, getDocs} from 'firebase/firestore';
 import DepositTrackGraphImg from '../images/DepositTrackGraphImg.jpg'
 import ScholarshipPayment from '../images/ScholarshipPayment.jpg'
 import financeImg from '../images/financeImg.jpg'
 import HomePageButton from '../features/HomePageButton'
-
 
 
 function GetBuilding(){
@@ -29,7 +28,6 @@ function GetBuilding(){
 	//buildingId-id of the building
 	
 	let getBuildingBalance=async function(setBalance,buildingId){
-
 		
 
 
@@ -73,6 +71,7 @@ function GetBuilding(){
 
 	}catch{
         console.log("error on apartment id Query");
+		alert("הפעולה נכשלה, אנא נסה/י שנית מאוחר יותר");
     }
 
 	}
@@ -81,6 +80,7 @@ function GetBuilding(){
 
 function FinancialManagement
 () {
+
 	const params= useParams();
 	const [balance,setBalance]=useState("");
 	useEffect(()=>{getBuildingBalance(setBalance,params.building_id);},[]);

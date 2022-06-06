@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import BackButton from '../features/BackButton';
-import { Link , useParams } from 'react-router-dom';
+import { Link , useParams , useNavigate } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
 import {where, collection, query, getDocs} from 'firebase/firestore';
 import HomePageButton from '../features/HomePageButton'
 
 function GetBuilding(){
+
 	const param=useParams();
 	let temp=param.building_name.split(" ");
 	if(temp[1]=="A")
@@ -53,6 +54,7 @@ let sortByDate=function(date_1,date_2){
 
 function BuildingExpenses(props) {
 
+    const navigate = useNavigate();
     const params= useParams();
     let routBack="/FinancialManagement/"+params.building_id+"/"+params.building_name;
     const [loding,setLoding]=useState(true);
@@ -122,6 +124,8 @@ function BuildingExpenses(props) {
           setBalance(reduce);
     }catch{
         console.log("error on apartment id Query");
+        alert("הפעולה נכשלה, אנא נסה/י שנית מאוחר יותר");
+		navigate(-1);
     }
     }
     const [balance,setBalance]=useState("");

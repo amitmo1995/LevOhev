@@ -27,20 +27,22 @@ function AddNewMeeting() {
 		}catch(e){
 			console.log(e,"  error on meetingExistId");
 		}
-
-		if(dateRef.current.value==""){
-			alert("אנא בחר/י תאריך, זהו שדה חובה")
+        //check if the require field are fill
+		if(dateRef.current.value==""||topicRef.current.value==""){
+			alert("השדות תאריך ונושא הם שדות חובה")
 		}
+		//check if the meeting already exist
 		else if(meetingExistId){
 			alert("קיימת פגישה בתאריך זה, אנא בחר/י תאריך אחר");
 		}
 		else{
+			//Checking which tenants attended the meeting
 			let checkboxes = document.getElementsByName('buildingChecker');
 			let attendance = '';
 			for (var i = 0, n = checkboxes.length; i < n; i++) {
 				if (checkboxes[i].checked) attendance += checkboxes[i].value + ' , ';
 			}
-	
+	        //add the meeting to the DB
 			try {
 				await addDoc(collection(firestore, 'meeting_summary'), {
 					date: dateRef.current.value,
@@ -48,8 +50,9 @@ function AddNewMeeting() {
 					summary: summaryRef.current.value,
 					attendance: attendance,
 				});
+				alert('הפגישה נוספה בהצלחה');
 			} catch {
-				alert('error');
+				alert('הפעולה נכשלה אנא נסה/י שנית מאוחר יותר');
 			} finally {
 				navigate(-1);
 			}
