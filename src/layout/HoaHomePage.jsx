@@ -47,7 +47,7 @@ try{
 
 
    keys=Object.keys(buildingExpens);
-   let temp=keys.reduce((sum,currentKey)=>sum+buildingExpens[currentKey],0);
+   let temp=keys.reduce((sum,currentKey)=>sum+buildingExpens[currentKey],0).toFixed(2);
    console.log(temp);
    setBalance(temp); 
    //sort the result by date

@@ -96,8 +96,6 @@ function BuildingExpenses(props) {
         //set the result in descending order
         keys.reverse();
         let temp=keys.map(key=>{
-            console.log(buildingExpens[key]["date"]);
-            console.log(buildingExpens[key]["amount"]);
             return (
                 <tr>
                      <td>{buildingExpens[key]["amount"]}</td>
@@ -109,7 +107,7 @@ function BuildingExpenses(props) {
           
           setChildren(temp);
           setLoding(false);
-          let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"].split(" ").join("")),0);
+          let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"].split(" ").join("")),0).toFixed(2);
           setBalance(reduce);
     }catch{
         console.log("error on apartment id Query");

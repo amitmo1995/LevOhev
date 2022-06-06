@@ -3,7 +3,7 @@ import emailjs from 'emailjs-com';
 import BackButton from '../features/BackButton';
 import { Link , useNavigate } from 'react-router-dom';
 import { firestore } from '../firebase/firebase';
-import { collection, query,where, getDocs } from 'firebase/firestore';
+import { collection, query, getDocs } from 'firebase/firestore';
 import HomePageButton from '../features/HomePageButton';
 import { LogoutButton } from '../features/LogoutButton';
 

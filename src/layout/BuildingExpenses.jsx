@@ -120,7 +120,7 @@ function BuildingExpenses(props) {
           });
           setChildren(temp);
           setLoding(false);
-          let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"].split(" ").join("")),0);
+          let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"].split(" ").join("")),0).toFixed(2);
           setBalance(reduce);
     }catch{
         console.log("error on apartment id Query");

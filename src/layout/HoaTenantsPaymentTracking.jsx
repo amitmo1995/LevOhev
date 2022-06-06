@@ -90,7 +90,7 @@ function TrackingPayment(props) {
         setChildren(temp);
         setLoding(false);
         //set the DOM objebt to dislay sum of the payment
-        let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"]),0);
+        let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"]),0).toFixed(2);
         setBalance(reduce);
     }catch{
         alert("משהו השתבש, אנא נסה/י שנית מאוחר יותר");

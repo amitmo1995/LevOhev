@@ -65,7 +65,16 @@ function ChooseBuilding() {
 	];
 	let [options, optionName] = [[], ''];
 	for (let i = 1; i <= 26; i++) {
-		let option_Name = 'בניין ' + buildingNumParse[i - 1];
+		let tempBldName=buildingNumParse[i - 1].split(" ");
+		if(tempBldName[1]=="A")
+		    tempBldName[1]="א";
+		else if(tempBldName[1]=="B")
+		    tempBldName[1]="ב";
+		tempBldName=tempBldName.join(" ");
+		    
+		    
+		    
+		let option_Name = 'בניין ' + tempBldName;
 		let goTo = '/BuildingOperation/' + buildingIdParse[i - 1]+'/'+buildingNumParse[i - 1];
 		// options[i] = <Option optionName={option_Name} imgAdd={buildingImg} />;
 		options[i] = (

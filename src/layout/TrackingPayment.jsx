@@ -97,7 +97,7 @@ try{
       });
       setChildren(temp);
       setLoding(false);
-      let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"]),0);
+      let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"]),0).toFixed(2);
       setBalance(reduce);
 }catch{
     console.log("error on apartment Query");
