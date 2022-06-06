@@ -17,50 +17,6 @@ function GetBuilding(){
 } 
 
 
-let getBuildingBalance=async function(setBalance,buildingId){
-
-	let buildingExpens={};
-let keys="";
-
-//get the building expense
-try{
-	//get the apartment monthly payment
-	let collectionRef=collection(firestore,'monthly_payment');
-	let apartQuery= query(collectionRef,where("building","==",buildingId));
-	let apartQurySnapshot= await getDocs(apartQuery);
-	apartQurySnapshot.forEach(doc=>{
-		buildingExpens[doc.id]=parseFloat(doc.data().amount);
-	});
-
-	//get the apartment HOA expanse
-	collectionRef=collection(firestore,'HOA_expense');
-	apartQuery= query(collectionRef,where("building","==",buildingId));
-	apartQurySnapshot= await getDocs(apartQuery);
-	apartQurySnapshot.forEach(doc=>{
-		//add negative sign to the expense
-		buildingExpens[doc.id]=(-parseFloat(doc.data().amount));
-	});
-	//get the grant payment
-	collectionRef=collection(firestore,'grant_payment');
-	apartQuery= query(collectionRef,where("building","==",buildingId));
-	apartQurySnapshot= await getDocs(apartQuery);
-	apartQurySnapshot.forEach(doc=>{
-		buildingExpens[doc.id]=parseFloat(doc.data().amount);
-	});
-	console.log(buildingExpens)
-
-
-   keys=Object.keys(buildingExpens);
-   let temp=keys.reduce((sum,currentKey)=>sum+buildingExpens[currentKey],0);
-   console.log(temp);
-   setBalance(temp); 
-
-}catch{
-	console.log("error on apartment id Query");
-}
-
-}
-
 let sortByDate=function(date_1,date_2){
 
     date_1=date_1.split('-');
@@ -151,10 +107,7 @@ function BuildingExpenses(props) {
         keys.sort((key1,key2)=>{return sortByDate(buildingExpens[key1]["date"],buildingExpens[key2]["date"]);});
         //set the result in descending order
         keys.reverse();
-        console.log("map");
         let temp=keys.map(key=>{
-            console.log(buildingExpens[key]["date"]);
-            console.log(buildingExpens[key]["amount"]);
             return (
                 <tr>
                      <td>{buildingExpens[key]["amount"]}</td>
@@ -163,17 +116,16 @@ function BuildingExpenses(props) {
                 </tr>
             );
           });
-          console.log(" end map");
-          console.log(children);
           setChildren(temp);
-          console.log(children);
           setLoding(false);
+          let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"].split(" ").join("")),0);
+          setBalance(reduce);
     }catch{
         console.log("error on apartment id Query");
     }
     }
     const [balance,setBalance]=useState("");
-	useEffect(()=>{getBuildingBalance(setBalance,params.building_id);},[]);
+	//useEffect(()=>{getBuildingBalance(setBalance,params.building_id);},[]);
 
     useEffect(()=>{getData();},[]);
 
@@ -191,6 +143,16 @@ function BuildingExpenses(props) {
                 <table>
                     <thead>
                         <tr>
+                            <th>יתרה בחשבון</th>
+                        </tr>
+                        <tr>
+                        <th>{balance}</th>
+                        </tr>
+                </thead>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
                             <th>סכום</th>
                             <th>תאריך</th>
                             <th>תיאור</th>
@@ -200,16 +162,7 @@ function BuildingExpenses(props) {
                         {children}
                     </tbody>
                 </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>יתרה בחשבון</th>
-                        </tr>
-                        <tr>
-                        <th>{balance}</th>
-                        </tr>
-                </thead>
-                </table>
+                
                 <Link to={routBack} className='link'>
                     <BackButton />
                 </Link>

@@ -55,6 +55,7 @@ function TrackingPayment() {
     const params= useParams();
     let routBack="/FinancialManagement/"+params.building_id+"/"+params.building_name;
 
+    const [balance,setBalance]=useState("");
     const [loding,setLoding]=useState(true);
     const [children,setChildren]=useState(<div></div>);
 
@@ -96,6 +97,8 @@ try{
       });
       setChildren(temp);
       setLoding(false);
+      let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"]),0);
+      setBalance(reduce);
 }catch{
     console.log("error on apartment Query");
 }
@@ -115,6 +118,16 @@ if(loding){
 			<div className='tableData'>
             <Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
                 <h1>מעקב תשלומי וועד בניין - ({GetBuilding()})</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>סך הכל</th>
+                        </tr>
+                        <tr>
+                        <th>{balance}</th>
+                        </tr>
+                </thead>
+                </table>
                 <table>
                     <thead>
                         <tr>

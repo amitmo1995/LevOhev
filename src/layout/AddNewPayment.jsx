@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react';
 //import BackButton from '../features/BackButton';
-import { Link , useParams} from 'react-router-dom';
+import { Link , useParams , useNavigate } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
 import HomePageButton from '../features/HomePageButton'
 import {where, addDoc, collection, query, getDocs} from 'firebase/firestore';
 
 function AddNewPayment() {
+	const navigate = useNavigate();
 	const params= useParams();
 	let routToHomeGage="/HoaHomePage/"+params.building_id;
 	const dateRef=useRef();
@@ -29,6 +30,8 @@ function AddNewPayment() {
 				});
 			}catch(e){
 				console.log("error on neighborExistId- ",e);
+				alert("הפעולה נכשלה, אנא נסה/י שנית מאוחר יותר");
+			    navigate(-1);
 			}
 			//if the tenant exist- add the payment to the DB
 			if(tanentExistId){
@@ -44,13 +47,16 @@ function AddNewPayment() {
 			        });
 		        }catch{
 			        console.log("error on apartment id Query");
+					alert("הפעולה נכשלה, אנא נסה/י שנית מאוחר יותר");
+			        navigate(-1);
 		        }
 
 		        try{
 			        await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : buildingId , apartment : apartmentId ,apartment_num : apartmentRef.current.value, amount : amountRef.current.value});	
 					alert("תשלום בוצע בהצלחה");		
 		        }catch{
-			        alert("error");
+			        alert("הפעולה נכשלה, אנא נסה/י שנית מאוחר יותר");
+			        navigate(-1);
 		        }
 			}else{
 				alert("לא קיים דייר בדירה שהזנת, אנא פנה/י לאחראי/ת להוספת הדייר או שנה/י את מספר הדירה");

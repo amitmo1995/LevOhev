@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link , useParams } from 'react-router-dom';
+import { Link , useParams , useNavigate } from 'react-router-dom';
 import {firestore} from '../firebase/firebase';
 import {where, collection, query, getDocs} from 'firebase/firestore';
 //import {sortByDate} from '../features/sortByDate';
 import HomePageButton from '../features/HomePageButton'
 
+
+//get two date elment in format "yyyy-mm-dd"
+//#return if date_1 erlier return 1 if they equal return 0 else -1
 let sortByDate=function(date_1,date_2){
 
     date_1=date_1.split('-');
@@ -39,113 +42,83 @@ let sortByDate=function(date_1,date_2){
     return 0;
 }
 
-let getBuildingBalance=async function(setBalance,buildingId){
-
-	let buildingExpens={};
-let keys="";
-
-//get the building expense
-try{
-	//get the apartment monthly payment
-	let collectionRef=collection(firestore,'monthly_payment');
-	let apartQuery= query(collectionRef,where("building","==",buildingId));
-	let apartQurySnapshot= await getDocs(apartQuery);
-	apartQurySnapshot.forEach(doc=>{
-		buildingExpens[doc.id]=parseFloat(doc.data().amount);
-	});
-
-	//get the apartment HOA expanse
-	collectionRef=collection(firestore,'HOA_expense');
-	apartQuery= query(collectionRef,where("building","==",buildingId));
-	apartQurySnapshot= await getDocs(apartQuery);
-	apartQurySnapshot.forEach(doc=>{
-		//add negative sign to the expense
-		buildingExpens[doc.id]=(-parseFloat(doc.data().amount));
-	});
-	//get the grant payment
-	collectionRef=collection(firestore,'grant_payment');
-	apartQuery= query(collectionRef,where("building","==",buildingId));
-	apartQurySnapshot= await getDocs(apartQuery);
-	apartQurySnapshot.forEach(doc=>{
-		buildingExpens[doc.id]=parseFloat(doc.data().amount);
-	});
-	console.log(buildingExpens)
-
-
-   keys=Object.keys(buildingExpens);
-   let temp=keys.reduce((sum,currentKey)=>sum+buildingExpens[currentKey],0);
-   console.log(temp);
-   setBalance(temp); 
-
-}catch{
-	console.log("error on apartment id Query");
-}
-
-}
 
 function TrackingPayment(props) {
+    //object of the url parameters
     const params= useParams();
+    const navigate = useNavigate();
 	let routToHomeGage="/HoaHomePage/"+params.building_id;
-
     const [loding,setLoding]=useState(true);
     const [children,setChildren]=useState(<div></div>);
     const [balance,setBalance]=useState("");
-	useEffect(()=>{getBuildingBalance(setBalance,params.building_id);},[]);
 
 
 
-let buildingExpens={};
-let keys="";
+    let buildingExpens={};
+    let keys="";
 
-///let children=<div>ijdfoijoirfjo</div>;
-async function getData(){   
-///get buildingId from the url param 
-let buildingId=params.building_id
-//get the building expense
-try{
-    //get the apartment monthly payment
-    let collectionRef=collection(firestore,'monthly_payment');
-    let apartQuery= query(collectionRef,where("building","==",buildingId));
-    let apartQurySnapshot= await getDocs(apartQuery);
-    apartQurySnapshot.forEach(doc=>{
-        buildingExpens[doc.id]=doc.data();
-        buildingExpens[doc.id]["reason"]="תשלום וועד דירה "+ buildingExpens[doc.id]["apartment_num"];
-    });
-    keys=Object.keys(buildingExpens);
-    //sort the result by date
-    keys.sort((key1,key2)=>{return sortByDate(buildingExpens[key1]["date"],buildingExpens[key2]["date"]);});
-    //set the result in descending order
-    keys.reverse();
 
-    let temp=keys.map(key=>{
-        return (
-            <tr>
-                 <td>{buildingExpens[key]["amount"]}</td>
-                 <td>{buildingExpens[key]["date"].split("-").reverse().join("-")}</td>
-                 <td>{buildingExpens[key]["reason"]}</td>
-            </tr>
-        );
-      });
-      setChildren(temp);
-      setLoding(false);
-}catch{
-    console.log("error on apartment Query");
+    async function getData(){   
+        ///get buildingId from the url param 
+        let buildingId=params.building_id
+        //get the building expense
+        try{
+            //get the apartment monthly payment
+            let collectionRef=collection(firestore,'monthly_payment');
+            let apartQuery= query(collectionRef,where("building","==",buildingId));
+            let apartQurySnapshot= await getDocs(apartQuery);
+            apartQurySnapshot.forEach(doc=>{
+                buildingExpens[doc.id]=doc.data();
+                buildingExpens[doc.id]["reason"]="תשלום וועד דירה "+ buildingExpens[doc.id]["apartment_num"];
+            });
+            keys=Object.keys(buildingExpens);
+            //sort the result by date
+            keys.sort((key1,key2)=>{return sortByDate(buildingExpens[key1]["date"],buildingExpens[key2]["date"]);});
+            //set the result in descending order
+            keys.reverse();
+
+            //set the DOM objebt to dislay all the payment
+            let temp=keys.map(key=>{
+                return (
+                    <tr>
+                        <td>{buildingExpens[key]["amount"]}</td>
+                        <td>{buildingExpens[key]["date"].split("-").reverse().join("-")}</td>
+                        <td>{buildingExpens[key]["reason"]}</td>
+                  </tr>
+            );
+        });
+        setChildren(temp);
+        setLoding(false);
+        //set the DOM objebt to dislay sum of the payment
+        let reduce=keys.reduce((sum,currentKey)=>sum+parseFloat(buildingExpens[currentKey]["amount"]),0);
+        setBalance(reduce);
+    }catch{
+        alert("משהו השתבש, אנא נסה/י שנית מאוחר יותר");
+        console.log("error on apartment Query");
+        navigate(-1);
+    }
 }
-}
+
 
 useEffect(()=>{getData();},[]);
-
 if(loding){
     return <h1>loding ... </h1>;
 }
-
-
-
 	return (
 		<>
 			<div className='tableData'>
             <Link to={routToHomeGage} className='link'><HomePageButton /></Link>
                 <h1>מעקב תשלומי וועד</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>סך הכל</th>
+                        </tr>
+                        <tr>
+                        <th>{balance}</th>
+                        </tr>
+                </thead>
+                </table>
                 <table>
                     <thead>
                         <tr>
@@ -157,16 +130,6 @@ if(loding){
                     <tbody>
                     {children}
                     </tbody>
-                </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>יתרה בחשבון</th>
-                        </tr>
-                        <tr>
-                        <th>{balance}</th>
-                        </tr>
-                </thead>
                 </table>
              </div>
 		</>

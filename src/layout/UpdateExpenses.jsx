@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { Link , useParams } from 'react-router-dom';
+import { Link , useParams , useNavigate } from 'react-router-dom';
 import { addDoc , collection } from 'firebase/firestore';
 import {firestore} from '../firebase/firebase'
 import HomePageButton from '../features/HomePageButton'
 
 
 function UpdateExpenses() {
+	const navigate = useNavigate();
 	const params= useParams();
 	let routToHomeGage="/HoaHomePage/"+params.building_id;
 	const dateRef=useRef();
@@ -13,11 +14,17 @@ function UpdateExpenses() {
 	const amountRef=useRef();
 
 	async function handleSubmit(){
-		try{
-			await addDoc(collection(firestore,'HOA_expense'),{date :  dateRef.current.value , building : params.building_id , reason : reasonRef.current.value , amount : amountRef.current.value});			
+		try{alert("התשלום נוסף בהצלחה");
+			await addDoc(collection(firestore,'HOA_expense'),{date :  dateRef.current.value , building : params.building_id , reason : reasonRef.current.value , amount : amountRef.current.value});
+			alert("התשלום נוסף בהצלחה");
+			//navigate(-1);
 		}catch{
-			alert("error");
+			alert("הפעולה נכשלה, אנא נסה/י שנית מאוחר יותר");
+			navigate(-1);
 		}
+		dateRef.current.value="";
+	    reasonRef.current.value="";
+	    amountRef.current.value="";
 	}
 
 	return (
