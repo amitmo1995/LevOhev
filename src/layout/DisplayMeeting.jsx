@@ -24,13 +24,13 @@ function DisplayMeeting() {
 	<div className='pageTemplate'>
 	<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
 
-		<div className='DisplaySummary'>
+		<div>
 			<h1 >:נושא פגישה</h1>
             <h1 >{topic}</h1>
-            <h2 >תאריך: {date}</h2>
-            <h2 >:בניינים שהשתתפו בפגישה</h2>
-            <h2>{attendance}</h2>
-            <h2 >:סיכום</h2>
+            <h2 className='DisplaySummary'>תאריך: {date}</h2>
+            <h2 className='DisplaySummary'>:בניינים שהשתתפו בפגישה</h2>
+            <h2 className='DisplaySummary'>{attendance}</h2>
+            <h2 className='DisplaySummary' >:סיכום</h2>
             <h3>{summary}</h3>
 		</div>
 		
