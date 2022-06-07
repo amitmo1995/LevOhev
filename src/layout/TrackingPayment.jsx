@@ -78,7 +78,7 @@ try{
     let apartQurySnapshot= await getDocs(apartQuery);
     apartQurySnapshot.forEach(doc=>{
         buildingExpens[doc.id]=doc.data();
-        buildingExpens[doc.id]["reason"]="תשלום וועד דירה "+ buildingExpens[doc.id]["apartment"];
+        buildingExpens[doc.id]["reason"]="תשלום וועד דירה "+ buildingExpens[doc.id]["apartment_num"];
     });
     keys=Object.keys(buildingExpens);
     //sort the result by date

@@ -51,10 +51,16 @@ function TrackMeeting() {
 	const attendanceRef = useRef();
     const form = useRef();
 
-
+    const displayMeeting= (meeting) =>{
+		localStorage.setItem("meetingToDisplay",JSON.stringify(meeting));
+		navigate("../DisplayMeeting")
+	}
 
 
 	const sendEmail = async (meeting) => {
+
+
+
 		let tempEmail="";
 		try{
 		  
@@ -117,8 +123,8 @@ function TrackMeeting() {
 				return (
 					<tr>
 						<td><button id={key} onClick={()=>{sendEmail(meetingSummary[key])}}>שלח סיכום פגישה במייל</button></td>
+						<td><button id={key} onClick={()=>{displayMeeting(meetingSummary[key])}}>הצג פגישה</button></td>
 						<td>{meetingSummary[key]['attendance']}</td>
-						<td>{meetingSummary[key]['summary']}</td>
 						<td>{meetingSummary[key]['topic']}</td>
 						<td>
 							{meetingSummary[key]['date'].split('-').reverse().join('-')}
@@ -155,8 +161,8 @@ function TrackMeeting() {
 					<thead>
 						<tr>
 						    <th>שלח במייל</th>
-							<th>נוכחים</th>
-							<th>סיכום</th>
+							<th>הצגת פגישה</th>
+							<th>נוכחים</th>							
 							<th>נושא</th>
 							<th>תאריך</th>
 						</tr>

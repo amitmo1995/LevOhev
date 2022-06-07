@@ -22,6 +22,9 @@ import Mapping from './layout/Mapping';
 import TrackingPayment from './layout/TrackingPayment';
 import AddNeighbors from './layout/AddNeighbors';
 import HoaTenantsPaymentTracking from './layout/HoaTenantsPaymentTracking';
+import DisplayMeeting from './layout/DisplayMeeting';
+
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -49,7 +52,7 @@ function App() {
 					<Route path='/AddNewMeeting' element={<AddNewMeeting />}></Route>
 					<Route path='/Signup' element={<Signup />}></Route>
 					<Route path='/TrackMeeting' element={<TrackMeeting />}></Route>
-
+					<Route path='/DisplayMeeting' element={<DisplayMeeting />}></Route>
 					<Route path='/MeetingSummary' element={<MeetingSummary />}></Route>
 					<Route
 						path='/GivingScholarship/:building_id/:building_name'

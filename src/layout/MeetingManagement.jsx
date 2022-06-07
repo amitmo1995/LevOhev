@@ -10,7 +10,7 @@ function MeetingManagement() {
 	const options = [
 		<Link to='/TrackMeeting' className='link'>
 			{' '}
-			<Option optionName='מעקב נוכחים' imgAdd={PresenceCheckImg} />
+			<Option optionName='מעקב נוכחות' imgAdd={PresenceCheckImg} />
 		</Link>,
 		<Link to='/AddNewMeeting' className='link'>
 			{' '}

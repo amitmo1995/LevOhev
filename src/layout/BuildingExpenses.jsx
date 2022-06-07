@@ -75,7 +75,7 @@ function BuildingExpenses(props) {
         let apartQurySnapshot= await getDocs(apartQuery);
         apartQurySnapshot.forEach(doc=>{
             buildingExpens[doc.id]=doc.data();
-            buildingExpens[doc.id]["reason"]="תשלום דירה "+ buildingExpens[doc.id]["apartment"];
+            buildingExpens[doc.id]["reason"]="תשלום דירה "+ buildingExpens[doc.id]["apartment_num"];
             //add color to the table row
             buildingExpens[doc.id]["color"]="green";
         });

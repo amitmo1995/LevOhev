@@ -276,6 +276,25 @@ body {
   text-shadow: 1px 2px #161515;
 }
 
+.pageTemplate h2 {
+  margin: 10px 0;
+  text-align: center;
+  color: #f4f4f4;
+  position: relative;
+  text-shadow: 1px 2px #161515;
+}
+
+.pageTemplate h3 {
+  margin: 10px 0;
+  text-align: center;
+  color: #ddd4d4;
+  position: relative;
+  text-shadow: 1px 2px #161515;
+}
+
+
+
+
 .optionsContainer {
   display: grid;
   grid-template-columns: repeat(3, auto);
