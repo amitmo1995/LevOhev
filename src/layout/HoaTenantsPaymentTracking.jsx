@@ -182,10 +182,10 @@ function TrackingPayment(props) {
 
             //get data comlete- display the data
             setLoding(false);
-            //displayData();
 
     }catch(e){
-        alert(e);
+        console.log("error on apartment Query");
+        console.log(e);
         alert("משהו השתבש, אנא נסה/י שנית מאוחר יותר");
         console.log("error on apartment Query");
         navigate(-1);
