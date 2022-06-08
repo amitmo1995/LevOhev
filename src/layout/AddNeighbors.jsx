@@ -23,6 +23,7 @@ function AddNeighbors() {
 	let routBack="/BuildingOperation/"+params.building_id+"/"+params.building_name;
 	const navigate = useNavigate();
 	const apartmentRef=useRef();
+	const StartDebtRef=useRef();
 	const familyRef=useRef();
 	const youngRef=useRef();
 	const oldRef=useRef();
@@ -31,8 +32,8 @@ function AddNeighbors() {
 
 
 	async function handleSubmit(){
-		if(apartmentRef.current.value==""||familyRef.current.value==""){
-			alert("השדות שם משפחה ומספר דירה הם שדות חובה ")
+		if(apartmentRef.current.value==""||familyRef.current.value==""||StartDebtRef.current.value==""){
+			alert("השדות שם משפחה, מספר דירה ותאריך לתחילת חיוב הם שדות חובה ")
 		}else{
 			try{
 				let neighborExistId=false;
@@ -87,7 +88,7 @@ function AddNeighbors() {
 				else {
 					//add the neighbors to the DB
 					await addDoc(collection(firestore,'tenants'),{building : buildingId, building_num : buildingNum , apartment : apartmentRef.current.value , family_name : familyRef.current.value
-						, young : youngRef.current.value , old : oldRef.current.value , disabled : disabledRef.current.value});
+						, StartOfDebt:StartDebtRef.current.value, young : youngRef.current.value , old : oldRef.current.value , disabled : disabledRef.current.value});
 				}
 	
 	
@@ -98,6 +99,7 @@ function AddNeighbors() {
 				youngRef.current.value="";
 				oldRef.current.value="";
 				disabledRef.current.value="";
+				StartDebtRef.current.value="";
 	
 	
 	
@@ -129,6 +131,11 @@ function AddNeighbors() {
 								min={1}
 								ref={apartmentRef}
 							/>
+							<span className='bar'></span>
+						</div>
+						<div className='input-group'>
+                            <i class="fa-regular fa-calendar-days"></i>
+                            <input ref={StartDebtRef} type ='date'  title='תאריך לחיוב ראשון לוועד בית' placeholder='תאריך לחיוב ראשון לוועד בית' required/>
 							<span className='bar'></span>
 						</div>
                         <div className='input-group'>
