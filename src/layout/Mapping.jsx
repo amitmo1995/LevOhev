@@ -28,6 +28,7 @@ function Mapping() {
 	const [adults,setAdults]=useState("loding...");
 	const [disabled,setDisabled]=useState("loding...");
 	const [children,setChildren]=useState("loding...");
+	const [row,setRow]=useState("");
 
 	let tenantsArr={};
 
@@ -85,6 +86,43 @@ function Mapping() {
 
 
 
+	let tenants={};
+	let keys='';
+	async function getTable(){
+		try{
+		let buildingId=params.building_id;
+		let collectionRef=collection(firestore,'tenants');
+        let apartQuery= query(collectionRef,where("building","==",buildingId));
+        let apartQurySnapshot= await getDocs(apartQuery);
+		apartQurySnapshot.forEach(doc=>{
+            tenants[doc.id]=doc.data();
+        });
+
+		keys=Object.keys(tenants);
+        //sort the result by apartmentNum
+        keys.sort((key1,key2)=>{return tenants[key1]["apartment"]-tenants[key2]["apartment"]});
+        let temp=keys.map(key=>{
+            return (
+                <tr>
+					 <td>{tenants[key]["disabled"]}</td>
+                     <td>{tenants[key]["old"]}</td>
+					 <td>{tenants[key]["young"]}</td>
+					 <td>{tenants[key]["family_name"]}</td>
+					 <td>{tenants[key]["apartment"]}</td>
+                </tr>
+            );
+          });
+
+		  setRow(temp);
+          //setLoding(false);
+		}catch{
+			console.log("error on apartment id Query");
+		}
+	}
+	useEffect(()=>{getTable();},[]);
+
+
+
 
 
 
@@ -113,6 +151,24 @@ function Mapping() {
 				<LogoutButton />
 			</Link>
 			<h1> מיפוי בניין - ({GetBuilding()}) </h1>
+
+			<div className='tableData'>
+				<table>
+                    <thead>
+                        <tr>
+                            <th>נכים</th>
+                            <th>מבוגרים</th>
+							<th>ילדים</th>
+                            <th>משפחה</th>
+							<th>דירה</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {row}
+                    </tbody>
+                </table>
+			</div>
+
 			<div className='optionsContainer'>{options}</div>
 			<Link to={routBack} className='link'>
 				<BackButton />
