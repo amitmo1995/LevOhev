@@ -121,27 +121,8 @@ function Mapping() {
 	}
 	useEffect(()=>{getTable();},[]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	let routBack = '/BuildingOperation/' + params.building_id+"/"+params.building_name;
-	const options = [
-		<Option optionName={adults} imgAdd={AdultsImg} />,
-		<Option optionName={disabled} imgAdd={DisabledImg} />,
-		<Option optionName={children} imgAdd={ChildrenImg} />,
-	];
-
+	
 	return (
 		<div className='pageTemplate'>
 			<Link to='/ManagerHomePage' className='link'>
@@ -156,6 +137,27 @@ function Mapping() {
 				<table>
                     <thead>
                         <tr>
+						    <th colspan="3">סך הכל</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+					    <tr>
+						    <td>{disabled}</td>
+					        <td>{adults}</td>
+						    <td>{children}</td>
+					    </tr>
+                    </tbody>
+                </table>
+			</div>
+
+
+			<div className='tableData'>
+				<table>
+                    <thead>
+					    <tr>
+                            <th colspan="5">פירוט</th>
+                        </tr>
+                        <tr>
                             <th>נכים</th>
                             <th>מבוגרים</th>
 							<th>ילדים</th>
@@ -169,7 +171,6 @@ function Mapping() {
                 </table>
 			</div>
 
-			<div className='optionsContainer'>{options}</div>
 			<Link to={routBack} className='link'>
 				<BackButton />
 			</Link>
