@@ -119,8 +119,8 @@ function TrackMeeting() {
 			let temp = keys.map(key => {
 				return (
 					<tr>
-						<td><button id={key} onClick={()=>{sendEmail(meetingSummary[key])}}>שלח סיכום פגישה במייל</button></td>
-						<td><button id={key} onClick={()=>{displayMeeting(meetingSummary[key])}}>הצג פגישה</button></td>
+						<td><button className='button-43' id={key} onClick={()=>{sendEmail(meetingSummary[key])}}>שלח סיכום</button></td>
+						<td><button className='button-43' id={key} onClick={()=>{displayMeeting(meetingSummary[key])}}>הצג פגישה</button></td>
 						<td>{meetingSummary[key]['attendance']}</td>
 						<td>{meetingSummary[key]['topic']}</td>
 						<td>
@@ -183,5 +183,8 @@ function TrackMeeting() {
 		</>
 	);
 }
-
 export default TrackMeeting;
+
+
+
+
