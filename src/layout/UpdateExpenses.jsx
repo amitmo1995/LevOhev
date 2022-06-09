@@ -14,7 +14,7 @@ function UpdateExpenses() {
 	const amountRef=useRef();
 
 	async function handleSubmit(){
-		try{alert("התשלום נוסף בהצלחה");
+		try{
 			await addDoc(collection(firestore,'HOA_expense'),{date :  dateRef.current.value , building : params.building_id , reason : reasonRef.current.value , amount : amountRef.current.value});
 			alert("התשלום נוסף בהצלחה");
 			//navigate(-1);

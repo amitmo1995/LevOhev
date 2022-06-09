@@ -11,6 +11,7 @@ import AppointmentNewHOA from './layout/AppointmentNewHOA';
 import AddNewMeeting from './layout/AddNewMeeting';
 import MeetingSummary from './layout/MeetingSummary';
 import GivingScholarship from './layout/GivingScholarship';
+import UpdateBuildingTenantsPayment from './layout/UpdateBuildingTenantsPayment';
 import Query from './layout/Query';
 import HoaHomePage from './layout/HoaHomePage';
 import AddNewPayment from './layout/AddNewPayment';
@@ -57,6 +58,9 @@ function App() {
 					<Route
 						path='/GivingScholarship/:building_id/:building_name'
 						element={<GivingScholarship />}></Route>
+					<Route
+						path='/UpdateBuildingTenantsPayment/:building_id/:building_name'
+						element={<UpdateBuildingTenantsPayment />}></Route>
 					<Route
 						path='/BuildingExpenses/:building_id/:building_name'
 						element={<BuildingExpenses />}></Route>

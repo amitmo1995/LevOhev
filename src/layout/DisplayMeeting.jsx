@@ -31,7 +31,7 @@ function DisplayMeeting() {
             <h2 className='DisplaySummary'>:בניינים שהשתתפו בפגישה</h2>
             <h2 className='DisplaySummary'>{attendance}</h2>
             <h2 className='DisplaySummary' >:סיכום</h2>
-            <h3>{summary}</h3>
+            <h3><pre>{summary}</pre></h3>
 		</div>
 		
 		<Link to='/TrackMeeting' className='link'><BackButton /></Link>

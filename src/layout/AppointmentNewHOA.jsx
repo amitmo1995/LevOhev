@@ -12,6 +12,7 @@ import {
 	where,
 	getDoc,
 	query,
+	deleteDoc,
 } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
@@ -27,6 +28,7 @@ function AppointmentNewHOA() {
 	const permissionsRef = useRef();
 	const [loding, setLoding] = useState(false);
 	const navigate = useNavigate();
+	
 
 	async function handleAppointment() {
 		const auth = getAuth();
@@ -69,6 +71,23 @@ function AppointmentNewHOA() {
 				console.log(doc.id, '===>', doc.data());
 				buildingId = doc.id;
 			});
+			
+
+
+
+
+			let id;
+			let collectionRef=collection(firestore,'users');
+			let HOAQuery= query(collectionRef,where("building_id","==",buildingId));
+			let HOAQurySnapshot= await getDocs(HOAQuery);
+			HOAQurySnapshot.forEach(doc=>{
+				id=doc.id
+			});
+			if(id)
+				await deleteDoc(doc(firestore,"users",id));
+		
+
+
 
 			await setDoc(userRef, {
 				building_id: buildingId,
@@ -84,6 +103,9 @@ function AppointmentNewHOA() {
 		if (bool) {
 			navigate(-1);
 		}
+
+
+		
 	}
 
 	return (

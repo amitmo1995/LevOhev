@@ -88,6 +88,7 @@ function FinancialManagement
 	let routToTrackingPayment="/TrackingPayment/"+params.building_id+"/"+params.building_name;
 	let routToBuildingExpenses="/BuildingExpenses/"+params.building_id+"/"+params.building_name;
 	let routToGivingScholarship="/GivingScholarship/"+params.building_id+"/"+params.building_name;
+	let routToUpdateBuildingTenantsPayment="/UpdateBuildingTenantsPayment/"+params.building_id+"/"+params.building_name;
 	let routBack="/BuildingOperation/"+params.building_id+"/"+params.building_name;
 
 
@@ -95,7 +96,8 @@ function FinancialManagement
 	const options = [
 		<Link to={routToTrackingPayment} className='link'> <Option optionName='מעקב תשלומי וועד' imgAdd={financeImg} /></Link>,
 		<Link to={routToBuildingExpenses} className='link'>	<Option optionName='מעקב הוצאות/הכנסות' imgAdd={DepositTrackGraphImg} /></Link>,
-		<Link to={routToGivingScholarship} className='link'>	<Option optionName='מתן מלגה' imgAdd={ScholarshipPayment} /></Link>
+		<Link to={routToGivingScholarship} className='link'>	<Option optionName='מתן מלגה' imgAdd={ScholarshipPayment} /></Link>,
+		<Link to={routToUpdateBuildingTenantsPayment} className='link'>	<Option optionName='עדכון סכום וועד בית חודשי' imgAdd={ScholarshipPayment} /></Link>
 	];
 
 	return (

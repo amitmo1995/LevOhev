@@ -1,27 +1,27 @@
-/*
-import React, { useRef, useState } from 'react';
-import BackButton from '../features/BackButton';
-import { Link, useParams } from 'react-router-dom';
-import {firestore} from '../firebase/firebase';
-import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
 
-function Query() {
-	const dateRef=useRef();
-	const apartmentRef=useRef();
-	const amountRef=useRef();
+// import React, { useRef, useState } from 'react';
+// import BackButton from '../features/BackButton';
+// import { Link, useParams } from 'react-router-dom';
+// import {firestore} from '../firebase/firebase';
+// import {where,doc,setDoc,getDoc, addDoc,add, collection,onSnapshot, query, getDocs} from 'firebase/firestore';
 
-	const params= useParams();
-	console.log(params);
-/*
-	async function handleSubmit(){
-		try{
-			const building=JSON.parse(localStorage.getItem('userConnected')).data.building;
-			await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : building , apartment : apartmentRef.current.value , amount : amountRef.current.value});			
-		}catch{
-			alert("error");
-		}
-	}
-*/
+// function Query() {
+// 	const dateRef=useRef();
+// 	const apartmentRef=useRef();
+// 	const amountRef=useRef();
+
+// 	const params= useParams();
+// 	console.log(params);
+
+// 	async function handleSubmit(){
+// 		try{
+// 			const building=JSON.parse(localStorage.getItem('userConnected')).data.building;
+// 			await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : building , apartment : apartmentRef.current.value , amount : amountRef.current.value});			
+// 		}catch{
+// 			alert("error");
+// 		}
+// 	}
+
 
 
 	 //async function handleSubmit(){
