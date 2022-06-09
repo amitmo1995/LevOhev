@@ -59,10 +59,15 @@ function TrackingPayment(props) {
     const [hoaMonthlyPayment,setHoaMonthlyPayment]=useState();
     
 
-    const getApartmentBalance= (apartmentNum)=>{        
+    const getApartmentBalance= (apartmentNum)=>{   
+        //get the tenant enterance date
+        let startOfDebt="";
+        let currTenant=tenantData.filter(tenant=>tenant["apartment"]==apartmentNum); 
+        if(currTenant)
+            startOfDebt=currTenant[0]["StartOfDebt"];     
         keys=Object.keys(data);
         //get array of the current apartment 
-        keys=keys.filter(key=>data[key]["apartment_num"]==apartmentNum);
+        keys=keys.filter(key=>data[key]["apartment_num"]==apartmentNum&&data[key]["StartOfDebt"]==startOfDebt);
         if(!tenantData.some(tenant=>tenant["apartment"]==apartmentNum))            
             return "-";
             
@@ -106,9 +111,14 @@ function TrackingPayment(props) {
     
     }
     const displayApartment = (apartmentNum) => {
+                //get the tenant enterance date
+                let startOfDebt="";
+                let currTenant=tenantData.filter(tenant=>tenant["apartment"]==apartmentNum); 
+                if(currTenant)
+                    startOfDebt=currTenant[0]["StartOfDebt"];
                 let keys=Object.keys(data);
                 //get array of the current apartment 
-                keys=keys.filter(key=>data[key]["apartment_num"]==apartmentNum);
+                keys=keys.filter(key=>data[key]["apartment_num"]==apartmentNum&&data[key]["StartOfDebt"]==startOfDebt);
                 //sort the result by date
                 keys.sort((key1,key2)=>{return sortByDate(data[key1]["date"],data[key2]["date"]);});
                 //set the result in descending order
@@ -213,7 +223,7 @@ if(loding){
 							<option value='6'>6</option>
 							<option value='7'>7</option>
 							<option value='8'>8</option>
-							<option value='9' hidden>9</option>
+							<option value='9'>9</option>
 							<option value='10'>10</option>
 							<option value='11'>11</option>
 							<option value='12'>12</option>

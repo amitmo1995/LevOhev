@@ -80,7 +80,7 @@ function AddNeighbors() {
 					// update field
 					await updateDoc(tenantsRef, {
 						family_name : familyRef.current.value , young : youngRef.current.value 
-						, old : oldRef.current.value , disabled : disabledRef.current.value
+						, StartOfDebt:StartDebtRef.current.value , old : oldRef.current.value , disabled : disabledRef.current.value
 					});
 	
 	

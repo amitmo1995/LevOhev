@@ -69,10 +69,15 @@ function TrackingPayment() {
 
 
 
-    const getApartmentBalance= (apartmentNum)=>{        
+    const getApartmentBalance= (apartmentNum)=>{
+        //get the tenant enterance date
+        let startOfDebt="";
+        let currTenant=tenantData.filter(tenant=>tenant["apartment"]==apartmentNum); 
+        if(currTenant)
+            startOfDebt=currTenant[0]["StartOfDebt"];     
         keys=Object.keys(data);
         //get array of the current apartment 
-        keys=keys.filter(key=>data[key]["apartment_num"]==apartmentNum);
+        keys=keys.filter(key=>data[key]["apartment_num"]==apartmentNum&&data[key]["StartOfDebt"]==startOfDebt);
         if(!tenantData.some(tenant=>tenant["apartment"]==apartmentNum))            
             return "-";
             
@@ -116,9 +121,14 @@ function TrackingPayment() {
     
     }
     const displayApartment = (apartmentNum) => {
+                //get the tenant enterance date
+                let startOfDebt="";
+                let currTenant=tenantData.filter(tenant=>tenant["apartment"]==apartmentNum); 
+                if(currTenant)
+                    startOfDebt=currTenant[0]["StartOfDebt"];
                 let keys=Object.keys(data);
                 //get array of the current apartment 
-                keys=keys.filter(key=>data[key]["apartment_num"]==apartmentNum);
+                keys=keys.filter(key=>data[key]["apartment_num"]==apartmentNum&&data[key]["StartOfDebt"]==startOfDebt);
                 //sort the result by date
                 keys.sort((key1,key2)=>{return sortByDate(data[key1]["date"],data[key2]["date"]);});
                 //set the result in descending order

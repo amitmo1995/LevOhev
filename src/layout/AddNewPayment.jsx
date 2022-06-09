@@ -16,6 +16,7 @@ function AddNewPayment() {
 	async function handleSubmit(){
 
 		let tanentExistId=false;
+		let tenantEnterDate="";
 		if(dateRef.current.value==""||apartmentRef.current.value==""||amountRef.current.value==""){
 			alert("אנא מלא/י את כל השדות");
 		}else{
@@ -27,6 +28,7 @@ function AddNewPayment() {
 				const qurySnapshot= await getDocs(q);
 				qurySnapshot.forEach(doc=>{
 					tanentExistId=doc.id;
+					tenantEnterDate=doc.data()["StartOfDebt"];
 				});
 			}catch(e){
 				console.log("error on neighborExistId- ",e);
@@ -35,24 +37,9 @@ function AddNewPayment() {
 			}
 			//if the tenant exist- add the payment to the DB
 			if(tanentExistId){
-				//query to get the apartment id
-		        let apartmentId="";
-		        const buildingId=params.building_id;
-		        try{
-			        const collectionRef=collection(firestore,'apartment');
-			        const apartQuery= query(collectionRef,where("building","==",buildingId),where("aprt_num","==",apartmentRef.current.value));
-			        const apartQurySnapshot= await getDocs(apartQuery);
-			        apartQurySnapshot.forEach(doc=>{
-				        apartmentId=doc.id;
-			        });
-		        }catch{
-			        console.log("error on apartment id Query");
-					alert("הפעולה נכשלה, אנא נסה/י שנית מאוחר יותר");
-			        navigate(-1);
-		        }
-
-		        try{
-			        await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : buildingId , apartment : apartmentId ,apartment_num : apartmentRef.current.value, amount : amountRef.current.value});	
+				try{
+			        await addDoc(collection(firestore,'monthly_payment'),{date :  dateRef.current.value , building : params.building_id 
+						, StartOfDebt : tenantEnterDate ,apartment_num : apartmentRef.current.value, amount : amountRef.current.value});	
 					alert("תשלום בוצע בהצלחה");		
 		        }catch{
 			        alert("הפעולה נכשלה, אנא נסה/י שנית מאוחר יותר");
