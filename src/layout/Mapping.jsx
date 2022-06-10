@@ -28,6 +28,7 @@ function Mapping() {
 	const [adults,setAdults]=useState("loding...");
 	const [disabled,setDisabled]=useState("loding...");
 	const [children,setChildren]=useState("loding...");
+	const [hebrewSpeakers,setHebSpeakers]=useState("loading...");
 	const [row,setRow]=useState("");
 
 	let tenantsArr={};
@@ -74,6 +75,15 @@ function Mapping() {
 				}				    
 				return sum+currNum;
 			},0));
+			setHebSpeakers('דוברי עברית - '+keys.reduce((sum,currentKey)=>{
+				let currNum;
+				if(typeof(parseFloat(tenantsArr[currentKey]["hebrewSpeaker"]))!=typeof(parseFloat("1"))||tenantsArr[currentKey]["hebrewSpeaker"]=="")
+				    currNum=0;
+			    else{
+					currNum=parseFloat(tenantsArr[currentKey]["hebrewSpeaker"]);
+				}				    
+				return sum+currNum;
+			},0));
 		} catch {
 			console.log('queryError');
 			alert("הפעולה נכשלה, אנא נסה/י שנית מאוחר יותר");
@@ -104,6 +114,8 @@ function Mapping() {
         let temp=keys.map(key=>{
             return (
                 <tr>
+					 <td>{tenants[key]["mainLanguage"]}</td>
+					 <td>{tenants[key]["hebrewSpeaker"]}</td>
 					 <td>{tenants[key]["disabled"]}</td>
                      <td>{tenants[key]["old"]}</td>
 					 <td>{tenants[key]["young"]}</td>
@@ -137,11 +149,12 @@ function Mapping() {
 				<table>
                     <thead>
                         <tr>
-						    <th colspan="3">סך הכל</th>
+						    <th colspan="4">סך הכל</th>
                         </tr>
                     </thead>
                     <tbody>
 					    <tr>
+							<td>{hebrewSpeakers}</td>
 						    <td>{disabled}</td>
 					        <td>{adults}</td>
 						    <td>{children}</td>
@@ -155,9 +168,11 @@ function Mapping() {
 				<table>
                     <thead>
 					    <tr>
-                            <th colspan="5">פירוט</th>
+                            <th colspan="7">פירוט</th>
                         </tr>
                         <tr>
+							<th>שפת אם</th>
+							<th>דוברי עברית</th>
                             <th>נכים</th>
                             <th>מבוגרים</th>
 							<th>ילדים</th>

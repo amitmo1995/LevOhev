@@ -28,6 +28,8 @@ function AddNeighbors() {
 	const youngRef=useRef();
 	const oldRef=useRef();
 	const disabledRef=useRef();
+	const hebrewSpeakerRef=useRef();
+	const mainLanguage=useRef();
 
 
 
@@ -88,7 +90,8 @@ function AddNeighbors() {
 				else {
 					//add the neighbors to the DB
 					await addDoc(collection(firestore,'tenants'),{building : buildingId, building_num : buildingNum , apartment : apartmentRef.current.value , family_name : familyRef.current.value
-						, StartOfDebt:StartDebtRef.current.value, young : youngRef.current.value , old : oldRef.current.value , disabled : disabledRef.current.value});
+						, StartOfDebt:StartDebtRef.current.value, young : youngRef.current.value , old : oldRef.current.value , disabled : disabledRef.current.value , hebrewSpeaker : hebrewSpeakerRef.current.value ,
+						mainLanguage : mainLanguage.current.value});
 				}
 	
 	
@@ -100,10 +103,13 @@ function AddNeighbors() {
 				oldRef.current.value="";
 				disabledRef.current.value="";
 				StartDebtRef.current.value="";
+				hebrewSpeakerRef.current.value="";
+				mainLanguage.current.value="";
 	
 	
 	
-						}catch{
+						}catch(e){
+							alert(e);
 				alert("הפעולה נכשלה, אנא נסה/י שנית מאוחר יותר");
 					navigate(-1);
 			}
@@ -169,6 +175,22 @@ function AddNeighbors() {
 								min={1}
 								ref={disabledRef}
 							/>
+							<span className='bar'></span>
+						</div>
+						<div className='input-group'>
+                            <i class="fa-solid fa-file-medical"></i>
+							<input
+								type='number'
+								placeholder='מספר נפשות דוברי עברית'
+								required
+								min={1}
+								ref={hebrewSpeakerRef}
+							/>
+							<span className='bar'></span>
+						</div>
+						<div className='input-group'>
+                        <i class="fa-solid fa-people-roof"></i>
+							<input  placeholder='שפת אם' type='text' ref={mainLanguage} required/>
 							<span className='bar'></span>
 						</div>
                         
