@@ -21,25 +21,22 @@ function Login() {
 	let userConnected=false;
 	let userEmail;
 	async function handleLogin() {
-		console.log("connecting...");
 		setLoding(true);
         try{
             await signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value);
 			userEmail=emailRef.current.value;
 			userConnected=true;
         }catch{
-            alert("error");
+            alert("התחברות נכשלה , אימייל ו/או סיסמא אינם תקינים");
 			userConnected=false;
         }
 		if(userConnected){ 
 			try{
-				console.log(emailRef.current.value);
 				const docId=emailRef.current.value;
 				const docRef = doc(firestore,'users',docId);
 				const docSnap =await getDoc(docRef);
 				if(docSnap.exists()){
 					let data={"id" : docSnap.id , "data" : docSnap.data()};
-					console.log(data);
 					localStorage.setItem("userConnected",JSON.stringify(data));
 				
 				

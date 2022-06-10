@@ -11,8 +11,6 @@ function DisplayMeeting() {
     const [topic,setTopic]=useState();
     useEffect(()=>{
         let meeting=JSON.parse(localStorage.getItem("meetingToDisplay"));
-        console.log("dhsfgiuheiruhgtiutre");
-        console.log(meeting["attendance"]);
         setAttendance(meeting["attendance"]);
         setSummary(meeting["summary"]);
         setDate(meeting["date"].split('-').reverse().join('/'));

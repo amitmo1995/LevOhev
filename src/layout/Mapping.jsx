@@ -12,7 +12,7 @@ import { collection, query, where , getDocs } from 'firebase/firestore';
 
 function GetBuilding(){
 	const param=useParams();
-	let temp=param.building_name.split("");
+	let temp=param.building_name.split(" ");
 	if(temp[1]=="A")
 		temp[1]="א";
 	else if(temp[1]=="B")

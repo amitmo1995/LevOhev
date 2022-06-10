@@ -85,14 +85,11 @@ function TrackMeeting() {
 		summaryRef.current.value=meeting.summary;
 		attendanceRef.current.value=meeting.attendance;
 	
-		console.log(meeting);
 		
 		emailjs.sendForm('service_f0pei3a', 'template_yvlfcxp', form.current, '9rAST6Xc6VoGnwDQa')
 		  .then((result) => {
-			  console.log(result.text);
 			  alert("המייל נשלח בהצלחה");
 		  }, (error) => {
-			  console.log(error.text);
 			  alert("שליחת המייל נכשלה");
 		  });
 	

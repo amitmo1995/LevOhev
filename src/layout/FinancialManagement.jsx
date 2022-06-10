@@ -59,15 +59,11 @@ function GetBuilding(){
         apartQurySnapshot.forEach(doc=>{
             buildingExpens[doc.id]=parseFloat(doc.data().amount);
         });
-		console.log(buildingExpens)
 
 
        keys=Object.keys(buildingExpens);
 	   let temp=keys.reduce((sum,currentKey)=>sum+buildingExpens[currentKey],0).toFixed(2);
-       console.log(temp);
 	   setBalance(temp); 
-	   //sort the result by date
-        //keys.sort((key1,key2)=>{return sortByDate(buildingExpens[key1]["date"],buildingExpens[key2]["date"]);});
 
 	}catch{
         console.log("error on apartment id Query");

@@ -21,7 +21,6 @@ function AddNewMeeting() {
 			const q= query(meetingRef,where("date","==",dateRef.current.value));
 			const qurySnapshot= await getDocs(q);
 			qurySnapshot.forEach(doc=>{
-				console.log("in meetingExistId");
 				meetingExistId=true;
 			});
 		}catch(e){

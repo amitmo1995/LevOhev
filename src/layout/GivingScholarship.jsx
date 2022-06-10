@@ -32,11 +32,11 @@ function GivingScholarship() {
 		try{
 			let today=new Date();
 			let date=today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
-			const building=JSON.parse(localStorage.getItem('userConnected')).data.building;
 			addDoc(collection(firestore,'grant_payment'),{amount : amountRef.current.value , building : params.building_id , date : date});	
 			bool=true;	
+			alert("המלגה עודכנה בהצלחה");
 		}catch{
-			alert("error");
+			alert("הפעולה נכשלה");
 		}finally{
 			if(bool){
 				navigate(-1);

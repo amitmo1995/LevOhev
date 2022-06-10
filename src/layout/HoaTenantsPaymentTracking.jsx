@@ -63,7 +63,7 @@ function TrackingPayment(props) {
         //get the tenant enterance date
         let startOfDebt="";
         let currTenant=tenantData.filter(tenant=>tenant["apartment"]==apartmentNum); 
-        if(currTenant)
+        if(currTenant.length>0)
             startOfDebt=currTenant[0]["StartOfDebt"];     
         keys=Object.keys(data);
         //get array of the current apartment 
@@ -114,7 +114,7 @@ function TrackingPayment(props) {
                 //get the tenant enterance date
                 let startOfDebt="";
                 let currTenant=tenantData.filter(tenant=>tenant["apartment"]==apartmentNum); 
-                if(currTenant)
+                if(currTenant.length>0)
                     startOfDebt=currTenant[0]["StartOfDebt"];
                 let keys=Object.keys(data);
                 //get array of the current apartment 

@@ -73,7 +73,7 @@ function TrackingPayment() {
         //get the tenant enterance date
         let startOfDebt="";
         let currTenant=tenantData.filter(tenant=>tenant["apartment"]==apartmentNum); 
-        if(currTenant)
+        if(currTenant.length>0)
             startOfDebt=currTenant[0]["StartOfDebt"];     
         keys=Object.keys(data);
         //get array of the current apartment 
@@ -124,7 +124,7 @@ function TrackingPayment() {
                 //get the tenant enterance date
                 let startOfDebt="";
                 let currTenant=tenantData.filter(tenant=>tenant["apartment"]==apartmentNum); 
-                if(currTenant)
+                if(currTenant.length>0)
                     startOfDebt=currTenant[0]["StartOfDebt"];
                 let keys=Object.keys(data);
                 //get array of the current apartment 
@@ -201,8 +201,6 @@ try{
     let tempMounthlyPayment=0;
 	if(apartQurySnapshot.exists()){
 		tempMounthlyPayment=apartQurySnapshot.data()["HOA_monthly_payment"]?apartQurySnapshot.data()["HOA_monthly_payment"]:0;
-
-        console.log(tempMounthlyPayment);
 	}else{
 		console.log("no such document!");
 	}
@@ -243,7 +241,7 @@ if(loding){
 							<option value='6'>6</option>
 							<option value='7'>7</option>
 							<option value='8'>8</option>
-							<option value='9' hidden>9</option>
+							<option value='9' >9</option>
 							<option value='10'>10</option>
 							<option value='11'>11</option>
 							<option value='12'>12</option>

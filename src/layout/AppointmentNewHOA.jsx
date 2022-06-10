@@ -45,7 +45,6 @@ function AppointmentNewHOA() {
 			const userRef = doc(firestore, 'users', emailRef.current.value);
 			//get the building id by chosen building
 			let buildingId = '';
-			console.log('in bulding');
 			const buildingPointer = collection(firestore, 'building');
 			const q = query(
 				buildingPointer,
@@ -60,22 +59,15 @@ function AppointmentNewHOA() {
 					buildingRef.current.value.replace(/[^A-Za-z]/g, '')
 				)
 			);
-			alert(
-				buildingRef.current.value.replace(/[^0-9]/g, '') +
-					' ' +
-					buildingRef.current.value.replace(/[^A-Za-z]/g, '')
-			);
 			const qurySnapshot = await getDocs(q);
 			qurySnapshot.forEach(doc => {
-				console.log('in bulding');
-				console.log(doc.id, '===>', doc.data());
 				buildingId = doc.id;
 			});
 			
 
 
 
-
+		if(permissionsRef.current.value!="admin"){
 			let id;
 			let collectionRef=collection(firestore,'users');
 			let HOAQuery= query(collectionRef,where("building_id","==",buildingId));
@@ -85,16 +77,24 @@ function AppointmentNewHOA() {
 			});
 			if(id)
 				await deleteDoc(doc(firestore,"users",id));
-		
-
-
-
 			await setDoc(userRef, {
 				building_id: buildingId,
 				permissions: permissionsRef.current.value,
 				name: nameRef.current.value,
 			});
 			bool = true;
+		}else{
+			await setDoc(userRef, {
+				permissions: permissionsRef.current.value,
+				name: nameRef.current.value,
+			});
+			bool = true;
+		}
+		
+
+
+
+			
 		} catch {
 			alert('הפעולה נכשלה אנא נסה שנית');
 		}

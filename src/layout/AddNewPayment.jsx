@@ -22,7 +22,6 @@ function AddNewPayment() {
 		}else{
 			//check if the tenant exist
 			try{
-				console.log(params.building_id);
 				const tenantsRef= collection(firestore,'tenants');
 				const q= query(tenantsRef,where("building","==",params.building_id),where("apartment","==",apartmentRef.current.value));
 				const qurySnapshot= await getDocs(q);

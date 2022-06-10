@@ -10,7 +10,6 @@ import HomePageButton from '../features/HomePageButton';
 
 function BuildingOperation() {
 	const params = useParams();
-	console.log('params = ', params);
 
 	let routToFinancialManagement = '/FinancialManagement/' + params.building_id+"/"+params.building_name;
 	let routToMapping = '/Mapping/' + params.building_id+"/"+params.building_name;
