@@ -11,7 +11,8 @@ function ManagerHomePage(props) {
 	const options = [
 		<Link to='/ChooseBuilding' className='link'> <Option optionName='ניהול בניין' imgAdd={buildingManageImg} /> </Link>,
 		<Link to='/MeetingManagement' className='link'> <Option optionName='פגישות' imgAdd={meetingImg} /> </Link>,
-		<Link to='/AppointmentNewHOA' className='link'> <Option optionName='הוספת משתמש' imgAdd={appointmentNewHOAImg}  /> </Link>
+		<Link to='/AppointmentNewHOA' className='link'> <Option optionName='הוספת משתמש' imgAdd={appointmentNewHOAImg}  /> </Link>,
+		<Link to='/SetMessage' className='link'> <Option optionName='שלח הודעה לוועדי בתים' imgAdd={appointmentNewHOAImg}  /> </Link>
 	];
 
 	return (

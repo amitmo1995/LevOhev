@@ -18,6 +18,7 @@ import AddNewPayment from './layout/AddNewPayment';
 import UpdateExpenses from './layout/UpdateExpenses';
 import TrackIncomeExpenses from './layout/TrackIncomeExpenses';
 import TrackMeeting from './layout/TrackMeeting';
+import SetMessage from './layout/SetMessage'
 import BuildingExpenses from './layout/BuildingExpenses';
 import Mapping from './layout/Mapping';
 import TrackingPayment from './layout/TrackingPayment';
@@ -37,6 +38,9 @@ function App() {
 					<Route path='/' element={<Home />}></Route>
 					<Route path='/query/:query_name' element={<Query />} />
 					<Route path='/ManagerHomePage' element={<ManagerHomePage />}></Route>
+					<Route
+						path='/SetMessage'
+						element={<SetMessage />}></Route>
 					<Route path='/ChooseBuilding' element={<ChooseBuilding />}></Route>
 					<Route
 						path='/MeetingManagement'

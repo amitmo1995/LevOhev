@@ -8,6 +8,7 @@ import PaymentTracking from '../images/PaymentTracking.jpg'
 import { LogoutButton } from '../features/LogoutButton';
 import {firestore} from '../firebase/firebase';
 import {where, collection, query, getDocs} from 'firebase/firestore';
+import { async } from '@firebase/util';
 
 //the function return get the buildung balance
 	//param:
@@ -63,6 +64,26 @@ function HoaHomePage(props) {
 	const params= useParams();
 	//get the building balance
 	const [balance,setBalance]=useState("");
+	const [message,setMessage]=useState("");
+
+
+
+let getMessage=async function(){
+	try{
+		const messageRef= collection(firestore,'message');
+		const q= query(messageRef);
+		const qurySnapshot= await getDocs(q);
+		qurySnapshot.forEach(doc=>{
+			setMessage(doc.data()["message"]);
+			console.log(doc.data()["message"]);
+		});
+	}catch{
+		console.log("error");
+	}
+	
+}
+
+	useEffect(()=>{getMessage()},[]);
 	useEffect(()=>{getBuildingBalance(setBalance,params.building_id);},[]);
 
 
@@ -86,6 +107,12 @@ function HoaHomePage(props) {
 		<div className='hoaHome'>
 		<div className='pageTemplate'>
 			<h1> {JSON.parse(localStorage.getItem("userConnected")).data.name} שלום</h1>
+
+
+
+			<h1> הודעת מנהל : {message}</h1>
+
+
             <h1>יתרה : {balance} ש"ח</h1>
 			<div className='optionsContainer'>{options}</div>
 			<Link to='/' className='link'>
