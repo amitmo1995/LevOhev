@@ -136,6 +136,7 @@ function Mapping() {
 	let routBack = '/BuildingOperation/' + params.building_id+"/"+params.building_name;
 	
 	return (
+		<div className='mapping'>
 		<div className='pageTemplate'>
 			<Link to='/ManagerHomePage' className='link'>
 				<HomePageButton />
@@ -189,6 +190,7 @@ function Mapping() {
 			<Link to={routBack} className='link'>
 				<BackButton />
 			</Link>
+		</div>
 		</div>
 	);
 }

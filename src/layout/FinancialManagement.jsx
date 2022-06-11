@@ -97,6 +97,7 @@ function FinancialManagement
 	];
 
 	return (
+		<div className='financialManagement'>
 		<div className='pageTemplate'>
 			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
             <h1>ניהול כלכלי של ועד הבית בניין - ({GetBuilding()})</h1>
@@ -105,6 +106,7 @@ function FinancialManagement
 			<Link to={routBack} className='link'>
 				<BackButton />
 			</Link>
+			</div>
 		</div>
 	);
 }

@@ -239,8 +239,9 @@ body {
   display: grid;
   grid-template-rows: 3fr 1fr;
   margin: 30px;
-  border-radius: 15px;
+  border-radius: 20px;
   border: none;
+  font-size: 70%;
 }
 
 .option img {
@@ -972,6 +973,10 @@ body {
 }
 
 @media screen and (max-width: 900px) {
+  
+  .hoaHome .optionsContainer {
+    grid-template-columns: repeat(1, auto);
+  }
   .optionsContainer {
     grid-template-columns: repeat(1, auto);
     padding: 20px;
@@ -1063,8 +1068,41 @@ body {
   border-radius:0em;
   }
 }
-
-
+.addNeighbors .formContainer{
+  top: 80px;
+}
+.financialManagement .optionsContainer{
+  grid-template-columns: repeat(2, auto);
+}
+@media all and (max-width: 900px) {
+  .addNeighbors .input-group{
+    margin: 1px;
+    font-size: 10px;
+    left: 11%;
+    top: 13%;
+    
+  }
+  .addNeighbors input{
+    font-size: 12px;
+    padding: 10px;
+  }
+  .financialManagement .optionsContainer{
+    grid-template-columns: repeat(1, auto);
+  }
+  }
+  @media all and (max-width: 600px){
+    .mapping .tableData{
+      font-size: 0px;
+      margin: 0%;
+    }
+    .mapping .tableData th{
+      padding: 0px;
+      font-size: 9px;
+    }
+    .mapping .tableData tr{
+      font-size: 11px;
+    }    
+  }
 
 
 

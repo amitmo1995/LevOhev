@@ -120,6 +120,7 @@ function AddNeighbors() {
 
 	return (
 		<>
+		<div className='addNeighbors'>
 			<div className='wrapper'>
 			<Link to='/ManagerHomePage' className='link'><HomePageButton /></Link>
 				<div className='formContainer'>
@@ -202,7 +203,7 @@ function AddNeighbors() {
 						</Link>
 				</div>
 			</div>
-
+			</div>
 		</>
 	);
 }
