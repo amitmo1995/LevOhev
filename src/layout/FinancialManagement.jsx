@@ -6,6 +6,7 @@ import {firestore} from '../firebase/firebase';
 import {where, collection, query, getDocs} from 'firebase/firestore';
 import DepositTrackGraphImg from '../images/DepositTrackGraphImg.jpg'
 import ScholarshipPayment from '../images/ScholarshipPayment.jpg'
+import UpdateBuildingTenantsPayment from '../images/UpdateBuildingTenantsPayment.jpg'
 import financeImg from '../images/financeImg.jpg'
 import HomePageButton from '../features/HomePageButton'
 
@@ -93,7 +94,7 @@ function FinancialManagement
 		<Link to={routToTrackingPayment} className='link'> <Option optionName='מעקב תשלומי וועד' imgAdd={financeImg} /></Link>,
 		<Link to={routToBuildingExpenses} className='link'>	<Option optionName='מעקב הוצאות/הכנסות' imgAdd={DepositTrackGraphImg} /></Link>,
 		<Link to={routToGivingScholarship} className='link'>	<Option optionName='מתן מלגה' imgAdd={ScholarshipPayment} /></Link>,
-		<Link to={routToUpdateBuildingTenantsPayment} className='link'>	<Option optionName='עדכון סכום וועד בית חודשי' imgAdd={ScholarshipPayment} /></Link>
+		<Link to={routToUpdateBuildingTenantsPayment} className='link'>	<Option optionName='עדכון סכום וועד בית חודשי' imgAdd={UpdateBuildingTenantsPayment} /></Link>
 	];
 
 	return (
