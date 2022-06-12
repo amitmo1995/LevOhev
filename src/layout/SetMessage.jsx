@@ -45,7 +45,7 @@ function SetMessage() {
 		tempEmail=tempEmail.substring(1);
 		
 		///delete before production
-		tempEmail="amitmo1995@gmail.com";
+		// tempEmail="amitmo1995@gmail.com";
 	
 		emailRef.current.value=tempEmail;
 		emailjs.sendForm('service_f0pei3a', 'template_8q4jwsh', form.current, '9rAST6Xc6VoGnwDQa')
